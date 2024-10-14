@@ -3,13 +3,15 @@
 ## Introduction
 Our group participated in a coding challenge aimed at building a machine learning model to predict sales for the third year, using patterns from the previous two years of sales data. The challenge required us to consider key factors such as seasonality and trends, which could significantly impact the accuracy of sales predictions.
 
-To collaborate efficiently, our group decided to use Google Colab as our primary development platform. Google Colab allowed us to share code seamlessly, collaborate in real-time, and take advantage of its built-in support for popular machine learning libraries like TensorFlow, scikit-learn, and Pandas. The cloud-based environment also provided the computational power we needed to train and test our models without being limited by local hardware constraints.
+To collaborate efficiently, our group decided to use Google Colab as our primary development platform. Google Colab made it easy for us to share code and collaborate in real-time, enhancing our teamwork. It also offered integrated support for widely-used machine learning libraries like TensorFlow, scikit-learn, and Pandas. From there, the cloud-based environment provided the necessary computational power to train and test our models where it will remove the constraints of relying on local hardware.
 
 Throughout the project, we leveraged Colab's collaborative features to experiment with various machine learning techniques and feature engineering strategies. This platform facilitated our group discussions and troubleshooting, ensuring we could iteratively improve the model and work together effectively, even when not physically in the same location.
 
 Ultimately, our goal as a team was to create a robust, reproducible model capable of accurately forecasting future sales trends. We documented the entire process, from feature selection to model evaluation, ensuring that our approach was transparent and easy to follow.
 
 ## Problem Statement
+In the fast-paced retail environment, accurate sales forecasting is vital for efficient inventory management, resource allocation, and strategic decision-making. This competition encourages data scientists and machine learning enthusiasts to develop reliable and scalable models that can effectively predict retail sales trends.
+
 Our group was tasked with developing a model to predict sales for the third year by analyzing patterns from the first two years. The model needed to consider critical factors such as seasonality, trends, and other relevant influences affecting sales.
 
 We were encouraged to apply various feature engineering techniques, experiment with different model architectures, and implement relevant evaluation metrics to ensure the model’s predictions were as accurate as possible. Our group worked collaboratively to optimize the solution, providing a reliable and well-documented approach to future sales forecasting.
