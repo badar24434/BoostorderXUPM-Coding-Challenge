@@ -25,11 +25,65 @@ Our primary goal was to develop an accurate model that could forecast third-year
 2. Install dependencies: `pip install -r requirements.txt`
 3. [Any other setup instructions]
 
-## Documentation
+# Documentation
 
-### Data Overview
+## Data Overview
+
+# Data Overview
+
+## Dataset Summary
+The dataset contains transactional records with the following structure:
+
+- **Total Rows:** 175,514
+- **Total Columns:** 6
+
+## Column Details
+| Column Name   | Data Type | Non-Null Count | Description                                   |
+|---------------|-----------|----------------|-----------------------------------------------|
+| `InvoiceId`   | int64     | 175,514        | Unique identifier for each transaction.       |
+| `Date`        | object    | 175,514        | The date of the transaction (initially in string format). |
+| `CustomerId`  | object    | 175,514        | Unique identifier for each customer.         |
+| `ProductId`   | object    | 175,130        | Unique identifier for each product.          |
+| `Quantity`    | float64   | 175,130        | The number of products sold in the transaction. |
+| `Amount`      | float64   | 175,130        | The total amount for the transaction.        |
+
+## Memory Usage
+The dataset occupies approximately **8.0 MB** in memory.
+
+## Missing Values
+The dataset contains **384 missing values** in the `ProductId`, `Quantity`, and `Amount` columns, which will require attention during preprocessing.
+
+## Negative Values
+Upon inspection, there are **482 negative values** in the `Amount` column, which will need to be addressed in the data cleaning process.
+
+### Dataset 2 Summary
+The dataset contains transactional records with the following structure:
+
+- **Total Rows:** 417,319
+- **Total Columns:** 6
+
+## Column Details
+| Column Name   | Data Type | Non-Null Count | Description                                   |
+|---------------|-----------|----------------|-----------------------------------------------|
+| `InvoiceId`   | int64     | 417,319        | Unique identifier for each transaction.       |
+| `Date`        | object    | 417,319        | The date of the transaction (initially in string format). |
+| `CustomerId`  | object    | 417,319        | Unique identifier for each customer.         |
+| `ProductId`   | object    | 417,319        | Unique identifier for each product.          |
+| `Quantity`    | int64     | 417,319        | The number of products sold in the transaction. |
+| `Amount`      | float64   | 417,319        | The total amount for the transaction.        |
+
+## Memory Usage
+The dataset occupies approximately **19.1 MB** in memory.
+
+## Missing Values
+A preliminary check for missing values shows that all columns have non-null entries, indicating no missing data in the dataset.
+
+## Negative Values
+Upon inspection, there is **1 negative value** in the `Amount` column, which may require further attention during preprocessing.
+
 - Dataset 1:
-  The dataset used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "DATE". With a total entries of 417319 (rows of data)
+  
+  The dataset used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "Date". With a total entries of 175514 (rows of data)
 
   
   Initial Insights from the First Two Years:
