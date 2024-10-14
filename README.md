@@ -29,11 +29,22 @@ Our primary goal was to develop an accurate model that could forecast third-year
 
 ### Data Overview and Initial Analysis
 - Dataset 1:
-  - Description
-  - Initial insights from the first two years
-  - Observed patterns, trends, or seasonality
+  The dataset used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "DATE". With a total entries of 417319 (rows of data)
+
+  
+  Initial Insights from the First Two Years:
+  Monthly sales in 2021 started strong, particularly in March and December, whereas 2022 witnessed a dip in January, followed by a recovery around mid-year (June).
+  There was a notable dip in sales during the first quarter of 2022. This pattern may require further analysis, such as external factors affecting demand.
+  By mid-2022, sales saw a strong recovery, with June being a peak month.
+  
+  Observed Patterns, Trends, or Seasonality:
+  The data displays clear seasonality, with peaks typically occurring around the end of the year in both 2021 and 2022, suggesting increased sales during holiday seasons.
+  Economic cycles might explain some variations, as external economic data is also integrated, particularly from mid-2022, where a resurgence in sales occurred after a slow start.
+  There is a general trend of sales recovering in 2022 after a dip, with an increase in sales momentum into 2023, as observed from January onwards.
+  
 - Dataset 2:
-  - Description
+  The dataset also used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "DATE". 
+
   - Comparison with Dataset 1
 - [Include any relevant charts or graphs]
 
