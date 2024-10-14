@@ -78,6 +78,19 @@ A preliminary check for missing values shows that all columns have non-null entr
 Upon inspection, there is **1 negative value** in the `Amount` column, which may require further attention during preprocessing.
 
 ## Data Preprocessing Steps
+
+### 1. Date Standardization
+
+```python
+# Remove '00:00' string from the Date column
+df['Date'] = df['Date'].apply(lambda x: x.replace(' 00:00', '') if isinstance(x, str) and '00:00' in x else x)
+
+# Convert Date to datetime format
+df['DATE'] = pd.to_datetime(df['Date'], format='mixed', dayfirst=True)
+
+# Sort the dataframe by date
+df.sort_values(by='DATE', inplace=True)
+```
 - Data Cleaning: [Describe techniques used]
 - Feature Engineering: [Explain process and rationale]
 - Handling Missing Data: [If applicable, describe approach]
