@@ -88,31 +88,8 @@ Here's a revised version of your documentation, including insights and explanati
 # Data Overview and Preprocessing
 
 ### Dataset 1
-#### Initial Dataset Summary
-The dataset contains transactional records with the following structure:
-- **Total Rows:** 175,514
-- **Total Columns:** 7
 
-####  Column Details
-| Column Name | Data Type | Non-Null Count | Description |
-|-------------|-----------|----------------|-------------|
-| `InvoiceId` | int64     | 175,514        | Unique identifier for each transaction. |
-| `Date`      | object    | 175,514        | The date of the transaction (initially in string format). |
-| `CustomerId`| object    | 175,514        | Unique identifier for each customer. |
-| `ProductId` | object    | 175,130        | Unique identifier for each product. |
-| `Quantity`  | float64   | 175,130        | The number of products sold in the transaction. |
-| `Amount`    | float64   | 175,130        | The total amount for the transaction. |
-| `DATE`      | datetime64[ns] | 175,514   | Standardized date column (added during preprocessing). |
-
-####  Initial Memory Usage
-The initial dataset occupies approximately **8.0 MB** in memory.
-
-####  Missing Values
-The dataset contains **384 missing values** in the `ProductId`, `Quantity`, and `Amount` columns, which requires attention during preprocessing.
-
-####  Preprocessing Steps
-
-### 1. Date Standardization
+#### 1. Date Standardization
 
 ```python
 # Remove '00:00' string from the Date column
