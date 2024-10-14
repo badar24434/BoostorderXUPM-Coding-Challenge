@@ -27,7 +27,7 @@ Our primary goal was to develop an accurate model that could forecast third-year
 
 ## Documentation
 
-### Data Overview and Initial Analysis
+### Data Overview
 - Dataset 1:
   The dataset used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "DATE". With a total entries of 417319 (rows of data)
 
@@ -43,8 +43,16 @@ Our primary goal was to develop an accurate model that could forecast third-year
   There is a general trend of sales recovering in 2022 after a dip, with an increase in sales momentum into 2023, as observed from January onwards.
   
 - Dataset 2:
-  The dataset also used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "DATE". 
+  The dataset contains sales transactions from 2021 to 2023, with the following columns:
 
+  InvoiceId: A unique identifier for each transaction (non-null, integer).
+  CustomerId: A unique identifier for each customer (non-null, object).
+  ProductId: A unique identifier for each product sold (non-null, object).
+  Quantity: The number of units sold per transaction (non-null, integer).
+  Amount: The total transaction amount in currency, indicating the cost of the sale (non-null, float).
+  DATE: The transaction date, converted to a standard datetime format (non-null, datetime64).
+
+  
   - Comparison with Dataset 1
 - [Include any relevant charts or graphs]
 
@@ -53,6 +61,10 @@ Our primary goal was to develop an accurate model that could forecast third-year
 - Feature Engineering: [Explain process and rationale]
 - Handling Missing Data: [If applicable, describe approach]
 - Data Normalization/Scaling: [Describe methods used and why]
+
+### Data Analysis
+-
+-
 
 ### Model Development
 - Model Selection:
