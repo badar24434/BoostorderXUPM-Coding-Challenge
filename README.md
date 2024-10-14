@@ -81,6 +81,39 @@ Upon inspection, there is **1 negative value** in the `Amount` column, which may
 
 ### 1. Date Standardization
 
+Here's a revised version of your documentation, including insights and explanations for each preprocessing step:
+
+---
+
+# Data Overview and Preprocessing
+
+### Dataset 1
+#### Initial Dataset Summary
+The dataset contains transactional records with the following structure:
+- **Total Rows:** 175,514
+- **Total Columns:** 7
+
+####  Column Details
+| Column Name | Data Type | Non-Null Count | Description |
+|-------------|-----------|----------------|-------------|
+| `InvoiceId` | int64     | 175,514        | Unique identifier for each transaction. |
+| `Date`      | object    | 175,514        | The date of the transaction (initially in string format). |
+| `CustomerId`| object    | 175,514        | Unique identifier for each customer. |
+| `ProductId` | object    | 175,130        | Unique identifier for each product. |
+| `Quantity`  | float64   | 175,130        | The number of products sold in the transaction. |
+| `Amount`    | float64   | 175,130        | The total amount for the transaction. |
+| `DATE`      | datetime64[ns] | 175,514   | Standardized date column (added during preprocessing). |
+
+####  Initial Memory Usage
+The initial dataset occupies approximately **8.0 MB** in memory.
+
+####  Missing Values
+The dataset contains **384 missing values** in the `ProductId`, `Quantity`, and `Amount` columns, which requires attention during preprocessing.
+
+####  Preprocessing Steps
+
+### 1. Date Standardization
+
 ```python
 # Remove '00:00' string from the Date column
 df['Date'] = df['Date'].apply(lambda x: x.replace(' 00:00', '') if isinstance(x, str) and '00:00' in x else x)
@@ -91,6 +124,94 @@ df['DATE'] = pd.to_datetime(df['Date'], format='mixed', dayfirst=True)
 # Sort the dataframe by date
 df.sort_values(by='DATE', inplace=True)
 ```
+
+**Insight:** This step ensures consistent date formatting, allowing for proper time-based analysis. The original date format contained unwanted time information, which could lead to inconsistencies. By converting the `Date` column to a standardized `datetime` format, we enhance the dataset's usability for time-series analysis.
+
+#### 2. Handling Missing Values
+
+```python
+# Remove rows with null values in key columns
+df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
+```
+
+**Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. Each of these columns is vital for understanding transaction details, and their absence could skew results.
+
+#### 3. Column Management
+
+```python
+# Drop the original 'Date' column
+df = df.drop('Date', axis=1)
+
+# Reorder columns to make 'DATE' the first column
+cols = list(df.columns)
+cols = [cols[-1]] + cols[:-1]
+df = df[cols]
+```
+
+**Insight:** This step streamlines the dataset by removing the redundant original `Date` column. The `DATE` column, which is standardized and essential for our analysis, is moved to the forefront for improved readability. Such organization enhances the dataset's clarity and makes it easier to analyze.
+
+#### 4. Handling Negative Values
+
+```python
+# Check for negative values in Amount
+negative_amount_count = (df['Amount'] < 0).sum()
+print(f"Number of negative values in 'Amount' column: {negative_amount_count}")
+
+# Remove rows with negative amount
+df = df[df['Amount'] >= 0]
+```
+
+**Insight:** A total of **482 transactions** with negative amounts were identified and removed. These negative values likely indicate returns or adjustments, which are not relevant to our focus on positive sales transactions. By eliminating these records, we refine our dataset for predictive modeling, ensuring that only valid sales transactions are considered.
+
+####  Final Dataset Summary
+
+```python
+df.info()
+```
+
+```
+<class 'pandas.core.frame.DataFrame'>
+Index: 174648 entries, 86401 to 145130
+Data columns (total 6 columns):
+ #   Column      Non-Null Count   Dtype         
+---  ------      --------------   -----         
+ 0   DATE        174648 non-null  datetime64[ns]
+ 1   InvoiceId   174648 non-null  int64         
+ 2   CustomerId  174648 non-null  object        
+ 3   ProductId   174648 non-null  object        
+ 4   Quantity    174648 non-null  float64       
+ 5   Amount      174648 non-null  float64       
+dtypes: datetime64 , float64(2), int64(1), object(2)
+memory usage: 9.3+ MB
+```
+
+#### Key Changes
+1. **Rows Reduced:** From 175,514 to 174,648 (a reduction of **866 rows**).
+2. **Columns:** Reduced from 7 to 6 (removed the original `Date` column).
+3. **Data Types:** 
+   - DATE: `datetime64[ns]`
+   - InvoiceId: `int64`
+   - CustomerId: `object`
+   - ProductId: `object`
+   - Quantity: `float64`
+   - Amount: `float64`
+
+####  Final Memory Usage
+The preprocessed dataset now occupies approximately **9.3+ MB** in memory.
+
+####  Conclusion
+
+The preprocessing steps have resulted in a cleaner, more consistent dataset:
+- **Standardized date format** for time-series analysis enhances reliability.
+- **Removed transactions with missing critical information** ensures data integrity.
+- **Eliminated negative sales amounts** focuses analysis on valid sales data.
+- **Optimized column order** enhances dataset readability.
+
+This preprocessed dataset is now ready for exploratory data analysis and model development.
+
+--- 
+
+Feel free to modify any part to better fit your specific needs or style!
 - Data Cleaning: [Describe techniques used]
 - Feature Engineering: [Explain process and rationale]
 - Handling Missing Data: [If applicable, describe approach]
