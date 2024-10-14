@@ -29,15 +29,13 @@ Our primary goal was to develop an accurate model that could forecast third-year
 
 ## Data Overview
 
-# Data Overview
-
-## Dataset Summary
+### Dataset 1 Summary
 The dataset contains transactional records with the following structure:
 
 - **Total Rows:** 175,514
 - **Total Columns:** 6
 
-## Column Details
+#### Column Details
 | Column Name   | Data Type | Non-Null Count | Description                                   |
 |---------------|-----------|----------------|-----------------------------------------------|
 | `InvoiceId`   | int64     | 175,514        | Unique identifier for each transaction.       |
@@ -47,13 +45,13 @@ The dataset contains transactional records with the following structure:
 | `Quantity`    | float64   | 175,130        | The number of products sold in the transaction. |
 | `Amount`      | float64   | 175,130        | The total amount for the transaction.        |
 
-## Memory Usage
+#### Memory Usage
 The dataset occupies approximately **8.0 MB** in memory.
 
-## Missing Values
+#### Missing Values
 The dataset contains **384 missing values** in the `ProductId`, `Quantity`, and `Amount` columns, which will require attention during preprocessing.
 
-## Negative Values
+#### Negative Values
 Upon inspection, there are **482 negative values** in the `Amount` column, which will need to be addressed in the data cleaning process.
 
 ### Dataset 2 Summary
@@ -62,7 +60,7 @@ The dataset contains transactional records with the following structure:
 - **Total Rows:** 417,319
 - **Total Columns:** 6
 
-## Column Details
+#### Column Details
 | Column Name   | Data Type | Non-Null Count | Description                                   |
 |---------------|-----------|----------------|-----------------------------------------------|
 | `InvoiceId`   | int64     | 417,319        | Unique identifier for each transaction.       |
@@ -72,43 +70,14 @@ The dataset contains transactional records with the following structure:
 | `Quantity`    | int64     | 417,319        | The number of products sold in the transaction. |
 | `Amount`      | float64   | 417,319        | The total amount for the transaction.        |
 
-## Memory Usage
+#### Memory Usage
 The dataset occupies approximately **19.1 MB** in memory.
 
-## Missing Values
+#### Missing Values
 A preliminary check for missing values shows that all columns have non-null entries, indicating no missing data in the dataset.
 
-## Negative Values
+#### Negative Values
 Upon inspection, there is **1 negative value** in the `Amount` column, which may require further attention during preprocessing.
-
-- Dataset 1:
-  
-  The dataset used includes sales data from 2021 to 2023, with columns like "InvoiceId," "CustomerId," "ProductId," "Quantity," "Amount," and "Date". With a total entries of 175514 (rows of data)
-
-  
-  Initial Insights from the First Two Years:
-  Monthly sales in 2021 started strong, particularly in March and December, whereas 2022 witnessed a dip in January, followed by a recovery around mid-year (June).
-  There was a notable dip in sales during the first quarter of 2022. This pattern may require further analysis, such as external factors affecting demand.
-  By mid-2022, sales saw a strong recovery, with June being a peak month.
-  
-  Observed Patterns, Trends, or Seasonality:
-  The data displays clear seasonality, with peaks typically occurring around the end of the year in both 2021 and 2022, suggesting increased sales during holiday seasons.
-  Economic cycles might explain some variations, as external economic data is also integrated, particularly from mid-2022, where a resurgence in sales occurred after a slow start.
-  There is a general trend of sales recovering in 2022 after a dip, with an increase in sales momentum into 2023, as observed from January onwards.
-  
-- Dataset 2:
-  The dataset contains sales transactions from 2021 to 2023, with the following columns:
-
-  InvoiceId: A unique identifier for each transaction (non-null, integer).
-  CustomerId: A unique identifier for each customer (non-null, object).
-  ProductId: A unique identifier for each product sold (non-null, object).
-  Quantity: The number of units sold per transaction (non-null, integer).
-  Amount: The total transaction amount in currency, indicating the cost of the sale (non-null, float).
-  DATE: The transaction date, converted to a standard datetime format (non-null, datetime64).
-
-  
-  - Comparison with Dataset 1
-- [Include any relevant charts or graphs]
 
 ### Data Preprocessing Steps
 - Data Cleaning: [Describe techniques used]
