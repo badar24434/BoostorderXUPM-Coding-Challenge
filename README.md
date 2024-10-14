@@ -25,8 +25,6 @@ Our primary goal was to develop an accurate model that could forecast third-year
 2. Install dependencies: `pip install -r requirements.txt`
 3. [Any other setup instructions]
 
-# Documentation
-
 ## Data Overview
 
 ### Dataset 1 Summary
