@@ -7,7 +7,7 @@ To collaborate efficiently, our group decided to use Google Colab as our primary
 
 Throughout the project, we leveraged Colab's collaborative features to experiment with various machine learning techniques and feature engineering strategies. This platform facilitated our group discussions and troubleshooting, ensuring we could iteratively improve the model and work together effectively, even when not physically in the same location.
 
-To enhance the robustness of our model, we integrated two additional datasets. This enabled us to evaluate the model's performance across various data sources, ensuring its ability to generalize effectively and be relevant in different contexts. By incorporating these datasets, we aimed to validate our methodology and deliver a flexible solution that can be leveraged by other models.
+To enhance the robustness of our model, we integrated two additional datasets. This enabled us to evaluate the model's performance across various data inputs, ensuring its ability to generalize effectively and be relevant in different sales scenario. By incorporating these datasets, we aimed to validate our methodology and deliver a flexible solution that can be leveraged by other models.
 
 Ultimately, our goal as a team was to create a robust, reproducible model capable of accurately forecasting future sales trends. We documented the entire process, from feature selection to model evaluation, ensuring that our approach was transparent and easy to follow.
 
