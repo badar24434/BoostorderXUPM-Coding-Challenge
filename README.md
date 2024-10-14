@@ -77,7 +77,7 @@ A preliminary check for missing values shows that all columns have non-null entr
 #### Negative Values
 Upon inspection, there is **1 negative value** in the `Amount` column, which may require further attention during preprocessing.
 
-### Data Preprocessing Steps
+## Data Preprocessing Steps
 - Data Cleaning: [Describe techniques used]
 - Feature Engineering: [Explain process and rationale]
 - Handling Missing Data: [If applicable, describe approach]
