@@ -77,12 +77,6 @@ A preliminary check for missing values shows that all columns have non-null entr
 #### Negative Values
 Upon inspection, there is **1 negative value** in the `Amount` column, which may require further attention during preprocessing.
 
-## Data Preprocessing Steps
-
-### 1. Date Standardization
-
-Here's a revised version of your documentation, including insights and explanations for each preprocessing step:
-
 ---
 
 # Data Overview and Preprocessing
@@ -111,7 +105,7 @@ df.sort_values(by='DATE', inplace=True)
 df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
 ```
 
-**Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. Each of these columns is vital for understanding transaction details, and their absence could skew results.
+**Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. These affected rows offer no benefit so it is safe to remove them.
 
 #### 3. Column Management
 
@@ -125,7 +119,7 @@ cols = [cols[-1]] + cols[:-1]
 df = df[cols]
 ```
 
-**Insight:** This step streamlines the dataset by removing the redundant original `Date` column. The `DATE` column, which is standardized and essential for our analysis, is moved to the forefront for improved readability. Such organization enhances the dataset's clarity and makes it easier to analyze.
+**Insight:** Streamlines the dataset by removing the redundant original `Date` column. The `DATE` column, which is standardized and essential for our analysis, is moved to the forefront for improved readability. Such organization enhances the dataset's clarity and makes it easier to analyze.
 
 #### 4. Handling Negative Values
 
@@ -184,15 +178,11 @@ The preprocessing steps have resulted in a cleaner, more consistent dataset:
 - **Eliminated negative sales amounts** focuses analysis on valid sales data.
 - **Optimized column order** enhances dataset readability.
 
+### Dataset 2 (start sini utk second)
+
+#### 1. Date Standardization
 This preprocessed dataset is now ready for exploratory data analysis and model development.
 
---- 
-
-Feel free to modify any part to better fit your specific needs or style!
-- Data Cleaning: [Describe techniques used]
-- Feature Engineering: [Explain process and rationale]
-- Handling Missing Data: [If applicable, describe approach]
-- Data Normalization/Scaling: [Describe methods used and why]
 
 ### Data Analysis
 -
