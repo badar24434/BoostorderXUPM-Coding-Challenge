@@ -178,14 +178,38 @@ The preprocessing steps have resulted in a cleaner, more consistent dataset:
 - **Eliminated negative sales amounts** focuses analysis on valid sales data.
 - **Optimized column order** enhances dataset readability.
 
+This preprocessed dataset is now ready for exploratory data analysis and model development.
+
 ### Dataset 2 (start sini utk second)
 
 #### 1. Date Standardization
-This preprocessed dataset is now ready for exploratory data analysis and model development.
 
 
-### Data Analysis
--
+## Data Analysis
+
+```python
+unique = df.nunique()
+unique
+```
+```
+Dataset 1
+DATE            819
+InvoiceId     57260
+CustomerId      883
+ProductId       231
+Quantity        297
+Amount         6514
+```
+```
+Dataset 2
+DATE            1042
+InvoiceId     212591
+CustomerId      2538
+ProductId        518
+Quantity        1348
+Amount         21363
+```
+
 -
 
 ### Model Development
