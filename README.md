@@ -181,6 +181,40 @@ This preprocessed dataset is now ready for exploratory data analysis and model d
 
 ### Dataset 2 
 
+#### 4. Handling Negative Values
+
+```python
+# Check for negative values in Amount
+negative_amount_count = (df['Amount'] < 0).sum()
+print(f"Number of negative values in 'Amount' column: {negative_amount_count}")
+
+# Remove rows with negative amount
+df = df[df['Amount'] >= 0]
+```
+
+**Insight:** A total of **482 transactions** with negative amounts were identified and removed. These negative values likely indicate returns or adjustments, which are not relevant to our focus on positive sales transactions. By eliminating these records, we refine our dataset for predictive modeling, ensuring that only valid sales transactions are considered.
+
+####  Final Dataset Summary
+
+```python
+df.info()
+```
+
+```
+<class 'pandas.core.frame.DataFrame'>
+Index: 417318 entries, 417318 to 1050
+Data columns (total 6 columns):
+ #   Column      Non-Null Count   Dtype         
+---  ------      --------------   -----         
+ 0   InvoiceId   417318 non-null  int64         
+ 1   CustomerId  417318 non-null  object        
+ 2   ProductId   417318 non-null  object        
+ 3   Quantity    417318 non-null  int64         
+ 4   Amount      417318 non-null  float64       
+ 5   DATE        417318 non-null  datetime64[ns]
+dtypes: datetime64[ns](1), float64(1), int64(2), object(2)
+memory usage: 22.3+ MB
+```
 ## Data Analysis
 
 ```python
