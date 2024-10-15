@@ -169,18 +169,6 @@ memory usage: 9.3+ MB
 ####  Final Memory Usage
 The preprocessed dataset now occupies approximately **9.3+ MB** in memory.
 
-####  Conclusion
-
-The preprocessing steps have resulted in a cleaner, more consistent dataset:
-- **Standardized date format** for time-series analysis enhances reliability.
-- **Removed transactions with missing critical information** ensures data integrity.
-- **Eliminated negative sales amounts** focuses analysis on valid sales data.
-- **Optimized column order** enhances dataset readability.
-
-This preprocessed dataset is now ready for exploratory data analysis and model development.
-
-### Dataset 2 
-
 ### Dataset 2 
 
 #### 1. Handling Negative Values
