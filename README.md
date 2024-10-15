@@ -365,6 +365,64 @@ Median co-purchase frequency: 8.00
 Maximum co-purchase frequency: 538
 Minimum co-purchase frequency: 1
 ```
+### Average Time Between Purchases (Shortest to Longest)
+- Dataset 1
+```
+Top 10 Average Time Between Purchases (Shortest to Longest):
+------------------------------------------------
+Customer ID | Average Days Between Purchases
+------------------------------------------------
+ D-108768   | 0.000 days
+  D-17314   | 0.000 days
+  D-17384   | 0.000 days
+  D-17849   | 0.000 days
+  D-17875   | 0.000 days
+ D-226898   | 0.000 days
+ D-312006   | 0.000 days
+ D-347004   | 0.000 days
+  D-35880   | 0.000 days
+ D-370412   | 0.000 days
+
+Summary Statistics:
+Shortest interval: 0.000 days
+Longest interval: 635.000 days
+Overall average: 17.346 days
+Total customers analyzed: 851
+```
+- Dataset 2
+```
+Average Time Between Purchases (Shortest to Longest):
+------------------------------------------------
+Customer ID | Average Days Between Purchases
+------------------------------------------------
+ D-1014566  | 0.000 days
+ D-1042001  | 0.000 days
+ D-1046734  | 0.000 days
+ D-1047026  | 0.000 days
+ D-1047027  | 0.000 days
+ D-1053067  | 0.000 days
+ D-1053087  | 0.000 days
+ D-1055535  | 0.000 days
+ D-1061004  | 0.000 days
+ D-1062306  | 0.000 days
+
+Summary Statistics:
+Shortest interval: 0.000 days
+Longest interval: 940.000 days
+Overall average: 36.069 days
+Total customers analyzed: 2411
+```
+
+### Plot Total Amount vs Month to see the overall trend from 2021 to 2023
+- Dataset 1
+![image](https://github.com/user-attachments/assets/135d0fbc-536f-45a6-9c32-8152829521e1)
+
+The overall trend shows growth from 2021 to 2023. Starting around 6 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in early 2022 reaching around 14 million, and late 2023 showing similar highs. Despite some dips, each year tends to end at a higher point than it started. This indicates a positive growth trajectory for the business over the observed period.
+
+- Dataset 2
+![image](https://github.com/user-attachments/assets/a0e55358-f87d-4021-a314-268d60783897)
+
+The overall trend shows growth from 2021 to 2023. Starting around 4 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in mid-2022 reaching 5.5 million, and late 2023 showing similar highs. A the end of 2023 maintains these higher levels around 5-5.5 million. Despite some dips, each year tends to end at a higher point than it started.
 
 ### Model Development
 - Model Selection:
