@@ -181,7 +181,9 @@ This preprocessed dataset is now ready for exploratory data analysis and model d
 
 ### Dataset 2 
 
-#### 4. Handling Negative Values
+### Dataset 2 
+
+#### 1. Handling Negative Values
 
 ```python
 # Check for negative values in Amount
@@ -192,7 +194,7 @@ print(f"Number of negative values in 'Amount' column: {negative_amount_count}")
 df = df[df['Amount'] >= 0]
 ```
 
-**Insight:** A total of **482 transactions** with negative amounts were identified and removed. These negative values likely indicate returns or adjustments, which are not relevant to our focus on positive sales transactions. By eliminating these records, we refine our dataset for predictive modeling, ensuring that only valid sales transactions are considered.
+**Insight:** We identified and removed **1 transaction** with a negative amount. This negative value probably indicates a return or adjustment, which is irrelevant to our emphasis on positive sales transactions. By discarding this record, we improve our dataset for predictive modeling, ensuring that it only includes valid sales transactions.
 
 ####  Final Dataset Summary
 
@@ -215,6 +217,31 @@ Data columns (total 6 columns):
 dtypes: datetime64[ns](1), float64(1), int64(2), object(2)
 memory usage: 22.3+ MB
 ```
+
+#### Key Changes
+1. **Rows Reduced:** From 417,319 to 417,318 (a reduction of **1 rows**).
+2. **Columns:** Reduced from 7 to 6 (removed the original `Date` column).
+3. **Data Types:** 
+   - DATE: `datetime64[ns]`
+   - InvoiceId: `int64`
+   - CustomerId: `object`
+   - ProductId: `object`
+   - Quantity: `float64`
+   - Amount: `float64`
+
+####  Final Memory Usage
+The preprocessed dataset now occupies approximately **22.3+ MB** in memory.
+
+####  Conclusion
+
+The preprocessing steps have resulted in a cleaner, more consistent dataset:
+- **Standardized date format** for time-series analysis enhances reliability.
+- **Removed transactions with missing critical information** ensures data integrity.
+- **Eliminated negative sales amounts** focuses analysis on valid sales data.
+- **Optimized column order** enhances dataset readability.
+
+This preprocessed dataset is now ready for exploratory data analysis and model development.
+
 ## Data Analysis
 
 ```python
