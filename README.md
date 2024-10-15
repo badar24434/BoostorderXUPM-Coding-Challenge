@@ -179,10 +179,7 @@ The preprocessing steps have resulted in a cleaner, more consistent dataset:
 
 This preprocessed dataset is now ready for exploratory data analysis and model development.
 
-### Dataset 2 (start sini utk second)
-
-#### 1. Date Standardization
-
+### Dataset 2 
 
 ## Data Analysis
 
