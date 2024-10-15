@@ -458,7 +458,172 @@ Overall average: 36.069 days
 Total customers analyzed: 2411
 ```
 ### Customer Segmentation Analysis
+- Dataset 1
+```
+=== Customer Segmentation Analysis ===
+
+Customer Segments:
+--------------------------------------------------
+High-Value Customers: 139 customers
+Average Spend: $1266145.30
+Average Order Value: $4576.82
+
+Frequent Customers: 220 customers
+Average Purchase Frequency: 654.7 orders
+Average Spend: $808160.70
+
+Occasional Customers: 228 customers
+Average Purchase Frequency: 6.2 orders
+Average Spend: $5408.19
+
+=== Customer Lifetime Value (CLV) Analysis ===
+
+Top 10 Most Valuable Customers:
+--------------------------------------------------
+Rank  Customer ID    CLV            Total Spend    Orders    
+--------------------------------------------------
+1     D-17335        $8555834.13    $8555834.13    649       
+2     D-18042        $8468478.20    $8468478.20    315       
+3     D-18239        $8230296.43    $8230296.43    238       
+4     D-18552        $7702661.18    $7702661.18    607       
+5     D-170817       $6636883.24    $6636883.24    3146      
+6     D-17707        $5692302.73    $5692302.73    365       
+7     D-17369        $4836165.36    $4836165.36    1738      
+8     D-17537        $4824567.99    $4824567.99    4541      
+9     D-18191        $4395850.37    $4395850.37    2441      
+10    D-17420        $4174306.75    $4174306.75    736       
+
+CLV Summary Statistics:
+--------------------------------------------------
+Average CLV: $229077.91
+Median CLV: $14281.10
+Total Customer Base Value: $202275798.65
+```
+- Dataset 2
+```
+=== Customer Segmentation Analysis ===
+
+Customer Segments:
+--------------------------------------------------
+High-Value Customers: 388 customers
+Average Spend: $315468.47
+Average Order Value: $4211.87
+
+Frequent Customers: 630 customers
+Average Purchase Frequency: 616.6 orders
+Average Spend: $206350.54
+
+Occasional Customers: 714 customers
+Average Purchase Frequency: 3.6 orders
+Average Spend: $5027.60
+
+=== Customer Lifetime Value (CLV) Analysis ===
+
+Top 10 Most Valuable Customers:
+--------------------------------------------------
+Rank  Customer ID    CLV            Total Spend    Orders    
+--------------------------------------------------
+1     D-344608       $13298608.77   $13298608.77   1692      
+2     D-344616       $12293077.39   $12293077.39   2368      
+3     D-356924       $10207901.50   $10207901.50   895       
+4     D-356821       $6654672.67    $6654672.67    1641      
+5     D-357221       $6462580.45    $6462580.45    1750      
+6     D-357220       $4721921.91    $4721921.91    1240      
+7     D-356911       $4402783.99    $4402783.99    1136      
+8     D-357699       $3976271.95    $3976271.95    177770    
+9     D-343658       $3519201.72    $3519201.72    1931      
+10    D-355435       $2574501.48    $2574501.48    2254      
+
+CLV Summary Statistics:
+--------------------------------------------------
+Average CLV: $58433.73
+Median CLV: $2632.44
+Total Customer Base Value: $148304796.32
+```
+
 ### Top 10 Products by Total Quantity Sold and Total Revenue Generated
+- Dataset 1
+```
+Top 10 Products by Total Quantity Sold
+================================================================================
+Rank ProductId      Total Quantity Total Revenue       Avg Price/Unit 
+--------------------------------------------------------------------------------
+1    P-62587        831,689        $83,120,955.53      $99.94         
+2    P-279          129,842        $456,235.95         $3.51          
+3    P-301          126,754        $887,278.00         $7.00          
+4    P-278          107,947        $352,038.60         $3.26          
+5    P-271          98,222         $687,554.00         $7.00          
+6    P-711430       87,695         $12,040,739.60      $137.30        
+7    P-196          86,297         $16,596,137.17      $192.31        
+8    P-202          81,961         $12,170,767.90      $148.49        
+9    P-167          72,756         $11,441,602.88      $157.26        
+10   P-262          27,783         $1,499,500.46       $53.97         
+
+Top 10 Products by Total Revenue Generated
+================================================================================
+Rank ProductId      Total Quantity Total Revenue       Avg Price/Unit 
+--------------------------------------------------------------------------------
+1    P-62587        831,689        $83,120,955.53      $99.94         
+2    P-196          86,297         $16,596,137.17      $192.31        
+3    P-202          81,961         $12,170,767.90      $148.49        
+4    P-711430       87,695         $12,040,739.60      $137.30        
+5    P-167          72,756         $11,441,602.88      $157.26        
+6    P-215          9,277          $7,968,226.63       $858.92        
+7    P-157          4,815          $4,285,732.55       $890.08        
+8    P-287          24,240         $3,838,074.43       $158.34        
+9    P-187          27,546         $3,646,823.02       $132.39        
+10   P-286          15,845         $3,407,328.69       $215.04        
+
+Overall Product Performance Summary
+================================================================================
+Total number of unique products: 231
+Total quantity sold across all products: 2,008,861
+Total revenue generated: $202,275,798.65
+Average revenue per product: $875,652.81
+Median revenue per product: $20,589.20
+Average price per unit across all products: $137.04
+```
+- Dataset 2
+```
+Top 10 Products by Total Quantity Sold
+================================================================================
+Rank ProductId      Total Quantity Total Revenue       Avg Price/Unit 
+--------------------------------------------------------------------------------
+1    P-796828       19,683,035     $69,506,459.34      $3.53          
+2    P-796005       3,521,273      $2,297,292.63       $0.65          
+3    P-796023       1,267,171      $817,558.47         $0.65          
+4    P-795362       633,947        $1,762,711.07       $2.78          
+5    P-796013       589,297        $2,804,907.14       $4.76          
+6    P-795484       555,680        $3,671,064.46       $6.61          
+7    P-795369       477,244        $2,436,707.25       $5.11          
+8    P-4398000      422,791        $1,211,347.98       $2.87          
+9    P-796009       396,474        $951,294.52         $2.40          
+10   P-795104       375,332        $4,081,751.13       $10.88         
+
+Top 10 Products by Total Revenue Generated
+================================================================================
+Rank ProductId      Total Quantity Total Revenue       Avg Price/Unit 
+--------------------------------------------------------------------------------
+1    P-796828       19,683,035     $69,506,459.34      $3.53          
+2    P-795179       346,619        $4,642,464.06       $13.39         
+3    P-795104       375,332        $4,081,751.13       $10.88         
+4    P-795069       362,420        $4,029,276.00       $11.12         
+5    P-795484       555,680        $3,671,064.46       $6.61          
+6    P-796013       589,297        $2,804,907.14       $4.76          
+7    P-795558       232,794        $2,695,519.17       $11.58         
+8    P-795369       477,244        $2,436,707.25       $5.11          
+9    P-796005       3,521,273      $2,297,292.63       $0.65          
+10   P-795362       633,947        $1,762,711.07       $2.78          
+
+Overall Product Performance Summary
+================================================================================
+Total number of unique products: 518
+Total quantity sold across all products: 38,885,635
+Total revenue generated: $148,304,796.32
+Average revenue per product: $286,302.70
+Median revenue per product: $17,979.17
+Average price per unit across all products: $22.01
+```
 
 
 ### Plot Total Amount vs Month to see the overall trend from 2021 to 2023
