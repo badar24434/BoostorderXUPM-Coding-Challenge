@@ -197,7 +197,11 @@ unique
 ![image](https://github.com/user-attachments/assets/06dd6ce2-c27e-4aca-8138-a591b0691389)
 - Dataset 2
 
--
+#### Insights:
+- Data Volume: Dataset 2 is significantly larger, with 417,318 records compared to 174,648 in Dataset 1.
+- Customer Base: Dataset 2 has a larger customer base (2,538 unique customers) compared to Dataset 1 (883 unique customers).
+- Product Variety: Dataset 2 offers more products (518 unique ProductIds) than Dataset 1 (231 unique ProductIds).
+- Date Range: Dataset 2 covers a longer period (1,042 unique dates) compared to Dataset 1 (819 unique dates).
 
 ### Model Development
 - Model Selection:
