@@ -415,11 +415,13 @@ Total customers analyzed: 2411
 
 ### Plot Total Amount vs Month to see the overall trend from 2021 to 2023
 - Dataset 1
+
 ![image](https://github.com/user-attachments/assets/135d0fbc-536f-45a6-9c32-8152829521e1)
 
 The overall trend shows growth from 2021 to 2023. Starting around 6 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in early 2022 reaching around 14 million, and late 2023 showing similar highs. Despite some dips, each year tends to end at a higher point than it started. This indicates a positive growth trajectory for the business over the observed period.
 
 - Dataset 2
+
 ![image](https://github.com/user-attachments/assets/a0e55358-f87d-4021-a314-268d60783897)
 
 The overall trend shows growth from 2021 to 2023. Starting around 4 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in mid-2022 reaching 5.5 million, and late 2023 showing similar highs. A the end of 2023 maintains these higher levels around 5-5.5 million. Despite some dips, each year tends to end at a higher point than it started.
