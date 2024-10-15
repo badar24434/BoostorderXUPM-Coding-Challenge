@@ -640,12 +640,91 @@ The overall trend shows growth from 2021 to 2023. Starting around 6 million in e
 The overall trend shows growth from 2021 to 2023. Starting around 4 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in mid-2022 reaching 5.5 million, and late 2023 showing similar highs. A the end of 2023 maintains these higher levels around 5-5.5 million. Despite some dips, each year tends to end at a higher point than it started.
 
 ### Analyze what day of the week has the highest sales
+- Datset 1
+
+  ![image](https://github.com/user-attachments/assets/b4cc48c9-6ec6-48e0-84e6-354d4887bd8f)
+
+  Unique Orders by Month and Day:
+day        Monday  Tuesday  Wednesday  Thursday  Friday  Saturday  Sunday
+month                                                                    
+January    1458.0   1083.0     1397.0     727.0   839.0     145.0   119.0
+February    825.0    637.0     1019.0     904.0   689.0      21.0     5.0
+March      1175.0   1018.0     1168.0    1049.0   658.0       NaN     9.0
+April      1048.0    970.0     1038.0    1082.0   750.0       4.0    10.0
+May        1150.0    994.0     1055.0     897.0   652.0      12.0     2.0
+June        770.0    898.0     1026.0     923.0   637.0       8.0     NaN
+July        988.0    786.0      761.0     841.0   698.0      34.0     NaN
+August     1008.0    806.0      854.0     855.0   451.0      44.0    21.0
+September  1016.0    819.0     1054.0     998.0   698.0      15.0    10.0
+October    1134.0    783.0     1105.0     931.0   854.0      31.0     4.0
+November   1132.0   1125.0     1264.0     907.0   641.0      15.0    17.0
+December   1105.0    932.0     1339.0    1323.0   989.0       1.0     NaN
+
+Order patterns are very consistent across months. Weekdays, especially Monday through Wednesday, regularly see 1,000-1,500 orders. January shows the highest spike with Monday hitting nearly 1,500 orders. Weekends drop significantly - Saturdays average around 100 orders and Sundays even less. The pattern is remarkably stable across all months, with slight variations in peak days.
+
+- Dataset 2
+
+  ![image](https://github.com/user-attachments/assets/01977e3f-cdbb-469c-8216-3c4d811b69f1)
+
+  Unique Orders by Month and Day:
+day        Monday  Tuesday  Wednesday  Thursday  Friday  Saturday  Sunday
+month                                                                    
+January    3087.0   3303.0     3022.0    1909.0  2382.0     372.0   309.0
+February   3048.0   2967.0     2734.0    2558.0  2478.0     482.0   281.0
+March      4416.0   4530.0     3270.0    3437.0  3191.0     428.0   364.0
+April      4356.0   3344.0     3476.0    2422.0  1875.0     340.0   315.0
+May        5042.0   2661.0     2311.0    4302.0  2956.0     378.0   242.0
+June       2828.0   5900.0     3453.0    3175.0  2786.0    1079.0   743.0
+July       2824.0   4211.0     5067.0    3737.0  2304.0    1039.0   725.0
+August     4431.0   4431.0     3024.0    3458.0  2379.0     772.0   942.0
+September  4831.0   3798.0     3350.0    2829.0  2160.0    1574.0   619.0
+October    2939.0   3530.0     3726.0    3494.0  3005.0     109.0   304.0
+November   4270.0   3691.0     3293.0    2399.0  2190.0    1703.0   282.0
+December   2577.0   4089.0     4571.0    2780.0  2199.0     171.0   212.0
+
+Order patterns are very consistent across months. Weekdays, especially Monday through Wednesday, regularly see 4,000-5,000 orders. June shows the highest spike with Tuesday hitting nearly 6,000 orders. Weekends drop significantly - Saturdays average around 1,000 orders and Sundays even less. The pattern is remarkably stable across all months, with slight variations in peak days.
 
 ### Total sales by month for all 2021-2023 transactions
+- Dataset 1
+
+  ![image](https://github.com/user-attachments/assets/d5d005ff-0350-4a6b-8dfb-4dfe72687847)
+
+Sales follow a distinct yearly pattern. They start highest in January at about 34 million, then drop sharply to around 16 million in February. The trend then shows a gradual decrease until May, reaching the lowest point of about 12.5 million. From there, sales slowly increase through the rest of the year. The growth accelerates from September onwards, with a particularly steep rise from October to December. The year ends with December sales at about 22.5 million, though still below the January peak.
+
+- Dataset 2
+
+  ![image](https://github.com/user-attachments/assets/4845eed7-a8e3-46ab-8fd8-1afe44d1d8cd)
+
+Sales follow a clear yearly pattern. They start low in January (around 10.5 million) and build up through March (13 million). There's usually a dip in April, but things really pick up from September onwards. The end of the year is strongest - October through December show steady growth, reaching peak sales of about 14.2 million in December.
+
 
 ### Total Revenue by Month and Day of the Week
+- Dataset 1
+
+  ![image](https://github.com/user-attachments/assets/48d24c65-28b1-4b73-9752-54e10e59a5e6)
+
+Weekdays generate most of the revenue throughout the year. Monday through Friday typically bring in between 2-5 million in revenue. There's significant variation, but Wednesday and Friday often show higher revenue, especially towards the end of the year. Weekends consistently show the lowest revenue, with Saturday and Sunday rarely exceeding 1 million. There's a notable peak in January for most weekdays, with Monday, Tuesday, and Wednesday all reaching around 5-6 million. December also shows high revenue for several weekdays, particularly Friday which peaks at about 6 million.
+
+- Dataset 2
+
+  ![image](https://github.com/user-attachments/assets/87ad16bb-30d3-4e93-b4fc-ead299db9806)
+
+Weekdays clearly drive most revenue throughout the year. Monday through Thursday typically bring in between 2.5-3.5 million in revenue. Wednesday and Thursday often lead the pack, especially in later months. Weekends tell a different story - Saturday and Sunday consistently show the lowest revenue, rarely going above 500,000. There's a noticeable peak in March for Monday and another in April for Wednesday, both hitting around 3.5 million.
+
+
 
 ### Total Quantity trend (by month) from 2021 to 2023
+- Dataset 1
+
+  ![image](https://github.com/user-attachments/assets/b9c8a26f-1647-4b90-8b3b-8ac11826c82f)
+
+The quantity shows significant fluctuations from 2021 to 2023. Early 2021 started around 70,000 units, then we see regular ups and downs. There are two notable peaks: one in early 2022 at about 120,000 units, and another in early 2023 reaching nearly 125,000 units. The lowest points are seen in mid-2021, dropping to around 20,000 units. Throughout 2023, the pattern shows highs around 60,000-70,000 units and lows around 40,000 units. By end of 2023, quantities seem to be on an upward trend, reaching about 80,000 units.
+
+- Dataset 2
+
+  ![image](https://github.com/user-attachments/assets/9759c938-20d9-4514-bf63-f64c5c15f936)
+
+The quantity moved a bit like a wave from 2021 to 2023. Early 2021 started strong with about 1.8 million units, then we see regular ups and downs. Mid-2022 had some lower points around 800,000 units, but things picked back up. The pattern keeps going with highs around 1.2-1.4 million units and lows around 800,000-900,000 units. By 2024, quantities seem to have stabilized around 1.2 million units.
 
 ### Model Development
 - Model Selection:
