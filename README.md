@@ -192,10 +192,10 @@ unique = df.nunique()
 unique
 ```
 ![image](https://github.com/user-attachments/assets/0d69f688-39c2-41a4-b350-58c593411460)
-Dataset 1
+- Dataset 1
 
 ![image](https://github.com/user-attachments/assets/06dd6ce2-c27e-4aca-8138-a591b0691389)
-Dataset 2
+- Dataset 2
 
 -
 
