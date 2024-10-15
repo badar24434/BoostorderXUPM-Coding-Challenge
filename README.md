@@ -81,8 +81,6 @@ Upon inspection, there is **1 negative value** in the `Amount` column, which may
 
 ## Data Preprocessing
 
-### Dataset 1
-
 #### 1. Date Standardization
 
 ```python
@@ -98,16 +96,7 @@ df.sort_values(by='DATE', inplace=True)
 
 **Insight:** This step ensures consistent date formatting, allowing for proper time-based analysis. The original date format contained unwanted time information, which could lead to inconsistencies. By converting the `Date` column to a standardized `datetime` format, we enhance the dataset's usability for time-series analysis.
 
-#### 2. Handling Missing Values
-
-```python
-# Remove rows with null values in key columns
-df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
-```
-
-**Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. These affected rows offer no benefit so it is safe to remove them.
-
-#### 3. Column Management
+#### 2. Column Management
 
 ```python
 # Drop the original 'Date' column
@@ -120,6 +109,16 @@ df = df[cols]
 ```
 
 **Insight:** Streamlines the dataset by removing the redundant original `Date` column. The `DATE` column, which is standardized and essential for our analysis, is moved to the forefront for improved readability. Such organization enhances the dataset's clarity and makes it easier to analyze.
+
+### Dataset 1
+
+#### 3. Handling Missing Values
+
+```python
+# Remove rows with null values in key columns
+df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
+```
+**Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. These affected rows offer no benefit so it is safe to remove them.
 
 #### 4. Handling Negative Values
 
