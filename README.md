@@ -640,7 +640,7 @@ The overall trend shows growth from 2021 to 2023. Starting around 6 million in e
 The overall trend shows growth from 2021 to 2023. Starting around 4 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in mid-2022 reaching 5.5 million, and late 2023 showing similar highs. A the end of 2023 maintains these higher levels around 5-5.5 million. Despite some dips, each year tends to end at a higher point than it started.
 
 ### Analyze what day of the week has the highest sales
-- Datset 1
+- Dataset 1
 
   ![image](https://github.com/user-attachments/assets/b4cc48c9-6ec6-48e0-84e6-354d4887bd8f)
 
