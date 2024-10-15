@@ -203,6 +203,169 @@ unique
 - Product Variety: Dataset 2 offers more products (518 unique ProductIds) than Dataset 1 (231 unique ProductIds).
 - Date Range: Dataset 2 covers a longer period (1,042 unique dates) compared to Dataset 1 (819 unique dates).
 
+### Monthly Sales Analysis (2021-2023)
+- Dataset 1
+```
+=== Monthly Sales Analysis (2021-2023) ===
+--------------------------------------------------
+Year  Month           Total Sales    % Change
+--------------------------------------------------
+--------------------------------------------------
+2021  January     $  6,196,261.70            
+2021  February    $  6,428,423.37       +3.7%
+2021  March       $  4,701,558.70      -26.9%
+2021  April       $  4,774,511.37       +1.6%
+2021  May         $  2,732,043.96      -42.8%
+2021  June        $  1,959,853.77      -28.3%
+2021  July        $  1,687,258.09      -13.9%
+2021  August      $  3,231,887.77      +91.5%
+2021  September   $  3,211,008.03       -0.6%
+2021  October     $  5,107,857.98      +59.1%
+2021  November    $  4,710,511.72       -7.8%
+2021  December    $  6,815,252.45      +44.7%
+--------------------------------------------------
+2022  January     $ 13,900,962.83     +104.0%
+2022  February    $  6,402,649.04      -53.9%
+2022  March       $  4,257,504.66      -33.5%
+2022  April       $  4,866,249.15      +14.3%
+2022  May         $  3,983,449.40      -18.1%
+2022  June        $  5,990,105.69      +50.4%
+2022  July        $  8,258,821.64      +37.9%
+2022  August      $  3,912,611.64      -52.6%
+2022  September   $  5,069,485.43      +29.6%
+2022  October     $  5,238,628.12       +3.3%
+2022  November    $  7,078,806.50      +35.1%
+2022  December    $  7,126,982.18       +0.7%
+--------------------------------------------------
+2023  January     $ 14,463,245.37     +102.9%
+2023  February    $  3,553,592.61      -75.4%
+2023  March       $  5,195,484.25      +46.2%
+2023  April       $  3,383,719.12      -34.9%
+2023  May         $  5,810,563.66      +71.7%
+2023  June        $  5,354,211.65       -7.9%
+2023  July        $  3,933,952.55      -26.5%
+2023  August      $  6,987,626.75      +77.6%
+2023  September   $  5,898,829.16      -15.6%
+2023  October     $  5,348,591.11       -9.3%
+2023  November    $  6,337,921.89      +18.5%
+2023  December    $  8,365,375.34      +32.0%
+
+Summary Statistics:
+--------------------------------------------------
+Total Sales: $202,275,798.65
+Average Monthly Sales: $5,618,772.18
+Highest Month: January 2023 ($14,463,245.37)
+Lowest Month: July 2021 ($1,687,258.09)
+```
+- Dataset 2
+```
+=== Monthly Sales Analysis (2021-2023) ===
+--------------------------------------------------
+Year  Month           Total Sales    % Change
+--------------------------------------------------
+--------------------------------------------------
+2021  January     $  4,268,740.98            
+2021  February    $  3,304,584.09      -22.6%
+2021  March       $  4,539,463.82      +37.4%
+2021  April       $  3,754,174.73      -17.3%
+2021  May         $  2,965,499.52      -21.0%
+2021  June        $  3,097,231.48       +4.4%
+2021  July        $  3,390,558.57       +9.5%
+2021  August      $  3,105,933.13       -8.4%
+2021  September   $  4,018,885.17      +29.4%
+2021  October     $  4,634,259.17      +15.3%
+2021  November    $  4,597,474.04       -0.8%
+2021  December    $  4,388,728.45       -4.5%
+--------------------------------------------------
+2022  January     $  2,918,894.61      -33.5%
+2022  February    $  3,503,575.99      +20.0%
+2022  March       $  3,464,302.74       -1.1%
+2022  April       $  3,907,407.72      +12.8%
+2022  May         $  4,015,319.15       +2.8%
+2022  June        $  5,578,820.95      +38.9%
+2022  July        $  3,245,442.59      -41.8%
+2022  August      $  3,471,612.21       +7.0%
+2022  September   $  3,614,950.34       +4.1%
+2022  October     $  3,658,879.75       +1.2%
+2022  November    $  4,520,220.18      +23.5%
+2022  December    $  4,366,027.69       -3.4%
+--------------------------------------------------
+2023  January     $  3,272,823.60      -25.0%
+2023  February    $  4,411,867.04      +34.8%
+2023  March       $  4,991,619.02      +13.1%
+2023  April       $  3,449,348.64      -30.9%
+2023  May         $  4,431,958.73      +28.5%
+2023  June        $  4,524,782.30       +2.1%
+2023  July        $  5,470,284.56      +20.9%
+2023  August      $  4,880,602.40      -10.8%
+2023  September   $  4,656,024.36       -4.6%
+2023  October     $  5,285,113.99      +13.5%
+2023  November    $  5,050,258.57       -4.4%
+2023  December    $  5,549,126.04       +9.9%
+
+Summary Statistics:
+--------------------------------------------------
+Total Sales: $148,304,796.32
+Average Monthly Sales: $4,119,577.68
+Highest Month: June 2022 ($5,578,820.95)
+Lowest Month: January 2022 ($2,918,894.61)
+```
+### Product Co-Purchase Analysis
+- Dataset 1
+```
+Top 10 Most Frequently Co-Purchased Product Pairs:
+------------------------------------------------------------
+Rank  Product Pair                       Purchase Count % of Total
+------------------------------------------------------------
+1     P-279, P-301                       443                 54.09%
+2     P-196, P-301                       439                 53.60%
+3     P-196, P-279                       439                 53.60%
+4     P-271, P-278                       437                 53.36%
+5     P-301, P-62587                     437                 53.36%
+6     P-279, P-62587                     437                 53.36%
+7     P-271, P-62587                     436                 53.24%
+8     P-278, P-62587                     435                 53.11%
+9     P-167, P-278                       435                 53.11%
+10    P-167, P-271                       435                 53.11%
+
+Summary Statistics:
+------------------------------------------------------------
+Total number of transactions analyzed: 819
+Total unique product pairs found: 19202
+Average co-purchase frequency: 34.31
+Median co-purchase frequency: 8.00
+Maximum co-purchase frequency: 443
+Minimum co-purchase frequency: 1
+```
+- Dataset 2
+```
+=== Product Co-Purchase Analysis ===
+
+Top 10 Most Frequently Co-Purchased Product Pairs:
+------------------------------------------------------------
+Rank  Product Pair                       Purchase Count % of Total
+------------------------------------------------------------
+1     P-795484, P-796828                 538                 51.63%
+2     P-795484, P-795965                 519                 49.81%
+3     P-1883364, P-795484                519                 49.81%
+4     P-795298, P-795484                 504                 48.37%
+5     P-795484, P-795558                 503                 48.27%
+6     P-1569690, P-795484                502                 48.18%
+7     P-795484, P-795710                 499                 47.89%
+8     P-795484, P-795581                 494                 47.41%
+9     P-795350, P-795484                 490                 47.02%
+10    P-795965, P-796828                 486                 46.64%
+
+Summary Statistics:
+------------------------------------------------------------
+Total number of transactions analyzed: 1042
+Total unique product pairs found: 95307
+Average co-purchase frequency: 30.04
+Median co-purchase frequency: 8.00
+Maximum co-purchase frequency: 538
+Minimum co-purchase frequency: 1
+```
+
 ### Model Development
 - Model Selection:
   - Rationale for chosen algorithm(s)
