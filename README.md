@@ -191,24 +191,11 @@ This preprocessed dataset is now ready for exploratory data analysis and model d
 unique = df.nunique()
 unique
 ```
-```
+![image](https://github.com/user-attachments/assets/0d69f688-39c2-41a4-b350-58c593411460)
 Dataset 1
-DATE            819
-InvoiceId     57260
-CustomerId      883
-ProductId       231
-Quantity        297
-Amount         6514
-```
-```
+
+![image](https://github.com/user-attachments/assets/06dd6ce2-c27e-4aca-8138-a591b0691389)
 Dataset 2
-DATE            1042
-InvoiceId     212591
-CustomerId      2538
-ProductId        518
-Quantity        1348
-Amount         21363
-```
 
 -
 
