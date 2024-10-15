@@ -643,7 +643,7 @@ The overall trend shows growth from 2021 to 2023. Starting around 4 million in e
 - Dataset 1
 
   ![image](https://github.com/user-attachments/assets/b4cc48c9-6ec6-48e0-84e6-354d4887bd8f)
-
+```
   Unique Orders by Month and Day:
 day        Monday  Tuesday  Wednesday  Thursday  Friday  Saturday  Sunday
 month                                                                    
@@ -659,13 +659,13 @@ September  1016.0    819.0     1054.0     998.0   698.0      15.0    10.0
 October    1134.0    783.0     1105.0     931.0   854.0      31.0     4.0
 November   1132.0   1125.0     1264.0     907.0   641.0      15.0    17.0
 December   1105.0    932.0     1339.0    1323.0   989.0       1.0     NaN
-
+```
 Order patterns are very consistent across months. Weekdays, especially Monday through Wednesday, regularly see 1,000-1,500 orders. January shows the highest spike with Monday hitting nearly 1,500 orders. Weekends drop significantly - Saturdays average around 100 orders and Sundays even less. The pattern is remarkably stable across all months, with slight variations in peak days.
 
 - Dataset 2
 
   ![image](https://github.com/user-attachments/assets/01977e3f-cdbb-469c-8216-3c4d811b69f1)
-
+```
   Unique Orders by Month and Day:
 day        Monday  Tuesday  Wednesday  Thursday  Friday  Saturday  Sunday
 month                                                                    
@@ -681,7 +681,7 @@ September  4831.0   3798.0     3350.0    2829.0  2160.0    1574.0   619.0
 October    2939.0   3530.0     3726.0    3494.0  3005.0     109.0   304.0
 November   4270.0   3691.0     3293.0    2399.0  2190.0    1703.0   282.0
 December   2577.0   4089.0     4571.0    2780.0  2199.0     171.0   212.0
-
+```
 Order patterns are very consistent across months. Weekdays, especially Monday through Wednesday, regularly see 4,000-5,000 orders. June shows the highest spike with Tuesday hitting nearly 6,000 orders. Weekends drop significantly - Saturdays average around 1,000 orders and Sundays even less. The pattern is remarkably stable across all months, with slight variations in peak days.
 
 ### Total sales by month for all 2021-2023 transactions
