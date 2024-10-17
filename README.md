@@ -740,24 +740,17 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
 ### Model Training:
   Each model is trained separately using the following process:
 
-  - Data Preprocessing
-  Aggregates sales data to monthly levels
-
-  Handles outliers using IQR method
+  **Data Preprocessing**
+  - Aggregates sales data to monthly levels
+  - Handles outliers using IQR method
+  - Incorporates economic indicators (leading, coincident, lagging indices)
+  - Creates time-based features (month, year, quarter, cyclical encodings)
+  - Generates lag features and rolling statistics for some models
   
-  Incorporates economic indicators (leading, coincident, lagging indices)
-  
-  Creates time-based features (month, year, quarter, cyclical encodings)
-  
-  Generates lag features and rolling statistics for some models
-  
-  - Hyperparameter Tuning
-  Utilizes Optuna for automated hyperparameter optimization
-
-  Employs Tree-structured Parzen Estimator (TPE) sampling for efficient hyperparameter search
-  
-  Optimizes each model separately with 200 trials
-  
+  **Hyperparameter Tuning**
+  - Utilizes Optuna for automated hyperparameter optimization
+  - Employs Tree-structured Parzen Estimator (TPE) sampling for efficient hyperparameter search
+  - Optimizes each model separately with 200 trials
   - Key hyperparameters tuned include
     
   Prophet: ```python changepoint_prior_scale, seasonality_prior_scale, seasonality_mode ```
@@ -772,9 +765,9 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
 ### Model Evaluation:
   The primary metrics used for evaluation are:
   
-  Mean Absolute Percentage Error (MAPE): Measures prediction accuracy as a percentage
+  **Mean Absolute Percentage Error (MAPE)**: Measures prediction accuracy as a percentage
   
-  Root Mean Square Error (RMSE): Provides an absolute measure of the prediction error
+  **Root Mean Square Error (RMSE)**: Provides an absolute measure of the prediction error
   
   The model's performance is evaluated on the test set (2023 data) for both datasets:
   ```
