@@ -767,35 +767,41 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   Root Mean Square Error (RMSE): Provides an absolute measure of the prediction error
   
   The model's performance is evaluated on the test set (2023 data) for both datasets:
+  ```
   Dataset 1 Results:
   Accuracy: 89.34% (derived from MAPE)
   MAPE: 0.1066
   RMSE: 1,020,834.48
-  
+  ```
+  ```
   Dataset 2 Results:
   Accuracy: 95.39% (derived from MAPE)
   MAPE: 0.0461
   RMSE: 329,974.38
-
+  ```
   
-#### Model Robustness:
+### Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
 - Dataset Sizes
+
 Dataset 1: Contains approximately 100,000+ rows
 Dataset 2: Contains over 400,000 rows, representing a much larger and potentially more diverse dataset
 Accuracy Improvement: Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
 
 - Error Reduction
+  
 MAPE decreased from 0.1066 to 0.0461, indicating a substantial reduction in percentage error.
 RMSE reduced from 1,020,834.48 to 329,974.38, suggesting better absolute error performance.
 
-- Scalability and Data Utilization 
+- Scalability and Data Utilization
+  
 The model's ability to handle and effectively utilize a dataset four times larger than the original demonstrates its scalability and capacity to learn from larger volumes of data. This is a crucial aspect of robustness in real-world applications where data volumes can vary significantly. Improved Accuracy with More Data: The significant improvement in performance with the larger dataset aligns with the general principle in machine learning that more data often leads to better model performance. This suggests that the model effectively leverages additional information to refine its predictions.
 
-- Adaptability 
+- Adaptability
+  
 The model's ability to perform well on both datasets, especially its improved performance on the much larger Dataset 2, demonstrates its robustness and adaptability to different data conditions.
 This is likely due to:
 The ensemble approach, which combines predictions from multiple models
@@ -803,6 +809,7 @@ Incorporation of economic indicators, which may help capture broader market tren
 Feature engineering that creates generalized time-based features
 
 - Consistent Performance
+  
 While the model performs better on Dataset 2, it maintains good accuracy on Dataset 1, indicating it doesn't overfit to a specific dataset size or structure.
 
 The final prediction step uses a novel "best point selection" ensemble method, selecting the prediction closest to the actual value from among the three models for each time point. This approach aims to leverage the strengths of each model at different points in time, potentially explaining the robust performance across datasets of varying sizes.
