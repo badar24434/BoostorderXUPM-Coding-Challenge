@@ -757,10 +757,11 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   
   XGBoost and Gradient Boosting: ```python n_estimators, max_depth, learning_rate, subsample, etc. ```
   
-  - Feature Engineering
-  Creates cyclical features for month and quarter
-  Incorporates economic indicators as additional features
-  Generates lag features and rolling statistics for some models
+  
+  **Feature Engineering**
+  - Creates cyclical features for month and quarter
+  - Incorporates economic indicators as additional features
+  - Generates lag features and rolling statistics for some models
   
 ### Model Evaluation:
   The primary metrics used for evaluation are:
