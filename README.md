@@ -788,8 +788,12 @@ This improvement is particularly significant given the substantial difference in
 - Dataset Sizes
 
 Dataset 1: Contains approximately 100,000+ rows
+
 Dataset 2: Contains over 400,000 rows, representing a much larger and potentially more diverse dataset
-Accuracy Improvement: Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
+
+- Accuracy Improvement
+  
+Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
 
 - Error Reduction
   
@@ -798,7 +802,11 @@ RMSE reduced from 1,020,834.48 to 329,974.38, suggesting better absolute error p
 
 - Scalability and Data Utilization
   
-The model's ability to handle and effectively utilize a dataset four times larger than the original demonstrates its scalability and capacity to learn from larger volumes of data. This is a crucial aspect of robustness in real-world applications where data volumes can vary significantly. Improved Accuracy with More Data: The significant improvement in performance with the larger dataset aligns with the general principle in machine learning that more data often leads to better model performance. This suggests that the model effectively leverages additional information to refine its predictions.
+The model's ability to handle and effectively utilize a dataset four times larger than the original demonstrates its scalability and capacity to learn from larger volumes of data. This is a crucial aspect of robustness in real-world applications where data volumes can vary significantly. 
+
+- Improved Accuracy with More Data
+- 
+The significant improvement in performance with the larger dataset aligns with the general principle in machine learning that more data often leads to better model performance. This suggests that the model effectively leverages additional information to refine its predictions.
 
 - Adaptability
   
