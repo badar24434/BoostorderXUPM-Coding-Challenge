@@ -742,19 +742,27 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
 
   - Data Preprocessing
   Aggregates sales data to monthly levels
+
   Handles outliers using IQR method
+  
   Incorporates economic indicators (leading, coincident, lagging indices)
+  
   Creates time-based features (month, year, quarter, cyclical encodings)
+  
   Generates lag features and rolling statistics for some models
   
   - Hyperparameter Tuning
   Utilizes Optuna for automated hyperparameter optimization
+
   Employs Tree-structured Parzen Estimator (TPE) sampling for efficient hyperparameter search
+  
   Optimizes each model separately with 200 trials
   
   - Key hyperparameters tuned include
-  Prophet: changepoint_prior_scale, seasonality_prior_scale, seasonality_mode
-  XGBoost and Gradient Boosting: n_estimators, max_depth, learning_rate, subsample, etc.
+    
+  Prophet: ```python changepoint_prior_scale, seasonality_prior_scale, seasonality_mode ```
+  
+  XGBoost and Gradient Boosting: ```python n_estimators, max_depth, learning_rate, subsample, etc. ```
   
   - Feature Engineering
   Creates cyclical features for month and quarter
@@ -763,7 +771,9 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   
 ### Model Evaluation:
   The primary metrics used for evaluation are:
+  
   Mean Absolute Percentage Error (MAPE): Measures prediction accuracy as a percentage
+  
   Root Mean Square Error (RMSE): Provides an absolute measure of the prediction error
   
   The model's performance is evaluated on the test set (2023 data) for both datasets:
@@ -805,7 +815,7 @@ RMSE reduced from 1,020,834.48 to 329,974.38, suggesting better absolute error p
 The model's ability to handle and effectively utilize a dataset four times larger than the original demonstrates its scalability and capacity to learn from larger volumes of data. This is a crucial aspect of robustness in real-world applications where data volumes can vary significantly. 
 
 - Improved Accuracy with More Data
-- 
+
 The significant improvement in performance with the larger dataset aligns with the general principle in machine learning that more data often leads to better model performance. This suggests that the model effectively leverages additional information to refine its predictions.
 
 - Adaptability
