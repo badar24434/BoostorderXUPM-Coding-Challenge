@@ -230,7 +230,7 @@ The preprocessing steps have resulted in a cleaner, more consistent dataset:
 
 This preprocessed dataset is now ready for exploratory data analysis and model development.
 
-## Data Analysis
+## Sales Analysis
 
 ```python
 unique = df.nunique()
@@ -726,9 +726,9 @@ The quantity shows significant fluctuations from 2021 to 2023. Early 2021 starte
 
 The quantity moved a bit like a wave from 2021 to 2023. Early 2021 started strong with about 1.8 million units, then we see regular ups and downs. Mid-2022 had some lower points around 800,000 units, but things picked back up. The pattern keeps going with highs around 1.2-1.4 million units and lows around 800,000-900,000 units. By 2024, quantities seem to have stabilized around 1.2 million units.
 
-### Model Development
+## Model Development
 
-#### Model Selection:
+### Model Selection:
  The approach uses an ensemble of three models: Prophet, XGBoost, and Gradient Boosting. This combination leverages the strengths of different algorithms:
 
 - Prophet: Handles seasonality and trends well, particularly useful for time series data.
@@ -737,31 +737,31 @@ The quantity moved a bit like a wave from 2021 to 2023. Early 2021 started stron
 
 The ensemble approach aims to improve overall prediction accuracy by combining these diverse models.
 
-#### Model Training:
+### Model Training:
   Each model is trained separately using the following process:
 
-  - Data Preprocessing:
+  - Data Preprocessing
   Aggregates sales data to monthly levels
   Handles outliers using IQR method
   Incorporates economic indicators (leading, coincident, lagging indices)
   Creates time-based features (month, year, quarter, cyclical encodings)
   Generates lag features and rolling statistics for some models
   
-  - Hyperparameter Tuning:
+  - Hyperparameter Tuning
   Utilizes Optuna for automated hyperparameter optimization
   Employs Tree-structured Parzen Estimator (TPE) sampling for efficient hyperparameter search
   Optimizes each model separately with 200 trials
   
-  - Key hyperparameters tuned include:
+  - Key hyperparameters tuned include
   Prophet: changepoint_prior_scale, seasonality_prior_scale, seasonality_mode
   XGBoost and Gradient Boosting: n_estimators, max_depth, learning_rate, subsample, etc.
   
-  - Feature Engineering:
+  - Feature Engineering
   Creates cyclical features for month and quarter
   Incorporates economic indicators as additional features
   Generates lag features and rolling statistics for some models
   
-#### Model Evaluation:
+### Model Evaluation:
   The primary metrics used for evaluation are:
   Mean Absolute Percentage Error (MAPE): Measures prediction accuracy as a percentage
   Root Mean Square Error (RMSE): Provides an absolute measure of the prediction error
@@ -783,7 +783,7 @@ The model demonstrates strong performance on both datasets, with notably better 
 
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
-- Dataset Sizes:
+- Dataset Sizes
 Dataset 1: Contains approximately 100,000+ rows
 Dataset 2: Contains over 400,000 rows, representing a much larger and potentially more diverse dataset
 Accuracy Improvement: Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
