@@ -830,8 +830,7 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 ### Tech Stack Used
 - Programming Language(s):
-#### Python: Python is chosen due to its extensive support for data manipulation, machine learning, and time series forecasting. Its libraries and ecosystem make it highly suitable for tasks like sales prediction, where
-flexibility and scalability are key.
+#### Python: Python is chosen due to its extensive support for data manipulation, machine learning, and time series forecasting. Its libraries and ecosystem make it highly suitable for tasks like sales prediction, where flexibility and scalability are key.
 
 - Libraries and Frameworks:
 #### Warnings and Logging:
