@@ -853,8 +853,10 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
  
   ---
   
-  #### Hyperparameter Tuning
-  ```python
+#### Hyperparameter Tuning (Prophet, XGBoost, and Gradient Boosting)
+
+For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
+```python
         # Hyperparameters to be tuned for Prophet
         params = {
             'changepoint_prior_scale': trial.suggest_loguniform('changepoint_prior_scale',    0.001, 0.5),
@@ -895,11 +897,7 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
             study.optimize(optimize_func, n_trials=200)
             self.best_models[model_name] = study.best_trial
   ```
-  
-#### Hyperparameter Tuning (Prophet, XGBoost, and Gradient Boosting)
-
-For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
-
+ 
 1. **Prophet**:
    - **`changepoint_prior_scale`**: Controls the flexibility of the trend. Higher values allow the trend to adapt to rapid changes, while lower values make it more stable.
    - **`seasonality_prior_scale`**: Influences the smoothness of seasonal components. A higher value lets the model capture more complex seasonality patterns.
@@ -927,7 +925,10 @@ For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperpara
 
 ---
 
-**Feature Engineering**
+#### Feature Engineering
+
+The `create_features` function generates additional features from the existing time series data to enrich the dataset for model training.
+
   ```python
     def create_features(self, df):
         df = df.copy()
@@ -953,8 +954,6 @@ For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperpara
         return df
   ```
  #### Feature Creation (`create_features`)
-
-The `create_features` function generates additional features from the existing time series data to enrich the dataset for model training.
 
 1. **Temporal Features**:
    - The function extracts key temporal information from the date column (`'ds'`), such as:
