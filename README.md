@@ -110,15 +110,38 @@ df = df[cols]
 
 **Insight:** Streamlines the dataset by removing the redundant original `Date` column. The `DATE` column, which is standardized and essential for our analysis, is moved to the forefront for improved readability. Such organization enhances the dataset's clarity and makes it easier to analyze.
 
-### Dataset 1
-
 ## 3. Handling Missing Values
+
+### Missing Values Analysis: Dataset 1 vs Dataset 2
+
+### Dataset 1: Missing Values
+
+- **Affected Rows:** 384
+- **Columns:** ProductId, Quantity, Amount
+- **Nature:** All three columns simultaneously affected in these rows
+- **Possible Causes:** Cancelled purchases, system errors, incomplete transactions
+
+**Impact and Mitigation:**
+- Could skew product performance, revenue calculations, and customer behavior analysis
+- Solution: Removed affected rows using the following code:
 
 ```python
 # Remove rows with null values in key columns
 df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
 ```
-**Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. These affected rows offer no benefit so it is safe to remove them.
+
+- This ensures data integrity and analytical accuracy
+
+### Dataset 2: No Missing Value
+
+- **Missing Values:** None
+- **Data Completeness:** 100%
+- Allows for reliable analysis without preprocessing
+
+### Key Insights
+
+1. **Data Quality Variance:** Highlights difference in data collection/management between sources
+2. **Preprocessing Importance:** Dataset 1 required removing the missing values, Dataset 2 did not
 
 ## 4. Handling Negative Values
 ### Handling Extreme Negative Values in Sales Data
