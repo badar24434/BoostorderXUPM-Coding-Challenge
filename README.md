@@ -1382,7 +1382,6 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 
 ![1623913883833 (1)](https://github.com/user-attachments/assets/e0c61f08-87d3-41e1-94d5-35814925a310)
-
 ![sci (1)](https://github.com/user-attachments/assets/8dcd1072-ab1a-47f0-8f29-97bd34669894)
 
 
