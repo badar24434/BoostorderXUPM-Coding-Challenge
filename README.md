@@ -772,10 +772,107 @@ This ensemble method is more robust because it avoids relying on a single model 
 
 ---
 
-### Model Training:
+## Model Training:
   Each model is trained separately using the following process:
+  
+   ### Malaysian Economic Indicators in Sales Forecasting
+   
+   This section details the incorporation of Malaysian economic indicators into our sales forecasting model. We utilize three key economic indices provided by the Department of Statistics Malaysia (DOSM): the Leading Index, Coincident Index, and Lagging Index. These indicators play a crucial role in capturing the broader economic trends that may impact sales performance.
+   
+   ### Economic Indicators Used
+   
+   1. **Leading Index (LI)**: This index is designed to anticipate future economic performance. It includes components such as real money supply, number of housing units approved, and the Bursa Malaysia Industrial Index.
+   
+   2. **Coincident Index (CI)**: This index measures the current state of the economy. It includes metrics like capacity utilization in manufacturing, total employment in manufacturing, and sales value in the wholesale & retail trade sector.
+   
+   3. **Lagging Index (LAG)**: This index confirms long-term economic trends. It includes factors such as the number of defaulters from loan facilities and the unemployment rate.
+   
+   ### Implementation in the Model
+   
+   ### Loading Economic Data
+   
+   ```python
+   def load_economic_data(self):
+       # Load and filter economic data from DOSM
+       self.economic_data = pd.read_parquet('https://storage.dosm.gov.my/mei/mei.parquet')
+       self.economic_data['date'] = pd.to_datetime(self.economic_data['date'])
+   
+       # Filter and prepare economic data
+       self.economic_data = self.economic_data[['date', 'leading', 'coincident', 'lagging']]
+       self.economic_data.columns = ['ds', 'leading_index', 'coincident_index', 'lagging_index']
+   
+       # Resample to monthly data
+       self.economic_data.set_index('ds', inplace=True)
+       self.economic_data = self.economic_data.resample('M').last().reset_index()
+   ```
+   
+   This method loads the economic data from DOSM, filters it to include only the required indices, and resamples it to monthly frequency to align with our sales data.
+   
+   ### Incorporating Economic Indicators
+   
+   ```python
+   def preprocess_data(self):
+       # Load economic data first
+       self.load_economic_data()
+   
+       # ... (other preprocessing steps) ...
+   
+       # Merge with economic data
+       self.monthly_sales = pd.merge(self.monthly_sales, self.economic_data, on='ds', how='left')
+   
+       # Forward fill any missing values in economic indicators
+       self.monthly_sales[['leading_index', 'coincident_index', 'lagging_index']] = \
+           self.monthly_sales[['leading_index', 'coincident_index', 'lagging_index']].fillna(method='ffill')
+   ```
+   
+   In the data preprocessing stage, we merge the economic indicators with our sales data and handle any missing values through forward filling.
+   
+   ### Using Economic Indicators in Models
+   
+   ```python
+   def optimize_prophet(self, trial):
+       train_prophet = self.create_features(self.train)
+   
+       params = {
+           'changepoint_prior_scale': trial.suggest_loguniform('changepoint_prior_scale', 0.001, 0.5),
+           'seasonality_prior_scale': trial.suggest_loguniform('seasonality_prior_scale', 0.01, 10),
+           'seasonality_mode': trial.suggest_categorical('seasonality_mode', ['additive', 'multiplicative'])
+       }
+   
+       model = Prophet(**params)
+   
+       # Add economic indicators as regressors
+       for column in ['leading_index', 'coincident_index', 'lagging_index']:
+           model.add_regressor(column)
+   
+       model.fit(train_prophet[['ds', 'y', 'leading_index', 'coincident_index', 'lagging_index']])
+   
+       # ... (prediction and evaluation)
+   ```
+   
+   In our Prophet model, we incorporate the economic indicators as additional regressors, allowing the model to capture their impact on sales trends.
+   
+   ### Explanation and Rationale
+   
+   The inclusion of Malaysian economic indicators in our sales forecasting model serves several crucial purposes:
+   
+   1. **Capturing Economic Context**: By incorporating these indices, our model gains insight into the broader economic conditions in Malaysia. This context is vital for understanding and predicting sales trends that may be influenced by economic factors.
+   
+   2. **Improving Forecast Accuracy**: The Leading Index, in particular, helps our model anticipate future economic conditions that could impact sales. This forward-looking component can enhance the model's predictive power.
+   
+   3. **Aligning with Current Economic State**: The Coincident Index provides our model with information about the current economic situation, helping to contextualize sales data within the present economic climate.
+   
+   4. **Confirming Long-term Trends**: The Lagging Index helps our model validate and confirm longer-term economic trends that may have a delayed impact on sales patterns.
+   
+   5. **Enhancing Model Robustness**: By considering these diverse economic indicators, our model becomes more robust to various economic scenarios, potentially improving its performance across different economic conditions.
+   
+   6. **Local Economic Relevance**: Using Malaysia-specific economic indicators ensures that our model is attuned to the local economic environment, making it particularly relevant for businesses operating in or focused on the Malaysian market.
+   
+   7. **Holistic Approach**: The combination of leading, coincident, and lagging indicators provides a comprehensive view of the economic landscape, allowing our model to capture short-term fluctuations, current conditions, and long-term trends simultaneously.
+   
+   By leveraging these Malaysian economic indicators, our sales forecasting model gains a deeper understanding of the economic factors influencing sales trends. This approach allows for more nuanced and context-aware predictions, potentially leading to more accurate and reliable forecasts for businesses operating in the Malaysian economic environment.
 
-  **Data Preprocessing**
+  ### Data Preprocessing
   ```python
    def preprocess_data(self):
           # Load economic data first
@@ -816,7 +913,7 @@ This ensemble method is more robust because it avoids relying on a single model 
           self.test = self.monthly_sales[self.monthly_sales['ds'] >= '2023-01-01']
 
   ```
- #### Data Preprocessing (`preprocess_data`)
+ ### Data Preprocessing (`preprocess_data`)
 
 The `preprocess_data` function prepares the raw data for modeling by applying several key steps:
 
@@ -853,7 +950,7 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
  
   ---
   
-#### Hyperparameter Tuning (Prophet, XGBoost, and Gradient Boosting)
+### Hyperparameter Tuning (Prophet, XGBoost, and Gradient Boosting)
 
 For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
 ```python
@@ -925,7 +1022,7 @@ For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperpara
 
 ---
 
-#### Feature Engineering
+### Feature Engineering
 
 The `create_features` function generates additional features from the existing time series data to enrich the dataset for model training.
 
@@ -980,7 +1077,7 @@ The `create_features` function generates additional features from the existing t
 
   ---
   
-### Model Evaluation:
+## Model Evaluation:
   The primary metrics used for evaluation are:
   
   **Mean Absolute Percentage Error (MAPE)**: Measures prediction accuracy as a percentage
@@ -1062,7 +1159,7 @@ The `create_features` function generates additional features from the existing t
   ```
 ---
 
-### Model Robustness:
+## Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
 ![download (3)](https://github.com/user-attachments/assets/e189003d-167f-430a-8976-203210c930de)
