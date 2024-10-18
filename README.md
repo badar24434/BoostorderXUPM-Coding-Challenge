@@ -1404,9 +1404,14 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 
 ### Challenges and Solutions
-- Challenge 1: [Name of Challenge]
-  - Description
-  - Solution implemented
+- Challenge 1: Complex Patterns
+   - Identifying and capturing seasonal effects,          holidays, market shifts, and other subtle factors    influencing sales trends.
+  - Solution implemented :
+Used Prophet model, which inherently handles seasonality and holidays.
+Implemented feature engineering in create_features method, including sine and cosine transformations for month and quarter to capture cyclical patterns.
+Utilized XGBoost and Gradient Boosting models, which can capture complex non-linear patterns.
+Created lag features and rolling statistics to capture time-dependent patterns.
+
   - Lessons learned
 - Challenge 2: [Name of Challenge]
   [Repeat structure]
