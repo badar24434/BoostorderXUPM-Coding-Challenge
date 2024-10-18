@@ -1381,8 +1381,8 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
   - seaborn: Built on top of matplotlib, seaborn simplifies statistical data visualization, helping to generate more informative plots.
 
 
+![1623913883833 (1)](https://github.com/user-attachments/assets/e0c61f08-87d3-41e1-94d5-35814925a310)
 
-![image](https://github.com/user-attachments/assets/a28278ba-0dca-4f22-b1b6-dd075c473716)
 ![sci (1)](https://github.com/user-attachments/assets/8dcd1072-ab1a-47f0-8f29-97bd34669894)
 
 
