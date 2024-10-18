@@ -1060,7 +1060,8 @@ The `create_features` function generates additional features from the existing t
   Most Accurate Prediction: 2023-11 (Error: 0.5%)
   Least Accurate Prediction: 2023-07 (Error: 14.5%)
   ```
-  
+---
+
 ### Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
@@ -1070,9 +1071,11 @@ This improvement is particularly significant given the substantial difference in
 
 ### Dataset Sizes:
 
-Dataset 1: Contains approximately 100,000+ rows
+![download (4)](https://github.com/user-attachments/assets/d515d2bd-1429-4973-9b52-db0ae8b4594b)
 
-Dataset 2: Contains over 400,000 rows, representing a much larger and potentially more diverse dataset
+Dataset 1: Contains approximately 174,648 rows 
+
+Dataset 2: Contains over 417,318 rows, representing a much larger and potentially more diverse dataset
 
 ### Accuracy Improvement:
   
@@ -1119,9 +1122,9 @@ The significant improvement in performance with the larger dataset aligns with t
   
 The model's ability to perform well on both datasets, especially its improved performance on the much larger Dataset 2, demonstrates its robustness and adaptability to different data conditions.
 This is likely due to:
-The ensemble approach, which combines predictions from multiple models
-Incorporation of economic indicators, which may help capture broader market trends
-Feature engineering that creates generalized time-based features
+- The ensemble approach, which combines predictions from multiple models
+- Incorporation of economic indicators, which may help capture broader market trends
+- Feature engineering that creates generalized time-based features
 
 ### Consistent Performance:
   
@@ -1130,6 +1133,8 @@ While the model performs better on Dataset 2, it maintains good accuracy on Data
 The final prediction step uses a novel "best point selection" ensemble method, selecting the prediction closest to the actual value from among the three models for each time point. This approach aims to leverage the strengths of each model at different points in time, potentially explaining the robust performance across datasets of varying sizes.
 
 In conclusion, the model demonstrates strong predictive capabilities and adaptability across different datasets, with a notable ability to leverage larger datasets for improved accuracy. The combination of advanced feature engineering, multiple modeling techniques, and a sophisticated ensemble method contributes to its robust performance across varying data volumes. This scalability is a key strength, suggesting the model could potentially perform even better with additional data.
+
+---
 
 ### Tech Stack Used
 - Programming Language(s):
