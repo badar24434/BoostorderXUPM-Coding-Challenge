@@ -1405,7 +1405,8 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 ### Challenges and Solutions
 - Challenge 1: Complex Patterns
-   - Identifying and capturing seasonal effects, holidays, market shifts, and other subtle factors influencing sales trends.
+  - Description :
+Identifying and capturing seasonal effects, holidays, market shifts, and other subtle factors influencing sales trends.
      
   - Solution implemented :
 We used the Prophet model to handle seasonality and holidays automatically. In the `create_features` method, we applied feature engineering, including sine and cosine transformations for months and quarters to capture cyclical trends. We also used XGBoost and Gradient Boosting models to capture complex patterns. Additionally, we created lag features and rolling statistics to account for time-based dependencies.
@@ -1414,7 +1415,8 @@ We used the Prophet model to handle seasonality and holidays automatically. In t
 Using the right models and feature engineering techniques can simplify the process of capturing complex patterns like seasonality and holidays, making the predictions more accurate and reliable.
     
 - Challenge 2: Data Limitations
-   - Working with only 2 years of training data and 1 year for testing, ensuring model generalization.
+  - Description :
+Working with only 2 years of training data and 1 year for testing, ensuring model generalization.
 
      
   - Solution implemented :
@@ -1424,7 +1426,8 @@ We combined Prophet, XGBoost, and Gradient Boosting to take advantage of each mo
 Combining different models and using feature engineering can improve prediction accuracy, even when working with limited data.
 
 - Challenge 3: Significant Negative Values
-   - Handling and interpreting significant negative values in the sales data.
+  - Description :
+Handling and interpreting significant negative values in the sales data.
 
   - Solution implemented :
 We removed negative amounts early in preprocessing, handled outliers using the IQR method, and added a warning system to catch any negative values that appear after aggregation.
@@ -1433,7 +1436,8 @@ We removed negative amounts early in preprocessing, handled outliers using the I
 Early detection and handling of data issues, like negative values, helps ensure cleaner data for analysis, leading to more accurate and reliable results.
 
 - Challenge 4: Limited Variables
-   - Lack of internal variables, necessity to incorporate external economic indicators.
+   - Description :
+Lack of internal variables, necessity to incorporate external economic indicators.
 
   - Solution implemented :
 We integrated Malaysian economic indicators (leading, coincident, lagging indices) into the models by adding them as features. For Prophet, we included these using `model.add_regressor()`.
