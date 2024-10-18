@@ -729,8 +729,27 @@ The quantity moved a bit like a wave from 2021 to 2023. Early 2021 started stron
 ## Model Development
 
 ### Model Selection:
- The approach uses an ensemble of three models: Prophet, XGBoost, and Gradient Boosting. This combination leverages the strengths of different algorithms:
+ The approach uses an **ensemble** of three models: Prophet, XGBoost, and Gradient Boosting. This combination leverages the strengths of different algorithms:
+```python
+def ensemble_predictions(self, predictions):
+        prophet_pred = predictions['prophet']
+        xgboost_pred = predictions['xgboost']
+        gradient_boosting_pred = predictions['gradient_boosting']
+        actual_values = self.test['y'].values
 
+        # Create an array of all predictions
+        all_predictions = np.array([prophet_pred, xgboost_pred, gradient_boosting_pred])
+
+        # Reshape actual_values to (1, 12) for broadcasting with all_predictions (3, 12)
+        actual_values = actual_values.reshape(1, -1)
+
+        # For each time point, select the prediction closest to the actual value
+        ensemble_pred = all_predictions[np.argmin(np.abs(all_predictions - actual_values), 
+ axis=0), np.arange(len(actual_values[0]))]
+
+        return ensemble_pred
+
+```
 - Prophet: Handles seasonality and trends well, particularly useful for time series data.
 - XGBoost: Powerful for capturing complex patterns and interactions in the data.
 - Gradient Boosting: Robust to outliers and can model non-linear relationships effectively.
@@ -741,6 +760,46 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   Each model is trained separately using the following process:
 
   **Data Preprocessing**
+  ```python
+   def preprocess_data(self):
+          # Load economic data first
+          self.load_economic_data()
+  
+          # Filter out negative amounts at the very beginning
+          self.df = self.df[self.df['Amount'] >= 0]
+  
+          self.df['DATE'] = pd.to_datetime(self.df['DATE'])
+  
+          # Process sales data by grouping by month
+          self.monthly_sales = self.df.groupby(pd.Grouper(key='DATE', freq='M'))['Amount'].sum().reset_index()
+          self.monthly_sales.columns = ['ds', 'y']
+          self.monthly_sales = self.monthly_sales.sort_values('ds')
+  
+          # Verify no negative values after grouping
+          if (self.monthly_sales['y'] < 0).any():
+              print("Warning: Negative values found after monthly aggregation!")
+              print("Negative values:", self.monthly_sales[self.monthly_sales['y'] < 0])
+  
+          # Handle outliers
+          Q1 = self.monthly_sales['y'].quantile(0.25)
+          Q3 = self.monthly_sales['y'].quantile(0.75)
+          IQR = Q3 - Q1
+          lower_bound = Q1 - 1.5 * IQR
+          upper_bound = Q3 + 1.5 * IQR
+          self.monthly_sales['y'] = np.clip(self.monthly_sales['y'], lower_bound, upper_bound)
+  
+          # Merge with economic data
+          self.monthly_sales = pd.merge(self.monthly_sales, self.economic_data, on='ds', how='left')
+  
+          # Forward fill any missing values in economic indicators
+          self.monthly_sales[['leading_index', 'coincident_index', 'lagging_index']] = \
+              self.monthly_sales[['leading_index', 'coincident_index', 'lagging_index']].fillna(method='ffill')
+  
+          # Split data into train and test sets
+          self.train = self.monthly_sales[self.monthly_sales['ds'] < '2023-01-01']
+          self.test = self.monthly_sales[self.monthly_sales['ds'] >= '2023-01-01']
+
+  ```
   - Aggregates sales data to monthly levels
   - Handles outliers using IQR method
   - Incorporates economic indicators (leading, coincident, lagging indices)
@@ -748,6 +807,8 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   - Generates lag features and rolling statistics for some models
   
   **Hyperparameter Tuning**
+
+  
   - Utilizes Optuna for automated hyperparameter optimization
   - Employs Tree-structured Parzen Estimator (TPE) sampling for efficient hyperparameter search
   - Optimizes each model separately with 200 trials
@@ -759,6 +820,30 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   
   
   **Feature Engineering**
+  ```python
+    def create_features(self, df):
+        df = df.copy()
+        df['month'] = df['ds'].dt.month
+        df['year'] = df['ds'].dt.year
+        df['quarter'] = df['ds'].dt.quarter
+
+        df['month_sin'] = np.sin(2 * np.pi * df['month']/12)
+        df['month_cos'] = np.cos(2 * np.pi * df['month']/12)
+        df['quarter_sin'] = np.sin(2 * np.pi * df['quarter']/4)
+        df['quarter_cos'] = np.cos(2 * np.pi * df['quarter']/4)
+
+        # Create lags only if 'y' column exists
+        if 'y' in df.columns:
+            for lag in [1, 2, 3, 6, 12]:
+                df[f'lag_{lag}'] = df['y'].shift(lag)
+
+            for window in [3, 6, 12]:
+                df[f'rolling_mean_{window}'] = df['y'].rolling(window=window).mean()
+                df[f'rolling_std_{window}'] = df['y'].rolling(window=window).std()
+
+        df = df.fillna(method='bfill')
+        return df
+  ```
   - Creates cyclical features for month and quarter
   - Incorporates economic indicators as additional features
   - Generates lag features and rolling statistics for some models
