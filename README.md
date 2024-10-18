@@ -750,11 +750,27 @@ def ensemble_predictions(self, predictions):
         return ensemble_pred
 
 ```
-- Prophet: Handles seasonality and trends well, particularly useful for time series data.
-- XGBoost: Powerful for capturing complex patterns and interactions in the data.
-- Gradient Boosting: Robust to outliers and can model non-linear relationships effectively.
+#### Ensemble Predictions (`ensemble_predictions`)
 
-The ensemble approach aims to improve overall prediction accuracy by combining these diverse models.
+The `ensemble_predictions` function aims to combine the predictions from three different models: **Prophet**, **XGBoost**, and **Gradient Boosting**. Here's how the process works:
+
+1. **Extracting Model Predictions**:
+   - The function receives a dictionary of predictions (`predictions`) containing results from each model (`prophet`, `xgboost`, and `gradient_boosting`).
+   - It extracts the individual model predictions and stores them in separate variables: `prophet_pred`, `xgboost_pred`, and `gradient_boosting_pred`.
+
+2. **Consolidating Predictions**:
+   - All the model predictions are combined into a single 2D NumPy array `all_predictions` of shape `(3, 12)`, where 3 corresponds to the number of models, and 12 is the number of forecasted time points (e.g., 12 months).
+   
+3. **Reshaping Actual Values**:
+   - The actual values of the test dataset (`self.test['y']`) are reshaped to match the shape of the combined predictions for element-wise comparison.
+   
+4. **Selecting the Best Prediction for Each Time Point**:
+   - The ensemble method selects the prediction closest to the actual value for each time point using `np.argmin(np.abs(all_predictions - actual_values), axis=0)`. This calculates the difference between each model’s prediction and the actual value, and then selects the model with the smallest error at each time point.
+   - Finally, the ensemble predictions (`ensemble_pred`) are returned.
+
+This ensemble method is more robust because it avoids relying on a single model and picks the best prediction based on actual performance for each period, improving accuracy.
+
+---
 
 ### Model Training:
   Each model is trained separately using the following process:
@@ -805,8 +821,10 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   - Incorporates economic indicators (leading, coincident, lagging indices)
   - Creates time-based features (month, year, quarter, cyclical encodings)
   - Generates lag features and rolling statistics for some models
+    
+  ---
   
-  **Hyperparameter Tuning**
+  #### Hyperparameter Tuning
   ```python
         # Hyperparameters to be tuned for Prophet
         params = {
@@ -849,15 +867,39 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
             self.best_models[model_name] = study.best_trial
   ```
   
- **Key points about the hyperparameter tuning process:**
+#### Hyperparameter Tuning (Prophet, XGBoost, and Gradient Boosting)
 
-- It's automated using Optuna, which efficiently searches the hyperparameter space.
-- Each model has its own set of hyperparameters to tune, tailored to its specific architecture.
-- The process aims to minimize the Mean Absolute Percentage Error (MAPE) for each model.
-- The use of 200 trials provides a good balance between exploration of the hyperparameter space and computational efficiency.
+For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
+
+1. **Prophet**:
+   - **`changepoint_prior_scale`**: Controls the flexibility of the trend. Higher values allow the trend to adapt to rapid changes, while lower values make it more stable.
+   - **`seasonality_prior_scale`**: Influences the smoothness of seasonal components. A higher value lets the model capture more complex seasonality patterns.
+   - **`seasonality_mode`**: Determines whether the seasonal components are additive or multiplicative.
+
+2. **XGBoost**:
+   - **`n_estimators`**: The number of boosting rounds (trees) to be built.
+   - **`max_depth`**: Controls the maximum depth of each tree, affecting model complexity.
+   - **`learning_rate`**: The step size in updating weights after each boosting round. Smaller values make the training more conservative.
+   - **`subsample`**: The fraction of samples used for each tree, which helps prevent overfitting.
+   - **`colsample_bytree`**: The fraction of features to consider when building each tree.
+
+3. **Gradient Boosting**:
+   - **`n_estimators`**: The number of trees to be created.
+   - **`max_depth`**: Controls how deep each tree can go. Deeper trees capture more complex interactions but risk overfitting.
+   - **`learning_rate`**: Determines how much the model learns from each tree.
+   - **`subsample`**: The fraction of samples used to build each tree.
+   - **`min_samples_split`**: The minimum number of samples required to split an internal node.
+   - **`min_samples_leaf`**: The minimum number of samples that a leaf node must have.
+
+4. **Training Process (`train_models`)**:
+   - For each model (`prophet`, `xgboost`, and `gradient_boosting`), the function creates an Optuna study to minimize an objective function (e.g., Mean Absolute Percentage Error, MAPE).
+   - Each study performs 200 trials to explore various hyperparameter combinations efficiently.
+   - The best model from each study is stored in `self.best_models`, which records the optimal hyperparameters discovered by Optuna.
+
+In summary, this code uses Optuna to fine-tune the models by searching the hyperparameter space, and it combines the predictions from the models in an ensemble approach to further improve performance.
 
     
-  **Feature Engineering**
+**Feature Engineering**
   ```python
     def create_features(self, df):
         df = df.copy()
@@ -895,7 +937,7 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   
   The model's performance is evaluated on the test set (2023 data) for both datasets:
   
-  Dataset 1 Results:
+  #### Dataset 1 Results:
   
   ![download (2)](https://github.com/user-attachments/assets/a21b7f06-4887-4bd0-9b5e-006f47b51d1f)
 
@@ -931,7 +973,7 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   Most Accurate Prediction: 2023-10 (Error: -0.0%)
   Least Accurate Prediction: 2023-02 (Error: -50.5%)
   ```
-  Dataset 2 Results:
+  #### Dataset 2 Results:
   
    ![download (1)](https://github.com/user-attachments/assets/706640b9-01f3-41ea-993a-81ae0ea9a04f)
   ```
