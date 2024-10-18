@@ -816,12 +816,41 @@ This ensemble method is more robust because it avoids relying on a single model 
           self.test = self.monthly_sales[self.monthly_sales['ds'] >= '2023-01-01']
 
   ```
-  - Aggregates sales data to monthly levels
-  - Handles outliers using IQR method
-  - Incorporates economic indicators (leading, coincident, lagging indices)
-  - Creates time-based features (month, year, quarter, cyclical encodings)
-  - Generates lag features and rolling statistics for some models
-    
+ #### Data Preprocessing (`preprocess_data`)
+
+The `preprocess_data` function prepares the raw data for modeling by applying several key steps:
+
+1. **Loading Economic Data**:
+   - The function first loads external **economic data**, which will be used as additional explanatory variables.
+
+2. **Filtering Negative Amounts**:
+   - It filters out any rows where the `Amount` is negative, ensuring the dataset only contains valid sales data: `self.df = self.df[self.df['Amount'] >= 0]`.
+
+3. **Date Conversion**:
+   - The `'DATE'` column is converted to a datetime format to allow for time-based grouping and resampling: `self.df['DATE'] = pd.to_datetime(self.df['DATE'])`.
+
+4. **Aggregating Monthly Sales**:
+   - The sales data is grouped by month using the `Grouper` function: `self.monthly_sales = self.df.groupby(pd.Grouper(key='DATE', freq='M'))['Amount'].sum()`. This sums up sales for each month and creates a new DataFrame with two columns: `ds` (the date) and `y` (the total monthly sales).
+
+5. **Negative Value Check**:
+   - After aggregation, the code verifies that no negative values exist: `if (self.monthly_sales['y'] < 0).any()`.
+
+6. **Outlier Handling**:
+   - The function handles outliers using the **Interquartile Range (IQR)** method:
+     - **IQR Calculation**: It calculates the 25th percentile (Q1) and 75th percentile (Q3) and then computes the IQR.
+     - **Clipping**: Values are clipped to lie between the lower and upper bounds (`lower_bound = Q1 - 1.5 * IQR` and `upper_bound = Q3 + 1.5 * IQR`).
+
+7. **Merging with Economic Data**:
+   - The processed sales data is merged with economic indicators (e.g., `leading_index`, `coincident_index`, `lagging_index`) based on the date (`ds`): `pd.merge(self.monthly_sales, self.economic_data, on='ds', how='left')`.
+
+8. **Handling Missing Economic Data**:
+   - Any missing values in the economic data are filled using forward filling (`ffill`), which fills missing values with the last available value.
+
+9. **Train-Test Split**:
+   - The data is split into training and test sets based on the date:
+     - **Training Set**: Contains data before January 1, 2023: `self.train = self.monthly_sales[self.monthly_sales['ds'] < '2023-01-01']`.
+     - **Test Set**: Contains data from January 2023 onwards: `self.test = self.monthly_sales[self.monthly_sales['ds'] >= '2023-01-01']`.
+ 
   ---
   
   #### Hyperparameter Tuning
@@ -896,9 +925,8 @@ For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperpara
    - Each study performs 200 trials to explore various hyperparameter combinations efficiently.
    - The best model from each study is stored in `self.best_models`, which records the optimal hyperparameters discovered by Optuna.
 
-In summary, this code uses Optuna to fine-tune the models by searching the hyperparameter space, and it combines the predictions from the models in an ensemble approach to further improve performance.
+---
 
-    
 **Feature Engineering**
   ```python
     def create_features(self, df):
@@ -924,9 +952,34 @@ In summary, this code uses Optuna to fine-tune the models by searching the hyper
         df = df.fillna(method='bfill')
         return df
   ```
-  - Creates cyclical features for month and quarter
-  - Incorporates economic indicators as additional features
-  - Generates lag features and rolling statistics for some models
+ #### Feature Creation (`create_features`)
+
+The `create_features` function generates additional features from the existing time series data to enrich the dataset for model training.
+
+1. **Temporal Features**:
+   - The function extracts key temporal information from the date column (`'ds'`), such as:
+     - **Month**: `df['month'] = df['ds'].dt.month` extracts the month from the date.
+     - **Year**: `df['year'] = df['ds'].dt.year` extracts the year.
+     - **Quarter**: `df['quarter'] = df['ds'].dt.quarter` extracts the quarter of the year.
+
+2. **Cyclical Features**:
+   - Since months and quarters follow a cyclical pattern, sine and cosine transformations are applied to capture seasonality.
+     - **Month Sin/Cos**: `np.sin(2 * np.pi * df['month']/12)` and `np.cos(2 * np.pi * df['month']/12)` convert the month into cyclical patterns to capture seasonal trends.
+     - **Quarter Sin/Cos**: Similarly, `np.sin(2 * np.pi * df['quarter']/4)` and `np.cos(2 * np.pi * df['quarter']/4)` convert quarters into cyclical values.
+
+3. **Lag Features**:
+   - If the dataset has a `'y'` column (which represents the target variable, such as sales), lag features are created. These allow the model to capture patterns from previous time steps.
+     - **Lag Features**: `df[f'lag_{lag}'] = df['y'].shift(lag)` creates lag features for previous values of the target variable (e.g., 1, 2, 3, 6, and 12 months ago).
+
+4. **Rolling Statistics**:
+   - The function also computes rolling statistics over different window sizes (3, 6, 12 months) to capture moving averages and standard deviations.
+     - **Rolling Mean**: `df[f'rolling_mean_{window}'] = df['y'].rolling(window=window).mean()` calculates the rolling average for smoothing.
+     - **Rolling Std**: `df[f'rolling_std_{window}'] = df['y'].rolling(window=window).std()` captures volatility by calculating rolling standard deviation.
+
+5. **Handling Missing Values**:
+   - Any missing values created by the shifting or rolling processes are filled using backward filling (`bfill`), which replaces missing values with the next available value.
+
+  ---
   
 ### Model Evaluation:
   The primary metrics used for evaluation are:
