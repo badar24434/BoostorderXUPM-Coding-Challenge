@@ -1379,7 +1379,8 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
   - matplotlib: A widely used plotting library for creating static, animated, and interactive visualizations.
   - seaborn: Built on top of matplotlib, seaborn simplifies statistical data visualization, helping to generate more informative plots.
 
-![image](https://github.com/user-attachments/assets/7b836b30-8e31-483e-b746-87ee5978c0eb)
+![image](https://github.com/user-attachments/assets/940d5922-fd76-4b4f-8377-bad354ceaa49)
+
 
 
 
