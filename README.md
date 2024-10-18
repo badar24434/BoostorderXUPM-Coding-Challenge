@@ -1368,7 +1368,7 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
  - Time Series Forecasting:
   - Prophet: A forecasting tool designed for handling seasonality and trends in time series data, making it ideal for sales prediction.
   - cmdstanpy: Supports Stan models for faster inference in Prophet.
-  - 
+    
  - Machine Learning:
  - xgboost: A powerful, efficient implementation of gradient boosting, used for capturing complex patterns in data.
   - sklearn: Provides utilities like TimeSeriesSplit for cross-validation, StandardScaler for feature scaling, and metrics like mean_absolute_percentage_error and mean_squared_error for model evaluation.
