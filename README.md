@@ -894,14 +894,19 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   **Root Mean Square Error (RMSE)**: Provides an absolute measure of the prediction error
   
   The model's performance is evaluated on the test set (2023 data) for both datasets:
-  ```
+  
   Dataset 1 Results:
+  ![download (2)](https://github.com/user-attachments/assets/a21b7f06-4887-4bd0-9b5e-006f47b51d1f)
+
+  ```
   Accuracy: 89.34% (derived from MAPE)
   MAPE: 0.1066
   RMSE: 1,020,834.48
   ```
-  ```
+
   Dataset 2 Results:
+   ![download (1)](https://github.com/user-attachments/assets/706640b9-01f3-41ea-993a-81ae0ea9a04f)
+  ```
   Accuracy: 95.39% (derived from MAPE)
   MAPE: 0.0461
   RMSE: 329,974.38
