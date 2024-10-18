@@ -1348,41 +1348,52 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 ---
 
 ### Tech Stack Used
-- Programming Language(s):
-#### Python: Python is chosen due to its extensive support for data manipulation, machine learning, and time series forecasting. Its libraries and ecosystem make it highly suitable for tasks like sales prediction, where flexibility and scalability are key.
+#### Programming Language(s):
+- Python: Python is chosen due to its extensive support for data manipulation, machine learning, and time series forecasting. Its libraries and ecosystem make it highly suitable for tasks like sales prediction, where flexibility and scalability are key.
 
-- Libraries and Frameworks:
-#### Warnings and Logging:
+![image](https://github.com/user-attachments/assets/871be0a2-79dd-49ac-9f32-5da6ac64734e)
+
+
+#### Libraries and Frameworks:
+- Warnings and Logging:
   - warnings: Used to suppress unnecessary warnings that can clutter outputs.
   - logging: Configured to reduce log verbosity, helping focus on essential information during model training and evaluation.
     
- #### Data Manipulation and Analysis:
+ - Data Manipulation and Analysis:
   - pandas: Provides data structures for efficient data manipulation and analysis, particularly useful for working with large datasets.
   - numpy: Supports numerical operations, essential for data transformations and handling arrays.
   - scipy: Used for statistical functions, such as handling outliers via methods like the Interquartile Range (IQR).
     
-  #### Time Series Forecasting:
+ - Time Series Forecasting:
   - Prophet: A forecasting tool designed for handling seasonality and trends in time series data, making it ideal for sales prediction.
   - cmdstanpy: Supports Stan models for faster inference in Prophet.
- ####  Machine Learning:
- 
-  - xgboost: A powerful, efficient implementation of gradient boosting, used for capturing complex patterns in data.
+  - 
+ - Machine Learning:
+ - xgboost: A powerful, efficient implementation of gradient boosting, used for capturing complex patterns in data.
   - sklearn: Provides utilities like TimeSeriesSplit for cross-validation, StandardScaler for feature scaling, and metrics like mean_absolute_percentage_error and mean_squared_error for model evaluation.
 ####  Optimization:
   - optuna: A framework for hyperparameter tuning, used to find optimal model parameters using techniques like TPE sampling.
     
-####  Visualization:
+ - Visualization:
   - matplotlib: A widely used plotting library for creating static, animated, and interactive visualizations.
   - seaborn: Built on top of matplotlib, seaborn simplifies statistical data visualization, helping to generate more informative plots.
 
-- Development Environment:
-####  Anaconda: Provides a robust environment for managing Python packages and dependencies, ensuring consistency across different systems.
+![image](https://github.com/user-attachments/assets/44a79ddc-6bf1-433e-b96c-5a16289139f1)
+![image](https://github.com/user-attachments/assets/54329c46-4cff-40db-9bd4-d1e54a248037)
 
-####  Jupyter Notebook: Ideal for iterative development and data exploration, offering an interactive environment for writing and running Python code.
 
-####  VS Code: A lightweight, versatile code editor, used for writing and debugging code with advanced features like extensions for Python.
+#### Development Environment:
+- Anaconda: Provides a robust environment for managing Python packages and dependencies, ensuring consistency across different systems.
 
-####  Google Colab: A cloud-based platform for running Jupyter notebooks, offering access to high-performance GPUs and easy sharing of notebooks.
+- Jupyter Notebook: Ideal for iterative development and data exploration, offering an interactive environment for writing and running Python code.
+
+- VS Code: A lightweight, versatile code editor, used for writing and debugging code with advanced features like extensions for Python.
+
+- Google Colab: A cloud-based platform for running Jupyter notebooks, offering access to high-performance GPUs and easy sharing of notebooks.
+
+![image](https://github.com/user-attachments/assets/c186d52d-c0ff-4d2e-8712-4a93fd49d009)
+![image](https://github.com/user-attachments/assets/e7c1c801-a850-4f90-9942-0430aee17eb5)
+
 
 
 
