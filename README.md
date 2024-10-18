@@ -225,6 +225,7 @@ df = df[df['Amount'] >= 0]
 ### Conclusion
 While the impact of negative values differs between Dataset 1 and Dataset 2, our decision to remove all negative values from both datasets ensures a standardized and consistent approach to data preprocessing. This strategy not only addresses the severe issues in Dataset 1 but also establishes a uniform methodology that can be applied consistently across multiple datasets. By implementing this approach, we significantly improve the quality of our datasets without materially impacting their size or representativeness, setting a foundation for more accurate and reliable sales forecasting and financial analysis.
 
+### Dataset 1
 ####  Final Dataset Summary
 
 ```python
@@ -262,19 +263,6 @@ memory usage: 9.3+ MB
 The preprocessed dataset now occupies approximately **9.3+ MB** in memory.
 
 ### Dataset 2 
-
-#### 1. Handling Negative Values
-
-```python
-# Check for negative values in Amount
-negative_amount_count = (df['Amount'] < 0).sum()
-print(f"Number of negative values in 'Amount' column: {negative_amount_count}")
-
-# Remove rows with negative amount
-df = df[df['Amount'] >= 0]
-```
-
-**Insight:** We identified and removed **1 transaction** with a negative amount. This negative value probably indicates a return or adjustment, which is irrelevant to our emphasis on positive sales transactions. By discarding this record, we improve our dataset for predictive modeling, ensuring that it only includes valid sales transactions.
 
 ####  Final Dataset Summary
 
