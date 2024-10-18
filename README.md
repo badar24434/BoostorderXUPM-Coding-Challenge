@@ -1351,9 +1351,7 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 #### Programming Language(s):
 - Python: Python is chosen due to its extensive support for data manipulation, machine learning, and time series forecasting. Its libraries and ecosystem make it highly suitable for tasks like sales prediction, where flexibility and scalability are key.
 
-![image](https://github.com/user-attachments/assets/f2f2fc87-eeea-4694-953a-b83a1d39668a)
-
-
+![Python-logo-notext svg (1)](https://github.com/user-attachments/assets/abc8053a-0337-470c-9f61-5b2a5e988992)
 
 #### Libraries and Frameworks:
 - Warnings and Logging:
@@ -1379,7 +1377,10 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
   - matplotlib: A widely used plotting library for creating static, animated, and interactive visualizations.
   - seaborn: Built on top of matplotlib, seaborn simplifies statistical data visualization, helping to generate more informative plots.
 
+![images (1)](https://github.com/user-attachments/assets/2c82fbd3-d392-491f-8e0d-c9c35c6cfc9c)
 ![image](https://github.com/user-attachments/assets/013b11c8-28b6-4278-a1e0-9c9d43608101)
+![image](https://github.com/user-attachments/assets/a28278ba-0dca-4f22-b1b6-dd075c473716)
+![sci (1)](https://github.com/user-attachments/assets/8dcd1072-ab1a-47f0-8f29-97bd34669894)
 
 
 
@@ -1395,6 +1396,7 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 - Google Colab: A cloud-based platform for running Jupyter notebooks, offering access to high-performance GPUs and easy sharing of notebooks.
 
 ![image](https://github.com/user-attachments/assets/e7c1c801-a850-4f90-9942-0430aee17eb5)
+![jj (1)](https://github.com/user-attachments/assets/1788bbe1-a9a8-4a1c-94c4-848f7ea0c602)
 
 
 
