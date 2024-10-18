@@ -1405,16 +1405,41 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 ### Challenges and Solutions
 - Challenge 1: Complex Patterns
-   - Identifying and capturing seasonal effects,          holidays, market shifts, and other subtle factors    influencing sales trends.
+   - Identifying and capturing seasonal effects, holidays, market shifts, and other subtle factors influencing sales trends.
+     
   - Solution implemented :
-Used Prophet model, which inherently handles seasonality and holidays.
-Implemented feature engineering in create_features method, including sine and cosine transformations for month and quarter to capture cyclical patterns.
-Utilized XGBoost and Gradient Boosting models, which can capture complex non-linear patterns.
-Created lag features and rolling statistics to capture time-dependent patterns.
+We used the Prophet model to handle seasonality and holidays automatically. In the `create_features` method, we applied feature engineering, including sine and cosine transformations for months and quarters to capture cyclical trends. We also used XGBoost and Gradient Boosting models to capture complex patterns. Additionally, we created lag features and rolling statistics to account for time-based dependencies.
 
-  - Lessons learned
-- Challenge 2: [Name of Challenge]
-  [Repeat structure]
+  - Lessons learned :
+Using the right models and feature engineering techniques can simplify the process of capturing complex patterns like seasonality and holidays, making the predictions more accurate and reliable.
+    
+- Challenge 2: Data Limitations
+   - Working with only 2 years of training data and 1 year for testing, ensuring model generalization.
+
+     
+  - Solution implemented :
+We combined Prophet, XGBoost, and Gradient Boosting to take advantage of each model's strengths. Cross-validation was used for model optimization through Optuna. We also applied feature engineering to get the most out of the available data.
+
+  - Lessons learned :
+Combining different models and using feature engineering can improve prediction accuracy, even when working with limited data.
+
+- Challenge 3: Significant Negative Values
+   - Handling and interpreting significant negative values in the sales data.
+
+  - Solution implemented :
+We removed negative amounts early in preprocessing, handled outliers using the IQR method, and added a warning system to catch any negative values that appear after aggregation.
+
+  - Lessons learned :
+Early detection and handling of data issues, like negative values, helps ensure cleaner data for analysis, leading to more accurate and reliable results.
+
+- Challenge 4: Limited Variables
+   - Lack of internal variables, necessity to incorporate external economic indicators.
+
+  - Solution implemented :
+We integrated Malaysian economic indicators (leading, coincident, lagging indices) into the models by adding them as features. For Prophet, we included these using `model.add_regressor()`.
+
+  - Lessons learned :
+Incorporating external economic indicators can enhance the model's ability to make more informed and accurate predictions when internal data is limited.
 
 ### Future Improvements
 - Potential Enhancements: [List and briefly describe each potential improvement]
