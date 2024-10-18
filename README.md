@@ -1064,32 +1064,58 @@ The `create_features` function generates additional features from the existing t
 ### Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
+![download (3)](https://github.com/user-attachments/assets/e189003d-167f-430a-8976-203210c930de)
+
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
-#### Dataset Sizes:
+### Dataset Sizes:
 
 Dataset 1: Contains approximately 100,000+ rows
 
 Dataset 2: Contains over 400,000 rows, representing a much larger and potentially more diverse dataset
 
-#### Accuracy Improvement:
+### Accuracy Improvement:
   
 Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
+```
+Dataset 1:
+Accuracy Metrics:
+Most Accurate Prediction: 2023-10 (Error: -0.0%)
+Least Accurate Prediction: 2023-02 (Error: -50.5%)
 
-#### Error Reduction:
-  
+Dataset 2:
+Accuracy Metrics:
+Most Accurate Prediction: 2023-11 (Error: 0.5%)
+Least Accurate Prediction: 2023-07 (Error: 14.5%)
+```
+### Error Reduction:
+```
+Dataset 1:
+Error  Metrics:
+-------------------------------------------------------------------------------------
+Mean Absolute Percentage Error (MAPE): 10.66%
+Mean Absolute Error (MAE): $626342.49
+Root Mean Square Error (RMSE): $1020834.48
+
+Dataset 2:
+Error  Metrics:
+-------------------------------------------------------------------------------------
+Mean Absolute Percentage Error (MAPE): 4.61%
+Mean Absolute Error (MAE): $232124.75
+Root Mean Square Error (RMSE): $329974.38
+```
 MAPE decreased from 0.1066 to 0.0461, indicating a substantial reduction in percentage error.
 RMSE reduced from 1,020,834.48 to 329,974.38, suggesting better absolute error performance.
 
-#### Scalability and Data Utilization:
+### Scalability and Data Utilization:
   
 The model's ability to handle and effectively utilize a dataset four times larger than the original demonstrates its scalability and capacity to learn from larger volumes of data. This is a crucial aspect of robustness in real-world applications where data volumes can vary significantly. 
 
-#### Improved Accuracy with More Data:
+### Improved Accuracy with More Data:
 
 The significant improvement in performance with the larger dataset aligns with the general principle in machine learning that more data often leads to better model performance. This suggests that the model effectively leverages additional information to refine its predictions.
 
-#### Adaptability:
+### Adaptability:
   
 The model's ability to perform well on both datasets, especially its improved performance on the much larger Dataset 2, demonstrates its robustness and adaptability to different data conditions.
 This is likely due to:
@@ -1097,7 +1123,7 @@ The ensemble approach, which combines predictions from multiple models
 Incorporation of economic indicators, which may help capture broader market trends
 Feature engineering that creates generalized time-based features
 
-#### Consistent Performance:
+### Consistent Performance:
   
 While the model performs better on Dataset 2, it maintains good accuracy on Dataset 1, indicating it doesn't overfit to a specific dataset size or structure.
 
