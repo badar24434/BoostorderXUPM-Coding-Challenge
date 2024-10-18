@@ -777,7 +777,8 @@ This ensemble method is more robust because it avoids relying on a single model 
   
    ### Malaysian Economic Indicators in Sales Forecasting
    
-    ![image](https://github.com/user-attachments/assets/343f554a-6d0b-44ee-a55e-ca78ab24c25a)
+   ![image](https://github.com/user-attachments/assets/8eae7375-d4ad-4402-9bf5-c7035d7d99dc)
+
 
    This section details the incorporation of Malaysian economic indicators into our sales forecasting model. We utilize three key economic indices provided by the Department of Statistics Malaysia (DOSM): the Leading Index, Coincident Index, and Lagging Index. These indicators play a crucial role in capturing the broader economic trends that may impact sales performance.
    
