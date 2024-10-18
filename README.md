@@ -807,18 +807,56 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   - Generates lag features and rolling statistics for some models
   
   **Hyperparameter Tuning**
+  ```python
+        # Hyperparameters to be tuned for Prophet
+        params = {
+            'changepoint_prior_scale': trial.suggest_loguniform('changepoint_prior_scale',    0.001, 0.5),
+            'seasonality_prior_scale': trial.suggest_loguniform('seasonality_prior_scale', 0.01, 10),
+            'seasonality_mode': trial.suggest_categorical('seasonality_mode', ['additive', 'multiplicative'])
+        }
 
+        model = Prophet(**params)
+
+        # Hyperparameters to be tuned for XGBoost
+        params = {
+            'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+            'max_depth': trial.suggest_int('max_depth', 3, 10),
+            'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
+            'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+            'colsample_bytree': trial.suggest_uniform('colsample_bytree', 0.6, 1.0),
+        }
+
+        model = XGBRegressor(**params, random_state=42)
+
+        # Hyperparameters to be tuned for Gradient Boosting
+        params = {
+            'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+            'max_depth': trial.suggest_int('max_depth', 3, 10),
+            'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
+            'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+            'min_samples_split': trial.suggest_int('min_samples_split', 2, 20),
+            'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 20),
+        }
+
+        model = GradientBoostingRegressor(**params, random_state=42)
+
+    # Orchestrates the hyperparameter tuning process
+    def train_models(self):
+        for model_name in ['prophet', 'xgboost', 'gradient_boosting']:
+            study = create_study(direction='minimize', sampler=TPESampler())
+            optimize_func = getattr(self, f'optimize_{model_name}')
+            study.optimize(optimize_func, n_trials=200)
+            self.best_models[model_name] = study.best_trial
+  ```
   
-  - Utilizes Optuna for automated hyperparameter optimization
-  - Employs Tree-structured Parzen Estimator (TPE) sampling for efficient hyperparameter search
-  - Optimizes each model separately with 200 trials
-  - Key hyperparameters tuned include
+ **Key points about the hyperparameter tuning process:**
+
+- It's automated using Optuna, which efficiently searches the hyperparameter space.
+- Each model has its own set of hyperparameters to tune, tailored to its specific architecture.
+- The process aims to minimize the Mean Absolute Percentage Error (MAPE) for each model.
+- The use of 200 trials provides a good balance between exploration of the hyperparameter space and computational efficiency.
+
     
-  Prophet: ```python changepoint_prior_scale, seasonality_prior_scale, seasonality_mode ```
-  
-  XGBoost and Gradient Boosting: ```python n_estimators, max_depth, learning_rate, subsample, etc. ```
-  
-  
   **Feature Engineering**
   ```python
     def create_features(self, df):
