@@ -777,10 +777,14 @@ This ensemble method is more robust because it avoids relying on a single model 
   
    ### Malaysian Economic Indicators in Sales Forecasting
    
+    ![image](https://github.com/user-attachments/assets/343f554a-6d0b-44ee-a55e-ca78ab24c25a)
+
    This section details the incorporation of Malaysian economic indicators into our sales forecasting model. We utilize three key economic indices provided by the Department of Statistics Malaysia (DOSM): the Leading Index, Coincident Index, and Lagging Index. These indicators play a crucial role in capturing the broader economic trends that may impact sales performance.
    
    ### Economic Indicators Used
    
+   ![image](https://github.com/user-attachments/assets/3a59cd6d-e20e-4587-b88a-24a9cd722b88)
+
    1. **Leading Index (LI)**: This index is designed to anticipate future economic performance. It includes components such as real money supply, number of housing units approved, and the Bursa Malaysia Industrial Index.
    
    2. **Coincident Index (CI)**: This index measures the current state of the economy. It includes metrics like capacity utilization in manufacturing, total employment in manufacturing, and sales value in the wholesale & retail trade sector.
