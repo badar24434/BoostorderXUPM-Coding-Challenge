@@ -96,6 +96,8 @@ df.sort_values(by='DATE', inplace=True)
 
 **Insight:** This step ensures consistent date formatting, allowing for proper time-based analysis. The original date format contained unwanted time information, which could lead to inconsistencies. By converting the `Date` column to a standardized `datetime` format, we enhance the dataset's usability for time-series analysis.
 
+---
+
 ## 2. Column Management
 
 ```python
@@ -109,6 +111,8 @@ df = df[cols]
 ```
 
 **Insight:** Streamlines the dataset by removing the redundant original `Date` column. The `DATE` column, which is standardized and essential for our analysis, is moved to the forefront for improved readability. Such organization enhances the dataset's clarity and makes it easier to analyze.
+
+---
 
 ## 3. Handling Missing Values
 
@@ -136,12 +140,9 @@ df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
 
 - **Missing Values:** None
 - **Data Completeness:** 100%
-- Allows for reliable analysis without preprocessing
+- Allows for reliable analysis without missing values preprocessing
 
-### Key Insights
-
-1. **Data Quality Variance:** Highlights difference in data collection/management between sources
-2. **Preprocessing Importance:** Dataset 1 required removing the missing values, Dataset 2 did not
+---
 
 ## 4. Handling Negative Values
 ### Handling Extreme Negative Values in Sales Data
@@ -248,6 +249,8 @@ df = df[df['Amount'] >= 0]
 ### Conclusion
 While the impact of negative values differs between Dataset 1 and Dataset 2, our decision to remove all negative values from both datasets ensures a standardized and consistent approach to data preprocessing. This strategy not only addresses the severe issues in Dataset 1 but also establishes a uniform methodology that can be applied consistently across multiple datasets. By implementing this approach, we significantly improve the quality of our datasets without materially impacting their size or representativeness, setting a foundation for more accurate and reliable sales forecasting and financial analysis.
 
+---
+
 ### Dataset 1
 ####  Final Dataset Summary
 
@@ -332,6 +335,8 @@ The preprocessing steps have resulted in a cleaner, more consistent dataset:
 - **Optimized column order** enhances dataset readability.
 
 This preprocessed dataset is now ready for exploratory data analysis and model development.
+
+---
 
 ## Sales Analysis
 
