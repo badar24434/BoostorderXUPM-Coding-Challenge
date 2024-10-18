@@ -81,7 +81,7 @@ Upon inspection, there is **1 negative value** in the `Amount` column, which may
 
 ## Data Preprocessing
 
-#### 1. Date Standardization
+## 1. Date Standardization
 
 ```python
 # Remove '00:00' string from the Date column
@@ -96,7 +96,7 @@ df.sort_values(by='DATE', inplace=True)
 
 **Insight:** This step ensures consistent date formatting, allowing for proper time-based analysis. The original date format contained unwanted time information, which could lead to inconsistencies. By converting the `Date` column to a standardized `datetime` format, we enhance the dataset's usability for time-series analysis.
 
-#### 2. Column Management
+## 2. Column Management
 
 ```python
 # Drop the original 'Date' column
@@ -112,7 +112,7 @@ df = df[cols]
 
 ### Dataset 1
 
-#### 3. Handling Missing Values
+## 3. Handling Missing Values
 
 ```python
 # Remove rows with null values in key columns
@@ -120,7 +120,96 @@ df = df.dropna(subset=['ProductId', 'Quantity', 'Amount'])
 ```
 **Insight:** The dataset originally contained **384 rows** with missing values in critical columns (`ProductId`, `Quantity`, and `Amount`). Removing these rows ensures data integrity, allowing for more accurate analysis and predictions. These affected rows offer no benefit so it is safe to remove them.
 
-#### 4. Handling Negative Values
+## 4. Handling Negative Values
+### Handling Extreme Negative Values in Sales Data
+
+During the data preprocessing phase of our sales forecasting project, we encountered a critical issue: the presence of extreme negative values in our sales data, particularly in Dataset 1. While Dataset 2 has a different profile of negative values, we've decided to standardize our approach across both datasets. This section outlines the nature of this issue, its potential impact on our analysis, and our decision to remove all negative values from both datasets.
+
+## The Issue: Extreme Negative Values
+
+Let's look at a sample of the problematic data from Dataset 1:
+
+| InvoiceId | CustomerId | ProductId | Quantity | Amount      | DATE       |
+|-----------|------------|-----------|----------|-------------|------------|
+| 2435607   | D-247996   | P-52070   | 432      | -13157553.6 | 05/05/2022 |
+| 2419277   | D-247996   | P-190592  | 432      | -10974960   | 26/04/2022 |
+| 2419277   | D-247996   | P-190600  | 432      | -10675454.4 | 26/04/2022 |
+| 2471193   | D-247996   | P-190600  | 396      | -8956985.2  | 25/05/2022 |
+| 2468364   | D-63601    | P-202     | 960      | -7227648    | 23/05/2022 |
+
+These values are clearly problematic. For instance:
+
+- Product P-52070 has a unit cost of RM319. The expected amount for 432 units would be RM137,808. However, the recorded amount is -RM13,157,553.6, which is nearly 100 times larger in magnitude.
+- Similar discrepancies exist for other products, with negative amounts far exceeding any reasonable sale or refund value.
+
+Now we look at the negative value from Dataset 2:
+### Dataset 2: Single Negative Value
+
+Dataset 2 has far fewer negative values compared to Dataset 1. In fact, it contains only **one row** with a negative amount:
+| InvoiceId | CustomerId | ProductId | Quantity | Amount      | DATE       |
+|-----------|------------|-----------|----------|-------------|------------|
+| 2435607   | D-357869   | P-796828  |    1     | -12.86      | 22/01/2021 |
+
+While the magnitude of this negative value is not as extreme as those in Dataset 1, it is still inconsistent with valid sales transactions. As part of our standardized approach, this single row will also be removed. Dataset 2 only had a single negative value, removing it ensures our methodology remains consistent and reliable across both datasets. This minor adjustment enhances data quality and ensures our forecasting and analysis remain accurate without introducing any distortions.
+
+## Differences Between Dataset 1 and Dataset 2
+
+It's important to note the differences between our two datasets:
+
+1. **Dataset 1**: 
+   - Contains approximately 400 rows with significant negative values out of 175,514 total rows (0.23%).
+   - These negative values are extreme and clearly erroneous, as shown in the sample above.
+
+2. **Dataset 2**:
+   - Contains only one row with a negative value.
+   - The magnitude of this negative value is not as extreme as those in Dataset 1.
+
+## Rationale for Removing Affected Rows
+
+1. **Data Integrity**: 
+   - The extreme negative values, especially in Dataset 1, are clearly erroneous and do not represent actual sales or refund transactions.
+   - Including them would severely compromise the integrity of our dataset and any subsequent analysis.
+
+2. **Statistical Distortion**:
+   - Extreme outliers like these will significantly distort statistical measures such as mean, standard deviation, and variance.
+   - This distortion would make our analyses unreliable and potentially lead to incorrect conclusions.
+
+3. **Forecasting Accuracy**:
+   - Including these values in our forecasting model would lead to severely skewed predictions.
+   - The model might interpret these as valid data points, leading to unrealistic and unusable forecasts.
+
+4. **Business Logic**:
+   - No reasonable refund or adjustment would be many times larger than the possible sale value.
+   - These values violate basic business logic and accounting principles.
+
+5. **Standardization Across Datasets**:
+   - While Dataset 2 only has one negative value, we've decided to standardize our approach across both datasets.
+   - This ensures consistency in our data preprocessing steps and simplifies our overall methodology.
+   - Standardization makes our process more robust and easier to maintain, especially if we need to incorporate additional datasets in the future.
+
+6. **Simplicity and Reproducibility**:
+   - A consistent rule to remove all negative values is simpler to implement and explain.
+   - This approach enhances the reproducibility of our analysis across different datasets.
+
+## Implementation and Impact
+
+We have decided to remove all rows with negative values from both Dataset 1 and Dataset 2. Here's why this approach is appropriate:
+
+1. **Scope of Removal**: 
+   - In Dataset 1: Out of 175,514 total rows, only 400 rows (0.23%) are affected.
+   - In Dataset 2: Only 1 row is affected from 417,319 row.
+   - This small percentage ensures that removing these rows will not significantly reduce our datasets' overall size or representativeness.
+
+2. **Consistency**: 
+   - By removing all negative values across both datasets, we ensure a consistent approach in our data preprocessing.
+
+3. **Simplicity**: 
+   - This approach is straightforward to implement and explain, enhancing the reproducibility of our analysis.
+
+4. **Data Quality**: 
+   - Removing these rows improves the overall quality and reliability of our datasets.
+
+Here's the code snippet implementing this decision:
 
 ```python
 # Check for negative values in Amount
@@ -131,7 +220,10 @@ print(f"Number of negative values in 'Amount' column: {negative_amount_count}")
 df = df[df['Amount'] >= 0]
 ```
 
-**Insight:** A total of **482 transactions** with negative amounts were identified and removed. These negative values likely indicate returns or adjustments, which are not relevant to our focus on positive sales transactions. By eliminating these records, we refine our dataset for predictive modeling, ensuring that only valid sales transactions are considered.
+**Insight:** A total of **482 transactions** with negative amounts were identified and removed from Dataset 1 and only **1 transcation** from Dataset 2 were identified and removed. These negative values likely indicate returns or adjustments, which are not relevant to our focus on positive sales transactions. By eliminating these records, we refine our dataset for predictive modeling, ensuring that only valid sales transactions are considered.
+
+### Conclusion
+While the impact of negative values differs between Dataset 1 and Dataset 2, our decision to remove all negative values from both datasets ensures a standardized and consistent approach to data preprocessing. This strategy not only addresses the severe issues in Dataset 1 but also establishes a uniform methodology that can be applied consistently across multiple datasets. By implementing this approach, we significantly improve the quality of our datasets without materially impacting their size or representativeness, setting a foundation for more accurate and reliable sales forecasting and financial analysis.
 
 ####  Final Dataset Summary
 
