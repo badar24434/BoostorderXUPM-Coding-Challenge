@@ -904,7 +904,33 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   MAPE: 0.1066
   RMSE: 1,020,834.48
   ```
-
+  ```
+    === Forecast Accuracy Analysis ===
+  -------------------------------------------------------------------------------------
+  Date                 Actual      Predicted           Diff     % Error
+  -------------------------------------------------------------------------------------
+  2023-01     $ 10,066,118.78$  7,431,287.50$  2,634,831.28       26.2%
+  2023-02     $  3,553,592.61$  5,349,400.90$ -1,795,808.29      -50.5%
+  2023-03     $  5,195,484.25$  5,349,400.90$   -153,916.65       -3.0%
+  2023-04     $  3,383,719.12$  3,308,646.75$     75,072.37        2.2%
+  2023-05     $  5,810,563.66$  5,956,950.77$   -146,387.11       -2.5%
+  2023-06     $  5,354,211.65$  5,349,400.90$      4,810.75        0.1%
+  2023-07     $  3,933,952.55$  4,527,745.00$   -593,792.45      -15.1%
+  2023-08     $  6,987,626.75$  6,025,572.73$    962,054.02       13.8%
+  2023-09     $  5,898,829.16$  5,748,233.00$    150,596.16        2.6%
+  2023-10     $  5,348,591.11$  5,349,400.90$       -809.79       -0.0%
+  2023-11     $  6,337,921.89$  6,342,799.50$     -4,877.61       -0.1%
+  2023-12     $  8,365,375.34$  7,372,222.00$    993,153.34       11.9%
+  
+  Accuracy Metrics:
+  -------------------------------------------------------------------------------------
+  Mean Absolute Percentage Error (MAPE): 10.66%
+  Mean Absolute Error (MAE): $626342.49
+  Root Mean Square Error (RMSE): $1020834.48
+  
+  Most Accurate Prediction: 2023-10 (Error: -0.0%)
+  Least Accurate Prediction: 2023-02 (Error: -50.5%)
+  ```
   Dataset 2 Results:
   
    ![download (1)](https://github.com/user-attachments/assets/706640b9-01f3-41ea-993a-81ae0ea9a04f)
@@ -913,36 +939,63 @@ The ensemble approach aims to improve overall prediction accuracy by combining t
   MAPE: 0.0461
   RMSE: 329,974.38
   ```
+  ```
+    === Forecast Accuracy Analysis ===
+  -------------------------------------------------------------------------------------
+  Date                 Actual      Predicted           Diff     % Error
+  -------------------------------------------------------------------------------------
+  2023-01     $  3,272,823.60$  3,199,194.86$     73,628.74        2.2%
+  2023-02     $  4,411,867.04$  4,345,217.00$     66,650.04        1.5%
+  2023-03     $  4,991,619.02$  4,790,515.21$    201,103.81        4.0%
+  2023-04     $  3,449,348.64$  3,387,435.17$     61,913.47        1.8%
+  2023-05     $  4,431,958.73$  4,181,896.00$    250,062.73        5.6%
+  2023-06     $  4,524,782.30$  4,651,627.50$   -126,845.20       -2.8%
+  2023-07     $  5,470,284.56$  4,677,086.19$    793,198.37       14.5%
+  2023-08     $  4,880,602.40$  4,748,526.77$    132,075.63        2.7%
+  2023-09     $  4,656,024.36$  4,684,113.84$    -28,089.48       -0.6%
+  2023-10     $  5,285,113.99$  4,759,573.44$    525,540.55        9.9%
+  2023-11     $  5,050,258.57$  5,023,394.70$     26,863.87        0.5%
+  2023-12     $  5,549,126.04$  5,049,600.87$    499,525.17        9.0%
+  
+  Accuracy Metrics:
+  -------------------------------------------------------------------------------------
+  Mean Absolute Percentage Error (MAPE): 4.61%
+  Mean Absolute Error (MAE): $232124.75
+  Root Mean Square Error (RMSE): $329974.38
+  
+  Most Accurate Prediction: 2023-11 (Error: 0.5%)
+  Least Accurate Prediction: 2023-07 (Error: 14.5%)
+  ```
   
 ### Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
-- **Dataset Sizes:**
+#### Dataset Sizes:
 
 Dataset 1: Contains approximately 100,000+ rows
 
 Dataset 2: Contains over 400,000 rows, representing a much larger and potentially more diverse dataset
 
-- **Accuracy Improvement:**
+#### Accuracy Improvement:
   
 Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
 
-- **Error Reduction:**
+#### Error Reduction:
   
 MAPE decreased from 0.1066 to 0.0461, indicating a substantial reduction in percentage error.
 RMSE reduced from 1,020,834.48 to 329,974.38, suggesting better absolute error performance.
 
-- **Scalability and Data Utilization:**
+#### Scalability and Data Utilization:
   
 The model's ability to handle and effectively utilize a dataset four times larger than the original demonstrates its scalability and capacity to learn from larger volumes of data. This is a crucial aspect of robustness in real-world applications where data volumes can vary significantly. 
 
-- **Improved Accuracy with More Data:**
+#### Improved Accuracy with More Data:
 
 The significant improvement in performance with the larger dataset aligns with the general principle in machine learning that more data often leads to better model performance. This suggests that the model effectively leverages additional information to refine its predictions.
 
-- **Adaptability:**
+#### Adaptability:
   
 The model's ability to perform well on both datasets, especially its improved performance on the much larger Dataset 2, demonstrates its robustness and adaptability to different data conditions.
 This is likely due to:
@@ -950,7 +1003,7 @@ The ensemble approach, which combines predictions from multiple models
 Incorporation of economic indicators, which may help capture broader market trends
 Feature engineering that creates generalized time-based features
 
-- **Consistent Performance:**
+#### Consistent Performance:
   
 While the model performs better on Dataset 2, it maintains good accuracy on Dataset 1, indicating it doesn't overfit to a specific dataset size or structure.
 
