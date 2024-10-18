@@ -1363,7 +1363,8 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
   - numpy: Supports numerical operations, essential for data transformations and handling arrays.
   - scipy: Used for statistical functions, such as handling outliers via methods like the Interquartile Range (IQR).
 
-    ![images (1)](https://github.com/user-attachments/assets/2c82fbd3-d392-491f-8e0d-c9c35c6cfc9c)
+![images (3)](https://github.com/user-attachments/assets/8dd23d2e-9bc9-4918-829a-637c92d9f264)
+![image](https://github.com/user-attachments/assets/013b11c8-28b6-4278-a1e0-9c9d43608101)
     
  - Time Series Forecasting:
   - Prophet: A forecasting tool designed for handling seasonality and trends in time series data, making it ideal for sales prediction.
@@ -1380,7 +1381,7 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
   - seaborn: Built on top of matplotlib, seaborn simplifies statistical data visualization, helping to generate more informative plots.
 
 
-![image](https://github.com/user-attachments/assets/013b11c8-28b6-4278-a1e0-9c9d43608101)
+
 ![image](https://github.com/user-attachments/assets/a28278ba-0dca-4f22-b1b6-dd075c473716)
 ![sci (1)](https://github.com/user-attachments/assets/8dcd1072-ab1a-47f0-8f29-97bd34669894)
 
