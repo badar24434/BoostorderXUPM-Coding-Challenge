@@ -1446,9 +1446,17 @@ We integrated Malaysian economic indicators (leading, coincident, lagging indice
 Incorporating external economic indicators can enhance the model's ability to make more informed and accurate predictions when internal data is limited.
 
 ### Future Improvements
-- Potential Enhancements: [List and briefly describe each potential improvement]
-- Additional Features or Data: [Describe what could be added to improve performance]
-- Scalability Considerations: [Discuss how the model could be scaled for larger datasets]
+- Potential Enhancements:
+  - Improved Feature Engineering:
+Expanding the feature engineering process to capture more domain-specific variables, such as customer demographics, marketing campaigns, and seasonal promotions, can help refine the model's predictions and boost accuracy.
+
+- Additional Features or Data:
+  - External Market Data:
+Integrating broader market trends, competitor pricing, or consumer confidence indices could help the model better predict shifts in sales based on economic conditions and industry trends.
+
+- Scalability Considerations:
+  - Cloud-Based Infrastructure:
+Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscaling capabilities ensures that as data grows, the computational resources can dynamically adjust to handle increased workloads without compromising performance. 
 
 ## Results
 [Summary of key findings and model performance]
