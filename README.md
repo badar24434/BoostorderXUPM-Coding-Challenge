@@ -1459,10 +1459,49 @@ Integrating broader market trends, competitor pricing, or consumer confidence in
 Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscaling capabilities ensures that as data grows, the computational resources can dynamically adjust to handle increased workloads without compromising performance. 
 
 ## Results
-[Summary of key findings and model performance]
+- Accuracy Across Datasets:
+ - Dataset 1: Accuracy of 89.34%, with a Mean Absolute Percentage Error (MAPE) of 10.66%.
+ - Dataset 2: Accuracy improved to 95.39%, with a lower MAPE of 4.61%.
+The accuracy increased by 6.05 percentage points when applied to the larger Dataset 2, indicating better model performance with more data.
+
+- Error Metrics:
+ - Dataset 1:
+Mean Absolute Error (MAE): $626,342.49
+Root Mean Square Error (RMSE): $1,020,834.48
+ - Dataset 2:
+MAE: $232,124.75 (a significant reduction)
+RMSE: $329,974.38 (showing much better performance)
+Error Reduction: MAPE dropped from 10.66% in Dataset 1 to 4.61% in Dataset 2, indicating a substantial reduction in prediction errors.
+
+- Forecast Accuracy:
+ - Most Accurate Predictions:
+Dataset 1: October 2023 (Error: -0.0%)
+Dataset 2: November 2023 (Error: 0.5%)
+ - Least Accurate Predictions:
+Dataset 1: February 2023 (Error: -50.5%)
+Dataset 2: July 2023 (Error: 14.5%)
+
+- Scalability and Data Utilization:
+ - Data Volume:
+Dataset 1: 174,648 rows
+Dataset 2: 417,318 rows
+The model scales effectively, handling Dataset 2, which is four times larger than Dataset 1. This shows that the improved accuracy shows the model's ability to learn from and generalize better with larger datasets.
+
+
+## Conclusion
+The model performs well and improves with larger datasets, showing that it can handle different data sizes effectively. It remains accurate even with smaller datasets, demonstrating its flexibility. The reduction in errors and use of a smart ensemble method make it a reliable tool for forecasting, especially in situations with varying amounts of data.
 
 ## Contributors
-[Your name or team members]
+MUHAMMAD ALIF SYAHMI BIN NORMAHADI
+(215723)
+
+
+MUHAMAD BADAR MIQDAD BIN MD NASIR
+(215625)
+
+
+AQIL DANISH BIN MOHAMMAD YUSOF
+(214943)
 
 ## License
 [If applicable]
