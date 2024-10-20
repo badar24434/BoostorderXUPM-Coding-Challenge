@@ -1495,12 +1495,12 @@ The model scales effectively, handling Dataset 2, which is four times larger tha
 The model performs well and improves with larger datasets, showing that it can handle different data sizes effectively. It remains accurate even with smaller datasets, demonstrating its flexibility. The reduction in errors and use of a smart ensemble method make it a reliable tool for forecasting, especially in situations with varying amounts of data.
 
 ## Contributors
-MUHAMMAD ALIF SYAHMI BIN NORMAHADI
-(215723)
-
-
 MUHAMAD BADAR MIQDAD BIN MD NASIR
 (215625)
+
+
+MUHAMMAD ALIF SYAHMI BIN NORMAHADI
+(215723)
 
 
 AQIL DANISH BIN MOHAMMAD YUSOF
