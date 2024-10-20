@@ -21,6 +21,7 @@ The challenge required our group to create a machine learning model capable of f
 Our primary goal was to develop an accurate model that could forecast third-year sales based on the available data from the first two years. We aimed to incorporate relevant factors such as seasonality and trends to ensure reliable predictions. Instead of relying on specific evaluation metrics like R-squared, we chose to evaluate the model directly based on its output and predictive capability. We assessed the model’s effectiveness by examining how well it predicted sales compared to the actual results.
 
 ## Quick Start
+## Option 1: Local Setup
 1. Clone this repository:
    ```python
    git clone [repository URL]
@@ -30,6 +31,18 @@ Our primary goal was to develop an accurate model that could forecast third-year
    ```python
    pip install -r requirements.txt
    ```
+## Option 2: Google Colab
+For easier access without any local setup, you can directly use our Google Colab notebook.
+Dataset 1:
+`https://colab.research.google.com/drive/16wttBfLv7P381WEVVxKPMvPj3j5ISVKG?usp=sharing`
+
+Dataset 2:
+`https://colab.research.google.com/drive/18y7aD0Yqq4l9DH784nBpruixhJChJMnp?usp=sharing`
+
+This option allows you to run the project directly in your browser without any local installation.
+
+---
+
 ## Data Overview
 
 ### Dataset 1 Summary
