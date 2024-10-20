@@ -1465,24 +1465,24 @@ Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscalin
 The accuracy increased by 6.05 percentage points when applied to the larger Dataset 2, indicating better model performance with more data.
 
 - Error Metrics:
- - Dataset 1:
+  - Dataset 1:
 Mean Absolute Error (MAE): $626,342.49
 Root Mean Square Error (RMSE): $1,020,834.48
- - Dataset 2:
+  - Dataset 2:
 MAE: $232,124.75 (a significant reduction)
 RMSE: $329,974.38 (showing much better performance)
 Error Reduction: MAPE dropped from 10.66% in Dataset 1 to 4.61% in Dataset 2, indicating a substantial reduction in prediction errors.
 
 - Forecast Accuracy:
- - Most Accurate Predictions:
+  - Most Accurate Predictions:
 Dataset 1: October 2023 (Error: -0.0%)
 Dataset 2: November 2023 (Error: 0.5%)
- - Least Accurate Predictions:
+  - Least Accurate Predictions:
 Dataset 1: February 2023 (Error: -50.5%)
 Dataset 2: July 2023 (Error: 14.5%)
 
 - Scalability and Data Utilization:
- - Data Volume:
+  - Data Volume:
 Dataset 1: 174,648 rows
 Dataset 2: 417,318 rows
 The model scales effectively, handling Dataset 2, which is four times larger than Dataset 1. This shows that the improved accuracy shows the model's ability to learn from and generalize better with larger datasets.
