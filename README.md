@@ -21,10 +21,15 @@ The challenge required our group to create a machine learning model capable of f
 Our primary goal was to develop an accurate model that could forecast third-year sales based on the available data from the first two years. We aimed to incorporate relevant factors such as seasonality and trends to ensure reliable predictions. Instead of relying on specific evaluation metrics like R-squared, we chose to evaluate the model directly based on its output and predictive capability. We assessed the model’s effectiveness by examining how well it predicted sales compared to the actual results.
 
 ## Quick Start
-1. Clone this repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. [Any other setup instructions]
-
+1. Clone this repository:
+   ```python
+   git clone [repository URL]
+   ```
+   
+2. Install dependencies: 
+   ```python
+   pip install -r requirements.txt
+   ```
 ## Data Overview
 
 ### Dataset 1 Summary
