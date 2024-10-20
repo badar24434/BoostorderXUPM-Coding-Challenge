@@ -32,7 +32,8 @@ Our primary goal was to develop an accurate model that could forecast third-year
    pip install -r requirements.txt
    ```
 ## Option 2: Google Colab
-For easier access without any local setup, you can directly use our Google Colab notebook.
+For easier access without any local setup, you can directly use our Google Colab notebook. Both links contain the same code, but each focuses on a different analysis description. 
+We created two separate notebooks because each dataset needs to be tested and explained individually, which wouldn't be feasible in a single notebook.
 
 ### Dataset 1:
 ```python
