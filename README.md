@@ -33,11 +33,16 @@ Our primary goal was to develop an accurate model that could forecast third-year
    ```
 ## Option 2: Google Colab
 For easier access without any local setup, you can directly use our Google Colab notebook.
-Dataset 1:
-`https://colab.research.google.com/drive/16wttBfLv7P381WEVVxKPMvPj3j5ISVKG?usp=sharing`
 
-Dataset 2:
-`https://colab.research.google.com/drive/18y7aD0Yqq4l9DH784nBpruixhJChJMnp?usp=sharing`
+### Dataset 1:
+```python
+https://colab.research.google.com/drive/16wttBfLv7P381WEVVxKPMvPj3j5ISVKG?usp=sharing
+```
+
+### Dataset 2:
+```python 
+https://colab.research.google.com/drive/18y7aD0Yqq4l9DH784nBpruixhJChJMnp?usp=sharing
+```
 
 This option allows you to run the project directly in your browser without any local installation.
 
