@@ -1460,8 +1460,8 @@ Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscalin
 
 ## Results
 - Accuracy Across Datasets:
- - Dataset 1: Accuracy of 89.34%, with a Mean Absolute Percentage Error (MAPE) of 10.66%.
- - Dataset 2: Accuracy improved to 95.39%, with a lower MAPE of 4.61%.
+  - Dataset 1: Accuracy of 89.34%, with a Mean Absolute Percentage Error (MAPE) of 10.66%.
+  - Dataset 2: Accuracy improved to 95.39%, with a lower MAPE of 4.61%.
 The accuracy increased by 6.05 percentage points when applied to the larger Dataset 2, indicating better model performance with more data.
 
 - Error Metrics:
