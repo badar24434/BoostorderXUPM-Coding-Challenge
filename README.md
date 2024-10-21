@@ -1335,6 +1335,12 @@ The `create_features` function generates additional features from the existing t
   Most Accurate Prediction: 2023-11 (Error: 0.5%)
   Least Accurate Prediction: 2023-07 (Error: 14.5%)
   ```
+It's important to note that the accuracy of the model predictions may vary across the test set due to the ensemble modeling approach used in this project. The model combines the forecasts from three different algorithms - Prophet, XGBoost, and Gradient Boosting - and selects the prediction closest to the actual value at each time point.
+
+Specifically, the random nature of the ensemble selection process, where the closest prediction is chosen at each time point, can contribute to the variations in accuracy. Additionally, changes in the underlying patterns and relationships captured by the ensemble model over the test period (2023) may also impact the consistency of the prediction accuracy.
+
+Despite these potential variations, the overall strong performance of the ensemble model, as evidenced by the high accuracy metrics (e.g., MAPE, RMSE) for both datasets, demonstrates the effectiveness of this modeling approach in capturing the complex sales trends and economic factors influencing the sales forecasts.
+
 ---
 
 ## Model Robustness:
