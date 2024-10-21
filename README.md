@@ -16,6 +16,7 @@
 - [Tech Stack Used](#tech-stack-used)
 - [Challenges and Solutions](#challenges-and-solutions)
 
+--- 
 
 ## Introduction
 Our group participated in a coding challenge aimed at building a machine learning model to predict sales for the third year, using patterns from the previous two years of sales data. The challenge required us to consider key factors such as seasonality and trends, which could significantly impact the accuracy of sales predictions.
