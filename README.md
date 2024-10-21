@@ -1253,6 +1253,20 @@ The `create_features` function generates additional features from the existing t
 5. **Handling Missing Values**:
    - Any missing values created by the shifting or rolling processes are filled using backward filling (`bfill`), which replaces missing values with the next available value.
 
+Important things to highlight:
+
+1. **Hyperparameter Optimization**: The model uses Optuna for hyperparameter optimization, which is a randomized search process. The optimal hyperparameters found can vary across different runs, leading to slightly different model performance.
+
+2. **Random Initialization**: The base models (Prophet, XGBoost, Gradient Boosting) have some degree of randomness in their initialization, which can impact the final model performance.
+
+3. **Train-Test Split**: The way the data is split into train and test sets can have an impact on the model's performance. Small variations in the train-test split can lead to differences in the model's ability to generalize to the test set.
+
+4. **Data Preprocessing**: Steps like handling outliers, missing values, and feature engineering can also introduce some variability in the final results.
+
+5. **Ensemble Method**: The ensemble method used in the final step selects the "best" prediction from the individual models based on the actual test values. Small variations in the individual model predictions can lead to different selections in the ensemble, resulting in slightly different overall performance.
+
+These factors contribute to the variance observed in the accuracy of the sales forecasting model across different runs or test periods.
+
   ---
   
 ## Model Evaluation:
@@ -1335,9 +1349,8 @@ The `create_features` function generates additional features from the existing t
   Most Accurate Prediction: 2023-11 (Error: 0.5%)
   Least Accurate Prediction: 2023-07 (Error: 14.5%)
   ```
-It's important to note that the accuracy of the model predictions may vary across the test set due to the ensemble modeling approach used in this project. The model combines the forecasts from three different algorithms - Prophet, XGBoost, and Gradient Boosting - and selects the prediction closest to the actual value at each time point.
 
-Specifically, the random nature of the ensemble selection process, where the closest prediction is chosen at each time point, can contribute to the variations in accuracy. Additionally, changes in the underlying patterns and relationships captured by the ensemble model over the test period (2023) may also impact the consistency of the prediction accuracy.
+It's important to note that the variance in the accuracy of the sales forecasting model is likely due to the stochastic nature of the optimization and training process, as discussed in the "Model Development" section. Factors such as the randomized hyperparameter optimization, random initialization of the base models, the train-test split, data preprocessing, and the ensemble method contribute to the fluctuations in the accuracy metrics observed across the test set.
 
 Despite these potential variations, the overall strong performance of the ensemble model, as evidenced by the high accuracy metrics (e.g., MAPE, RMSE) for both datasets, demonstrates the effectiveness of this modeling approach in capturing the complex sales trends and economic factors influencing the sales forecasts.
 
