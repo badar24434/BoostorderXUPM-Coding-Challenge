@@ -1590,4 +1590,4 @@ AQIL DANISH BIN MOHAMMAD YUSOF
 (214943)
 
 ## License
-[If applicable]
+MIT License
