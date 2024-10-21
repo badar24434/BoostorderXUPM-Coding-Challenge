@@ -381,11 +381,13 @@ This preprocessed dataset is now ready for exploratory data analysis and model d
 
 ## Sales Analysis
 
-This section provides a detailed examination of our sales data, focusing on trends, seasonality, and overall performance. We explore monthly sales patterns, identify key drivers of revenue, and assess the impact of external economic factors. Outliers and anomalies, such as extreme negative values, are addressed to ensure data integrity, leading to more accurate and actionable insights for forecasting and decision-making. 
+This section provides a detailed examination of our sales data, focusing on trends, seasonality, and overall performance. We explore monthly sales patterns, identify key drivers of revenue, and assess the impact of external economic factors.
 ```python
 unique = df.nunique()
 unique
 ```
+In the following analysis, we compare Dataset 1 and Dataset 2 to examine differences in data volume, customer base, product variety, and date range, which are critical factors for our predictive modeling.
+
 ![image](https://github.com/user-attachments/assets/0d69f688-39c2-41a4-b350-58c593411460)
 - Dataset 1
 
