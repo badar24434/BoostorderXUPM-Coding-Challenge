@@ -902,6 +902,20 @@ The quantity moved a bit like a wave from 2021 to 2023. Early 2021 started stron
 
 ## Model Development
 
+Important things to highlight:
+
+1. **Hyperparameter Optimization**: The model uses Optuna for hyperparameter optimization, which is a randomized search process. The optimal hyperparameters found can vary across different runs, leading to slightly different model performance.
+
+2. **Random Initialization**: The base models (Prophet, XGBoost, Gradient Boosting) have some degree of randomness in their initialization, which can impact the final model performance.
+
+3. **Train-Test Split**: The way the data is split into train and test sets can have an impact on the model's performance. Small variations in the train-test split can lead to differences in the model's ability to generalize to the test set.
+
+4. **Data Preprocessing**: Steps like handling outliers, missing values, and feature engineering can also introduce some variability in the final results.
+
+5. **Ensemble Method**: The ensemble method used in the final step selects the "best" prediction from the individual models based on the actual test values. Small variations in the individual model predictions can lead to different selections in the ensemble, resulting in slightly different overall performance.
+
+These factors contribute to the variance observed in the accuracy of the sales forecasting model across different runs or test periods.
+
 ### Model Selection:
  The approach uses an **ensemble** of three models: Prophet, XGBoost, and Gradient Boosting. This combination leverages the strengths of different algorithms:
 ```python
@@ -1253,20 +1267,6 @@ The `create_features` function generates additional features from the existing t
 
 5. **Handling Missing Values**:
    - Any missing values created by the shifting or rolling processes are filled using backward filling (`bfill`), which replaces missing values with the next available value.
-
-Important things to highlight:
-
-1. **Hyperparameter Optimization**: The model uses Optuna for hyperparameter optimization, which is a randomized search process. The optimal hyperparameters found can vary across different runs, leading to slightly different model performance.
-
-2. **Random Initialization**: The base models (Prophet, XGBoost, Gradient Boosting) have some degree of randomness in their initialization, which can impact the final model performance.
-
-3. **Train-Test Split**: The way the data is split into train and test sets can have an impact on the model's performance. Small variations in the train-test split can lead to differences in the model's ability to generalize to the test set.
-
-4. **Data Preprocessing**: Steps like handling outliers, missing values, and feature engineering can also introduce some variability in the final results.
-
-5. **Ensemble Method**: The ensemble method used in the final step selects the "best" prediction from the individual models based on the actual test values. Small variations in the individual model predictions can lead to different selections in the ensemble, resulting in slightly different overall performance.
-
-These factors contribute to the variance observed in the accuracy of the sales forecasting model across different runs or test periods.
 
   ---
   
