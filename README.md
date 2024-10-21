@@ -1,4 +1,21 @@
-# Sales Prediction Competition
+# Sales Prediction 
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Problem Statement](#problem-statement)
+- [Quick Start](#quick-start)
+- [Data Overview](#data-overview)
+- [Data Preprocessing](#data-preprocessing)
+- [Sales Analysis](#sales-analysis)
+- [Model Development](#model-development)
+  - [Model Selection](#model-selection)
+  - [Model Training](#model-training)
+  - [Model Evaluation](#model-evaluation)
+  - [Model Robustness](#model-robustness)
+- [Tech Stack Used](#tech-stack-used)
+- [Challenges and Solutions](#challenges-and-solutions)
+
 
 ## Introduction
 Our group participated in a coding challenge aimed at building a machine learning model to predict sales for the third year, using patterns from the previous two years of sales data. The challenge required us to consider key factors such as seasonality and trends, which could significantly impact the accuracy of sales predictions.
@@ -19,15 +36,6 @@ We were encouraged to apply various feature engineering techniques, experiment w
 The challenge required our group to create a machine learning model capable of forecasting sales for the third year based on historical data from the first two years. This involved handling various patterns, including seasonal effects, holidays, and market shifts. We needed to develop a model that accurately captured these trends and provided reliable predictions for future sales.
 
 Our primary goal was to develop an accurate model that could forecast third-year sales based on the available data from the first two years. We aimed to incorporate relevant factors such as seasonality and trends to ensure reliable predictions. Instead of relying on specific evaluation metrics like R-squared, we chose to evaluate the model directly based on its output and predictive capability. We assessed the model’s effectiveness by examining how well it predicted sales compared to the actual results.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Quick Start
 ## Option 1: Local Setup
