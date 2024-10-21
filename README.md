@@ -902,7 +902,7 @@ The quantity moved a bit like a wave from 2021 to 2023. Early 2021 started stron
 
 ## Model Development
 
-Important things to highlight:
+Important things to highlight regarding our model:
 
 1. **Hyperparameter Optimization**: The model uses Optuna for hyperparameter optimization, which is a randomized search process. The optimal hyperparameters found can vary across different runs, leading to slightly different model performance.
 
