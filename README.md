@@ -1351,9 +1351,9 @@ These factors contribute to the variance observed in the accuracy of the sales f
   Least Accurate Prediction: 2023-07 (Error: 14.5%)
   ```
 
-It's important to note that the variance in the accuracy of the sales forecasting model is likely due to the stochastic nature of the optimization and training process, as discussed in the "Model Development" section. Factors such as the randomized hyperparameter optimization, random initialization of the base models, the train-test split, data preprocessing, and the ensemble method contribute to the fluctuations in the accuracy metrics observed across the test set.
+It's important to note that the variance in the accuracy of the sales forecasting model (when running the code multiple times) is likely due to the stochastic nature of the optimization and training process, as discussed in the "Model Development" section. For example, when running the model on Dataset 1, the first run may produce an accuracy of 82%, while the second run could result in an accuracy of 87%. This is because factors such as the randomized hyperparameter optimization, random initialization of the base models, the train-test split, data preprocessing, and the ensemble method contribute to the fluctuations in the accuracy metrics observed across different runs.
 
-Despite these potential variations, the overall strong performance of the ensemble model, as evidenced by the high accuracy metrics (e.g., MAPE, RMSE) for both datasets, demonstrates the effectiveness of this modeling approach in capturing the complex sales trends and economic factors influencing the sales forecasts.
+Despite these potential variations, the overall strong performance of the ensemble model, as evidenced by the high accuracy metrics (e.g., MAPE, RMSE) for both datasets, demonstrates the effectiveness of this modeling approach in capturing the complex sales trends and economic factors influencing the sales forecasts. The consistent achievement of high accuracy across multiple runs, even with some variations, highlights the robustness and reliability of the developed sales forecasting solution.
 
 ---
 
