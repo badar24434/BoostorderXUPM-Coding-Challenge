@@ -399,6 +399,8 @@ unique
 - Date Range: Dataset 2 covers a longer period (1,042 unique dates) compared to Dataset 1 (819 unique dates).
 
 ### Monthly Sales Analysis (2021-2023)
+Provides a detailed comparison of monthly sales figures over the three-year period, helping to identify seasonal trends and significant changes in performance across different years.
+
 - Dataset 1
 ```
 === Monthly Sales Analysis (2021-2023) ===
@@ -506,6 +508,8 @@ Highest Month: June 2022 ($5,578,820.95)
 Lowest Month: January 2022 ($2,918,894.61)
 ```
 ### Product Co-Purchase Analysis
+Examines which products are frequently purchased together, offering insights into customer buying behavior and potential cross-selling opportunities.
+
 - Dataset 1
 ```
 Top 10 Most Frequently Co-Purchased Product Pairs:
@@ -561,6 +565,8 @@ Maximum co-purchase frequency: 538
 Minimum co-purchase frequency: 1
 ```
 ### Average Time Between Purchases (Shortest to Longest)
+Analyzes the average duration between purchases made by customers, helping to understand customer purchase frequency and engagement patterns.
+
 - Dataset 1
 ```
 Top 10 Average Time Between Purchases (Shortest to Longest):
@@ -608,6 +614,8 @@ Overall average: 36.069 days
 Total customers analyzed: 2411
 ```
 ### Customer Segmentation Analysis
+Groups customers based on purchasing behavior, demographics, or other criteria, allowing for tailored marketing strategies and product recommendations.
+
 - Dataset 1
 ```
 === Customer Segmentation Analysis ===
@@ -692,6 +700,8 @@ Total Customer Base Value: $148304796.32
 ```
 
 ### Top 10 Products by Total Quantity Sold and Total Revenue Generated
+Highlights the best-selling products in terms of quantity and revenue, providing insights into which items contribute the most to the business's profitability.
+
 - Dataset 1
 ```
 Top 10 Products by Total Quantity Sold
@@ -777,6 +787,8 @@ Average price per unit across all products: $22.01
 
 
 ### Plot Total Amount vs Month to see the overall trend from 2021 to 2023
+Visualizes the overall revenue trend from 2021 to 2023, giving a clear view of growth patterns and any potential dips in sales over time.
+
 - Dataset 1
 
 ![image](https://github.com/user-attachments/assets/135d0fbc-536f-45a6-9c32-8152829521e1)
@@ -790,6 +802,8 @@ The overall trend shows growth from 2021 to 2023. Starting around 6 million in e
 The overall trend shows growth from 2021 to 2023. Starting around 4 million in early 2021, the amounts fluctuate but generally increase over time. Notable peaks appear in mid-2022 reaching 5.5 million, and late 2023 showing similar highs. A the end of 2023 maintains these higher levels around 5-5.5 million. Despite some dips, each year tends to end at a higher point than it started.
 
 ### Analyze what day of the week has the highest sales
+Identifies which days consistently see the highest sales volumes, allowing businesses to optimize operations and marketing efforts accordingly.
+
 - Dataset 1
 
   ![image](https://github.com/user-attachments/assets/b4cc48c9-6ec6-48e0-84e6-354d4887bd8f)
@@ -835,6 +849,8 @@ December   2577.0   4089.0     4571.0    2780.0  2199.0     171.0   212.0
 Order patterns are very consistent across months. Weekdays, especially Monday through Wednesday, regularly see 4,000-5,000 orders. June shows the highest spike with Tuesday hitting nearly 6,000 orders. Weekends drop significantly - Saturdays average around 1,000 orders and Sundays even less. The pattern is remarkably stable across all months, with slight variations in peak days.
 
 ### Total sales by month for all 2021-2023 transactions
+Aggregates total sales for each month across the entire period, providing a comprehensive overview of monthly sales performance.
+
 - Dataset 1
 
   ![image](https://github.com/user-attachments/assets/d5d005ff-0350-4a6b-8dfb-4dfe72687847)
@@ -849,6 +865,8 @@ Sales follow a clear yearly pattern. They start low in January (around 10.5 mill
 
 
 ### Total Revenue by Month and Day of the Week
+Breaks down total revenue not only by month but also by day of the week, offering a dual perspective on how both timeframes influence sales.
+
 - Dataset 1
 
   ![image](https://github.com/user-attachments/assets/48d24c65-28b1-4b73-9752-54e10e59a5e6)
@@ -864,6 +882,9 @@ Weekdays clearly drive most revenue throughout the year. Monday through Thursday
 
 
 ### Total Quantity trend (by month) from 2021 to 2023
+Tracks the total quantity of products sold each month over the three years, highlighting trends in volume and demand fluctuations.
+
+
 - Dataset 1
 
   ![image](https://github.com/user-attachments/assets/b9c8a26f-1647-4b90-8b3b-8ac11826c82f)
