@@ -1431,7 +1431,7 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 ---
 
-### Tech Stack Used
+## Tech Stack Used
 #### Programming Language(s):
 - Python: Python is chosen due to its extensive support for data manipulation, machine learning, and time series forecasting. Its libraries and ecosystem make it highly suitable for tasks like sales prediction, where flexibility and scalability are key.
 
@@ -1484,10 +1484,9 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 ![image](https://github.com/user-attachments/assets/e7c1c801-a850-4f90-9942-0430aee17eb5)
 ![jj (1)](https://github.com/user-attachments/assets/1788bbe1-a9a8-4a1c-94c4-848f7ea0c602)
 
+---
 
-
-
-### Challenges and Solutions
+## Challenges and Solutions
 - Challenge 1: Complex Patterns
   - Description :
 Identifying and capturing seasonal effects, holidays, market shifts, and other subtle factors influencing sales trends.
