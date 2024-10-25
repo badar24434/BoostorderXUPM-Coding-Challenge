@@ -1273,77 +1273,78 @@ The `create_features` function generates additional features from the existing t
   
   #### Dataset 1 Results:
   
-  ![download (2)](https://github.com/user-attachments/assets/a21b7f06-4887-4bd0-9b5e-006f47b51d1f)
+  ![d36956d7-034b-4070-92d3-d6e1c0fdae74](https://github.com/user-attachments/assets/424a252b-25c8-4110-87cf-9b12a4bd8582)
 
   ```
-  Accuracy: 89.34% (derived from MAPE)
-  MAPE: 0.1066
-  RMSE: 1,020,834.48
+  Accuracy: 89.32% 
+  MAPE: 0.1068
+  RMSE: 987629.18
   ```
   ```
     === Forecast Accuracy Analysis ===
   -------------------------------------------------------------------------------------
   Date                 Actual      Predicted           Diff     % Error
   -------------------------------------------------------------------------------------
-  2023-01     $ 10,066,118.78$  7,431,287.50$  2,634,831.28       26.2%
-  2023-02     $  3,553,592.61$  5,349,400.90$ -1,795,808.29      -50.5%
-  2023-03     $  5,195,484.25$  5,349,400.90$   -153,916.65       -3.0%
-  2023-04     $  3,383,719.12$  3,308,646.75$     75,072.37        2.2%
+  2023-01     $ 10,066,118.78$  7,546,561.00$  2,519,557.78       25.0%
+  2023-02     $  3,553,592.61$  5,178,806.12$ -1,625,213.51      -45.7%
+  2023-03     $  5,195,484.25$  5,203,028.28$     -7,544.03       -0.1%
+  2023-04     $  3,383,719.12$  3,327,983.84$     55,735.28        1.6%
   2023-05     $  5,810,563.66$  5,956,950.77$   -146,387.11       -2.5%
-  2023-06     $  5,354,211.65$  5,349,400.90$      4,810.75        0.1%
-  2023-07     $  3,933,952.55$  4,527,745.00$   -593,792.45      -15.1%
-  2023-08     $  6,987,626.75$  6,025,572.73$    962,054.02       13.8%
+  2023-06     $  5,354,211.65$  5,414,881.37$    -60,669.72       -1.1%
+  2023-07     $  3,933,952.55$  5,178,806.12$ -1,244,853.57      -31.6%
+  2023-08     $  6,987,626.75$  6,751,432.76$    236,193.99        3.4%
   2023-09     $  5,898,829.16$  5,748,233.00$    150,596.16        2.6%
-  2023-10     $  5,348,591.11$  5,349,400.90$       -809.79       -0.0%
-  2023-11     $  6,337,921.89$  6,342,799.50$     -4,877.61       -0.1%
-  2023-12     $  8,365,375.34$  7,372,222.00$    993,153.34       11.9%
+  2023-10     $  5,348,591.11$  5,247,371.50$    101,219.61        1.9%
+  2023-11     $  6,337,921.89$  6,350,253.43$    -12,331.54       -0.2%
+  2023-12     $  8,365,375.34$  7,341,340.00$  1,024,035.34       12.2%
   
   Accuracy Metrics:
   -------------------------------------------------------------------------------------
-  Mean Absolute Percentage Error (MAPE): 10.66%
-  Mean Absolute Error (MAE): $626342.49
-  Root Mean Square Error (RMSE): $1020834.48
+  Mean Absolute Percentage Error (MAPE): 10.68%
+  Mean Absolute Error (MAE): $598694.80
+  Root Mean Square Error (RMSE): $987629.18
   
-  Most Accurate Prediction: 2023-10 (Error: -0.0%)
-  Least Accurate Prediction: 2023-02 (Error: -50.5%)
+  Most Accurate Prediction: 2023-03 (Error: -0.1%)
+  Least Accurate Prediction: 2023-02 (Error: -45.7%)
   ```
   #### Dataset 2 Results:
   
-   ![download (1)](https://github.com/user-attachments/assets/706640b9-01f3-41ea-993a-81ae0ea9a04f)
+  ![da3962fe-c2c2-43cd-8aed-fa123fc4a96c](https://github.com/user-attachments/assets/e1245b28-6571-4f13-bb3d-ab6eeb89c8f7)
+  
   ```
-  Accuracy: 95.39% (derived from MAPE)
-  MAPE: 0.0461
-  RMSE: 329,974.38
+  Accuracy: 95.93%
+  MAPE: 0.0407
+  RMSE: 291434.78
   ```
   ```
     === Forecast Accuracy Analysis ===
   -------------------------------------------------------------------------------------
   Date                 Actual      Predicted           Diff     % Error
   -------------------------------------------------------------------------------------
-  2023-01     $  3,272,823.60$  3,199,194.86$     73,628.74        2.2%
-  2023-02     $  4,411,867.04$  4,345,217.00$     66,650.04        1.5%
-  2023-03     $  4,991,619.02$  4,790,515.21$    201,103.81        4.0%
-  2023-04     $  3,449,348.64$  3,387,435.17$     61,913.47        1.8%
-  2023-05     $  4,431,958.73$  4,181,896.00$    250,062.73        5.6%
-  2023-06     $  4,524,782.30$  4,651,627.50$   -126,845.20       -2.8%
-  2023-07     $  5,470,284.56$  4,677,086.19$    793,198.37       14.5%
-  2023-08     $  4,880,602.40$  4,748,526.77$    132,075.63        2.7%
-  2023-09     $  4,656,024.36$  4,684,113.84$    -28,089.48       -0.6%
-  2023-10     $  5,285,113.99$  4,759,573.44$    525,540.55        9.9%
-  2023-11     $  5,050,258.57$  5,023,394.70$     26,863.87        0.5%
-  2023-12     $  5,549,126.04$  5,049,600.87$    499,525.17        9.0%
+  2023-01     $  3,272,823.60$  3,160,933.06$    111,890.54        3.4%
+  2023-02     $  4,411,867.04$  4,338,196.93$     73,670.11        1.7%
+  2023-03     $  4,991,619.02$  4,890,965.19$    100,653.83        2.0%
+  2023-04     $  3,449,348.64$  3,385,533.44$     63,815.20        1.9%
+  2023-05     $  4,431,958.73$  4,430,540.50$      1,418.23        0.0%
+  2023-06     $  4,524,782.30$  4,777,491.00$   -252,708.70       -5.6%
+  2023-07     $  5,470,284.56$  4,855,007.81$    615,276.75       11.2%
+  2023-08     $  4,880,602.40$  4,855,007.81$     25,594.59        0.5%
+  2023-09     $  4,656,024.36$  4,695,591.61$    -39,567.25       -0.8%
+  2023-10     $  5,285,113.99$  4,913,977.87$    371,136.12        7.0%
+  2023-11     $  5,050,258.57$  4,863,308.00$    186,950.57        3.7%
+  2023-12     $  5,549,126.04$  4,941,081.57$    608,044.47       11.0%
   
   Accuracy Metrics:
   -------------------------------------------------------------------------------------
-  Mean Absolute Percentage Error (MAPE): 4.61%
-  Mean Absolute Error (MAE): $232124.75
-  Root Mean Square Error (RMSE): $329974.38
+  Mean Absolute Percentage Error (MAPE): 4.07%
+  Mean Absolute Error (MAE): $204227.20
+  Root Mean Square Error (RMSE): $291434.78
   
-  Most Accurate Prediction: 2023-11 (Error: 0.5%)
-  Least Accurate Prediction: 2023-07 (Error: 14.5%)
+  Most Accurate Prediction: 2023-05 (Error: 0.0%)
+  Least Accurate Prediction: 2023-07 (Error: 11.2%)
   ```
 
-It's important to note that the variance in the accuracy of the sales forecasting model (when running the code multiple times) is likely due to the stochastic nature of the optimization and training process, as discussed in the "Model Development" section. For example, when running the model on Dataset 1, the first run may produce an accuracy of 82%, while the second run could result in an accuracy of 87%. This is because factors such as the randomized hyperparameter optimization, random initialization of the base models, the train-test split, data preprocessing, and the ensemble method contribute to the fluctuations in the accuracy metrics observed across different runs.
+It's important to note that the variance in the accuracy of the sales forecasting model (when running the code multiple times) is likely due to the stochastic nature of the optimization and training process, as discussed in the "Model Development" section. For example, when running the model on Dataset 1, the first run may produce an accuracy of 87%, while the second run could result in an accuracy of 89%. This is because factors such as the randomized hyperparameter optimization, random initialization of the base models, the train-test split, data preprocessing, and the ensemble method contribute to the fluctuations in the accuracy metrics observed across different runs.
 
 Despite these potential variations, the overall strong performance of the ensemble model, as evidenced by the high accuracy metrics (e.g., MAPE, RMSE) for both datasets, demonstrates the effectiveness of this modeling approach in capturing the complex sales trends and economic factors influencing the sales forecasts. The consistent achievement of high accuracy across multiple runs, even with some variations, highlights the robustness and reliability of the developed sales forecasting solution.
 
@@ -1352,7 +1353,7 @@ Despite these potential variations, the overall strong performance of the ensemb
 ## Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
-![download (3)](https://github.com/user-attachments/assets/e189003d-167f-430a-8976-203210c930de)
+![392b577b-0637-4c5c-bbb8-25e98bb38ee6](https://github.com/user-attachments/assets/77505976-ceeb-441c-8981-58fd0140c65f)
 
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
@@ -1370,32 +1371,32 @@ Despite the significant difference in data volume, the model's accuracy increase
 ```
 Dataset 1:
 Accuracy Metrics:
-Most Accurate Prediction: 2023-10 (Error: -0.0%)
-Least Accurate Prediction: 2023-02 (Error: -50.5%)
+Most Accurate Prediction: 2023-03 (Error: -0.1%)
+Least Accurate Prediction: 2023-02 (Error: -45.7%)
 
 Dataset 2:
 Accuracy Metrics:
-Most Accurate Prediction: 2023-11 (Error: 0.5%)
-Least Accurate Prediction: 2023-07 (Error: 14.5%)
+Most Accurate Prediction: 2023-05 (Error: 0.0%)
+Least Accurate Prediction: 2023-07 (Error: 11.2%)
 ```
 ### Error Reduction:
 ```
 Dataset 1:
 Error  Metrics:
 -------------------------------------------------------------------------------------
-Mean Absolute Percentage Error (MAPE): 10.66%
-Mean Absolute Error (MAE): $626342.49
-Root Mean Square Error (RMSE): $1020834.48
+Mean Absolute Percentage Error (MAPE): 10.68%
+Mean Absolute Error (MAE): $598694.80
+Root Mean Square Error (RMSE): $987629.18
 
 Dataset 2:
 Error  Metrics:
 -------------------------------------------------------------------------------------
-Mean Absolute Percentage Error (MAPE): 4.61%
-Mean Absolute Error (MAE): $232124.75
-Root Mean Square Error (RMSE): $329974.38
+Mean Absolute Percentage Error (MAPE): 4.07%
+Mean Absolute Error (MAE): $204227.20
+Root Mean Square Error (RMSE): $291434.78
 ```
-MAPE decreased from 0.1066 to 0.0461, indicating a substantial reduction in percentage error.
-RMSE reduced from 1,020,834.48 to 329,974.38, suggesting better absolute error performance.
+MAPE decreased from 0.1068 to 0.0407, indicating a substantial reduction in percentage error.
+RMSE reduced from 987,629.18 to 291,434.78, suggesting better absolute error performance.
 
 ### Scalability and Data Utilization:
   
@@ -1447,11 +1448,14 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
   - cmdstanpy: Supports Stan models for faster inference in Prophet.
     
  - Machine Learning:
- - xgboost: A powerful, efficient implementation of gradient boosting, used for capturing complex patterns in data.
+  - xgboost: A powerful, efficient implementation of gradient boosting, used for capturing complex patterns in data.
   - sklearn: Provides utilities like TimeSeriesSplit for cross-validation, StandardScaler for feature scaling, and metrics like mean_absolute_percentage_error and mean_squared_error for model evaluation.
+  - RandomForest: An ensemble-based method useful for handling complex interactions in data, providing a balance of accuracy and interpretability.
+  - LightGBM: A gradient-boosting framework known for its speed and efficiency, suitable for large datasets.
+    
 ####  Optimization:
   - optuna: A framework for hyperparameter tuning, used to find optimal model parameters using techniques like TPE sampling.
-    
+  
  - Visualization:
   - matplotlib: A widely used plotting library for creating static, animated, and interactive visualizations.
   - seaborn: Built on top of matplotlib, seaborn simplifies statistical data visualization, helping to generate more informative plots.
@@ -1459,8 +1463,6 @@ In conclusion, the model demonstrates strong predictive capabilities and adaptab
 
 ![1623913883833 (1)](https://github.com/user-attachments/assets/e0c61f08-87d3-41e1-94d5-35814925a310)
 ![sci (1)](https://github.com/user-attachments/assets/8dcd1072-ab1a-47f0-8f29-97bd34669894)
-
-
 
 
 
@@ -1533,38 +1535,42 @@ Integrating broader market trends, competitor pricing, or consumer confidence in
   - Cloud-Based Infrastructure:
 Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscaling capabilities ensures that as data grows, the computational resources can dynamically adjust to handle increased workloads without compromising performance. 
 
+Here’s the revised **Results** section with your updated metrics:
+
+---
+
 ## Results
-- Accuracy Across Datasets:
-  - Dataset 1: Accuracy of 89.34%, with a Mean Absolute Percentage Error (MAPE) of 10.66%.
-  - Dataset 2: Accuracy improved to 95.39%, with a lower MAPE of 4.61%.
 
-The accuracy increased by 6.05 percentage points when applied to the larger Dataset 2, indicating better model performance with more data.
+- **Accuracy Across Datasets**:
+  - **Dataset 1**: Achieved an accuracy with a Mean Absolute Percentage Error (MAPE) of 10.68%.
+  - **Dataset 2**: Significantly improved accuracy with a lower MAPE of 4.07%, indicating enhanced performance on the larger dataset.
 
-- Error Metrics:
-  - Dataset 1:
-Mean Absolute Error (MAE): $626,342.49
-Root Mean Square Error (RMSE): $1,020,834.48
-  - Dataset 2:
-MAE: $232,124.75 (a significant reduction)
-RMSE: $329,974.38 (showing much better performance)
+The accuracy increased when applied to the larger Dataset 2, showing the model's improved performance and generalization with additional data.
 
-Error Reduction: MAPE dropped from 10.66% in Dataset 1 to 4.61% in Dataset 2, indicating a substantial reduction in prediction errors.
+- **Error Metrics**:
+  - **Dataset 1**:
+    - **Mean Absolute Error (MAE)**: $598,694.80
+    - **Root Mean Square Error (RMSE)**: $987,629.18
+  - **Dataset 2**:
+    - **MAE**: $204,227.20 (a substantial reduction)
+    - **RMSE**: $291,434.78 (showing much better performance)
 
-- Forecast Accuracy:
-  - Most Accurate Predictions:
-Dataset 1: October 2023 (Error: -0.0%)
-Dataset 2: November 2023 (Error: 0.5%)
-  - Least Accurate Predictions:
-Dataset 1: February 2023 (Error: -50.5%)
-Dataset 2: July 2023 (Error: 14.5%)
+The MAPE reduction from 10.68% in Dataset 1 to 4.07% in Dataset 2 demonstrates a notable decrease in prediction errors with the larger dataset.
 
-- Scalability and Data Utilization:
-  - Data Volume:
-Dataset 1: 174,648 rows
-Dataset 2: 417,318 rows
+- **Forecast Accuracy**:
+  - **Most Accurate Predictions**:
+    - **Dataset 1**: March 2023 (Error: -0.1%)
+    - **Dataset 2**: May 2023 (Error: 0.0%)
+  - **Least Accurate Predictions**:
+    - **Dataset 1**: February 2023 (Error: -45.7%)
+    - **Dataset 2**: July 2023 (Error: 11.2%)
 
-The model scales effectively, handling Dataset 2, which is four times larger than Dataset 1. This shows that the improved accuracy shows the model's ability to learn from and generalize better with larger datasets.
+- **Scalability and Data Utilization**:
+  - **Data Volume**:
+    - **Dataset 1**: 174,648 rows
+    - **Dataset 2**: 417,318 rows
 
+The model scales effectively and demonstrates better learning capacity with Dataset 2, which is four times larger than Dataset 1. This result underscores the model's ability to learn from and generalize better with larger datasets.
 
 ## Conclusion
 The model performs well and improves with larger datasets, showing that it can handle different data sizes effectively. It remains accurate even with smaller datasets, demonstrating its flexibility. The reduction in errors and use of a smart ensemble method make it a reliable tool for forecasting, especially in situations with varying amounts of data.
