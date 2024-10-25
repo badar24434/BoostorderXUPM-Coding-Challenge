@@ -1361,9 +1361,9 @@ This improvement is particularly significant given the substantial difference in
 
 ![download (4)](https://github.com/user-attachments/assets/d515d2bd-1429-4973-9b52-db0ae8b4594b)
 
-Dataset 1: Contains approximately 174,648 rows 
+Dataset 1: Contains 174,648 rows 
 
-Dataset 2: Contains over 417,318 rows, representing a much larger and potentially more diverse dataset
+Dataset 2: Contains 417,318 rows, representing a much larger and potentially more diverse dataset
 
 ### Accuracy Improvement:
   
