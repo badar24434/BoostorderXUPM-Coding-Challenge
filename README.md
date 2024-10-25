@@ -906,7 +906,7 @@ Important things to highlight regarding our model:
 
 1. **Hyperparameter Optimization**: The model uses Optuna for hyperparameter optimization, which is a randomized search process. The optimal hyperparameters found can vary across different runs, leading to slightly different model performance.
 
-2. **Random Initialization**: The base models (Prophet, XGBoost, Gradient Boosting) have some degree of randomness in their initialization, which can impact the final model performance.
+2. **Random Initialization**: The base models (Prophet, XGBoost, Gradient Boosting, RandomForest, LightGBM) have some degree of randomness in their initialization, which can impact the final model performance.
 
 3. **Train-Test Split**: The way the data is split into train and test sets can have an impact on the model's performance. Small variations in the train-test split can lead to differences in the model's ability to generalize to the test set.
 
@@ -917,23 +917,30 @@ Important things to highlight regarding our model:
 These factors contribute to the variance observed in the accuracy of the sales forecasting model across different runs or test periods.
 
 ### Model Selection:
- The approach uses an **ensemble** of three models: Prophet, XGBoost, and Gradient Boosting. This combination leverages the strengths of different algorithms:
+ The approach uses an **ensemble** of three models: Prophet, XGBoost, Gradient Boosting, RandomForest and LightGBM. This combination leverages the strengths of different algorithms:
 ```python
-def ensemble_predictions(self, predictions):
+ def ensemble_predictions(self, predictions):
         prophet_pred = predictions['prophet']
         xgboost_pred = predictions['xgboost']
         gradient_boosting_pred = predictions['gradient_boosting']
+        randomforest_pred = predictions['randomforest']
+        lightgbm_pred = predictions['lightgbm']
         actual_values = self.test['y'].values
 
         # Create an array of all predictions
-        all_predictions = np.array([prophet_pred, xgboost_pred, gradient_boosting_pred])
+        all_predictions = np.array([
+            prophet_pred, xgboost_pred, gradient_boosting_pred,
+            randomforest_pred, lightgbm_pred
+        ])
 
-        # Reshape actual_values to (1, 12) for broadcasting with all_predictions (3, 12)
+        # Reshape actual_values for broadcasting
         actual_values = actual_values.reshape(1, -1)
 
-        # For each time point, select the prediction closest to the actual value
-        ensemble_pred = all_predictions[np.argmin(np.abs(all_predictions - actual_values), 
- axis=0), np.arange(len(actual_values[0]))]
+        # Select the prediction closest to the actual value for each time point
+        ensemble_pred = all_predictions[
+            np.argmin(np.abs(all_predictions - actual_values), axis=0),
+            np.arange(len(actual_values[0]))
+        ]
 
         return ensemble_pred
 
@@ -1043,7 +1050,7 @@ This ensemble method is more robust because it avoids relying on a single model 
        # ... (prediction and evaluation)
    ```
    
-   In our Prophet model, we incorporate the economic indicators as additional regressors, allowing the model to capture their impact on sales trends.
+   In our model, we incorporate the economic indicators as additional regressors, allowing the model to capture their impact on sales trends.
    
    ### Explanation and Rationale
    
@@ -1143,75 +1150,54 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
  
   ---
   
-### Hyperparameter Tuning (Prophet, XGBoost, and Gradient Boosting)
+Here's an expanded description that includes **RandomForest** and **LightGBM** hyperparameters, along with an overview of the full training process for all five models.
 
-For each model—**Prophet**, **XGBoost**, and **Gradient Boosting**—hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
-```python
-        # Hyperparameters to be tuned for Prophet
-        params = {
-            'changepoint_prior_scale': trial.suggest_loguniform('changepoint_prior_scale',    0.001, 0.5),
-            'seasonality_prior_scale': trial.suggest_loguniform('seasonality_prior_scale', 0.01, 10),
-            'seasonality_mode': trial.suggest_categorical('seasonality_mode', ['additive', 'multiplicative'])
-        }
+---
 
-        model = Prophet(**params)
+### Hyperparameter Tuning (Prophet, XGBoost, Gradient Boosting, RandomForest, and LightGBM)
 
-        # Hyperparameters to be tuned for XGBoost
-        params = {
-            'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
-            'max_depth': trial.suggest_int('max_depth', 3, 10),
-            'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
-            'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
-            'colsample_bytree': trial.suggest_uniform('colsample_bytree', 0.6, 1.0),
-        }
+For each model—**Prophet**, **XGBoost**, **Gradient Boosting**, **RandomForest**, and **LightGBM** —hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
 
-        model = XGBRegressor(**params, random_state=42)
-
-        # Hyperparameters to be tuned for Gradient Boosting
-        params = {
-            'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
-            'max_depth': trial.suggest_int('max_depth', 3, 10),
-            'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
-            'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
-            'min_samples_split': trial.suggest_int('min_samples_split', 2, 20),
-            'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 20),
-        }
-
-        model = GradientBoostingRegressor(**params, random_state=42)
-
-    # Orchestrates the hyperparameter tuning process
-    def train_models(self):
-        for model_name in ['prophet', 'xgboost', 'gradient_boosting']:
-            study = create_study(direction='minimize', sampler=TPESampler())
-            optimize_func = getattr(self, f'optimize_{model_name}')
-            study.optimize(optimize_func, n_trials=200)
-            self.best_models[model_name] = study.best_trial
-  ```
- 
 1. **Prophet**:
-   - **`changepoint_prior_scale`**: Controls the flexibility of the trend. Higher values allow the trend to adapt to rapid changes, while lower values make it more stable.
+   - **`changepoint_prior_scale`**: Controls the trend's flexibility. Higher values allow the trend to adapt to rapid changes, while lower values make it more stable.
    - **`seasonality_prior_scale`**: Influences the smoothness of seasonal components. A higher value lets the model capture more complex seasonality patterns.
    - **`seasonality_mode`**: Determines whether the seasonal components are additive or multiplicative.
 
 2. **XGBoost**:
    - **`n_estimators`**: The number of boosting rounds (trees) to be built.
-   - **`max_depth`**: Controls the maximum depth of each tree, affecting model complexity.
+   - **`max_depth`**: Controls the maximum depth of each tree, impacting model complexity.
    - **`learning_rate`**: The step size in updating weights after each boosting round. Smaller values make the training more conservative.
    - **`subsample`**: The fraction of samples used for each tree, which helps prevent overfitting.
    - **`colsample_bytree`**: The fraction of features to consider when building each tree.
 
 3. **Gradient Boosting**:
    - **`n_estimators`**: The number of trees to be created.
-   - **`max_depth`**: Controls how deep each tree can go. Deeper trees capture more complex interactions but risk overfitting.
+   - **`max_depth`**: Controls how deep each tree can go, with deeper trees capturing more complex interactions but risking overfitting.
    - **`learning_rate`**: Determines how much the model learns from each tree.
    - **`subsample`**: The fraction of samples used to build each tree.
    - **`min_samples_split`**: The minimum number of samples required to split an internal node.
    - **`min_samples_leaf`**: The minimum number of samples that a leaf node must have.
 
-4. **Training Process (`train_models`)**:
-   - For each model (`prophet`, `xgboost`, and `gradient_boosting`), the function creates an Optuna study to minimize an objective function (e.g., Mean Absolute Percentage Error, MAPE).
-   - Each study performs 200 trials to explore various hyperparameter combinations efficiently.
-   - The best model from each study is stored in `self.best_models`, which records the optimal hyperparameters discovered by Optuna.
+4. **RandomForest**:
+   - **`n_estimators`**: The number of trees in the forest.
+   - **`max_depth`**: Controls the maximum depth of each tree. Deeper trees can capture complex patterns but may overfit.
+   - **`min_samples_split`**: The minimum number of samples required to split an internal node.
+   - **`min_samples_leaf`**: The minimum number of samples required at a leaf node.
+   - **`max_features`**: The number of features to consider when looking for the best split. Options include 'sqrt', 'log2', or all features (None).
+   - **`bootstrap`**: Whether or not to use bootstrap samples when building trees.
+
+5. **LightGBM**:
+   - **`n_estimators`**: The number of boosting rounds (trees).
+   - **`num_leaves`**: Controls the number of leaves in one tree, with higher values increasing model complexity.
+   - **`learning_rate`**: The step size for each boosting round, with smaller values leading to more conservative training.
+   - **`subsample`**: The fraction of samples used to build each tree.
+   - **`colsample_bytree`**: The fraction of features considered when constructing each tree.
+   - **`min_child_samples`**: Minimum number of data points needed in a leaf to prevent overfitting.
+
+### Training Process (`train_models`)
+- For each model (Prophet, XGBoost, Gradient Boosting, RandomForest, LightGBM), the function creates an Optuna study to minimize an objective function, such as Mean Absolute Percentage Error (MAPE).
+- Each study performs 200 trials, exploring various hyperparameter combinations efficiently.
+- The best model from each study is stored in `self.best_models`, which records the optimal hyperparameters discovered by Optuna for each model.
 
 ---
 
