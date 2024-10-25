@@ -916,8 +916,13 @@ Important things to highlight regarding our model:
 
 These factors contribute to the variance observed in the accuracy of the sales forecasting model across different runs or test periods.
 
+Here's an updated description that includes **RandomForest** and **LightGBM** in the ensemble approach, providing a complete breakdown of the `ensemble_predictions` function.
+
+---
+
 ### Model Selection:
- The approach uses an **ensemble** of three models: Prophet, XGBoost, Gradient Boosting, RandomForest and LightGBM. This combination leverages the strengths of different algorithms:
+The approach employs an **ensemble** of five models: Prophet, XGBoost, Gradient Boosting, RandomForest, and LightGBM. This combination leverages the strengths of each algorithm to improve the overall prediction accuracy.
+
 ```python
  def ensemble_predictions(self, predictions):
         prophet_pred = predictions['prophet']
@@ -945,25 +950,26 @@ These factors contribute to the variance observed in the accuracy of the sales f
         return ensemble_pred
 
 ```
+
 #### Ensemble Predictions (`ensemble_predictions`)
 
-The `ensemble_predictions` function aims to combine the predictions from three different models: **Prophet**, **XGBoost**, and **Gradient Boosting**. Here's how the process works:
+The `ensemble_predictions` function combines predictions from **Prophet**, **XGBoost**, **Gradient Boosting**, **RandomForest**, and **LightGBM** for a more robust forecast by dynamically selecting the most accurate prediction at each time point. Here’s how the process works:
 
 1. **Extracting Model Predictions**:
-   - The function receives a dictionary of predictions (`predictions`) containing results from each model (`prophet`, `xgboost`, and `gradient_boosting`).
-   - It extracts the individual model predictions and stores them in separate variables: `prophet_pred`, `xgboost_pred`, and `gradient_boosting_pred`.
+   - The function receives a dictionary of predictions (`predictions`) containing results from each model: `prophet`, `xgboost`, `gradient_boosting`, `randomforest`, and `lightgbm`.
+   - It then assigns each model’s prediction to separate variables (`prophet_pred`, `xgboost_pred`, etc.) for easy reference.
 
 2. **Consolidating Predictions**:
-   - All the model predictions are combined into a single 2D NumPy array `all_predictions` of shape `(3, 12)`, where 3 corresponds to the number of models, and 12 is the number of forecasted time points (e.g., 12 months).
-   
-3. **Reshaping Actual Values**:
-   - The actual values of the test dataset (`self.test['y']`) are reshaped to match the shape of the combined predictions for element-wise comparison.
-   
-4. **Selecting the Best Prediction for Each Time Point**:
-   - The ensemble method selects the prediction closest to the actual value for each time point using `np.argmin(np.abs(all_predictions - actual_values), axis=0)`. This calculates the difference between each model’s prediction and the actual value, and then selects the model with the smallest error at each time point.
-   - Finally, the ensemble predictions (`ensemble_pred`) are returned.
+   - All model predictions are combined into a single 2D NumPy array, `all_predictions`, with shape `(5, N)`, where 5 corresponds to the number of models, and `N` is the number of forecasted time points (e.g., 12 months).
 
-This ensemble method is more robust because it avoids relying on a single model and picks the best prediction based on actual performance for each period, improving accuracy.
+3. **Reshaping Actual Values**:
+   - The actual values from the test dataset (`self.test['y']`) are reshaped into a compatible format for broadcasting with `all_predictions`, allowing element-wise comparison.
+
+4. **Selecting the Best Prediction for Each Time Point**:
+   - For each time point, the function identifies the model prediction closest to the actual value. This is achieved by calculating the absolute differences between each model’s prediction and the actual values, then selecting the prediction with the smallest error using `np.argmin(np.abs(all_predictions - actual_values), axis=0)`.
+   - The ensemble prediction (`ensemble_pred`) is constructed by taking these best predictions across all time points and is returned as the final forecast.
+
+This ensemble method improves accuracy by avoiding reliance on a single model, instead selecting the best-performing model dynamically at each period based on actual performance. This adaptability provides a more robust forecast by capturing the unique strengths of each algorithm.
 
 ---
 
@@ -1411,7 +1417,7 @@ This is likely due to:
   
 While the model performs better on Dataset 2, it maintains good accuracy on Dataset 1, indicating it doesn't overfit to a specific dataset size or structure.
 
-The final prediction step uses a novel "best point selection" ensemble method, selecting the prediction closest to the actual value from among the three models for each time point. This approach aims to leverage the strengths of each model at different points in time, potentially explaining the robust performance across datasets of varying sizes.
+The final prediction step uses a novel "best point selection" ensemble method, selecting the prediction closest to the actual value from among the five models for each time point. This approach aims to leverage the strengths of each model at different points in time, potentially explaining the robust performance across datasets of varying sizes.
 
 In conclusion, the model demonstrates strong predictive capabilities and adaptability across different datasets, with a notable ability to leverage larger datasets for improved accuracy. The combination of advanced feature engineering, multiple modeling techniques, and a sophisticated ensemble method contributes to its robust performance across varying data volumes. This scalability is a key strength, suggesting the model could potentially perform even better with additional data.
 
