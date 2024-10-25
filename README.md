@@ -916,8 +916,6 @@ Important things to highlight regarding our model:
 
 These factors contribute to the variance observed in the accuracy of the sales forecasting model across different runs or test periods.
 
-Here's an updated description that includes **RandomForest** and **LightGBM** in the ensemble approach, providing a complete breakdown of the `ensemble_predictions` function.
-
 ---
 
 ### Model Selection:
@@ -1156,10 +1154,6 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
  
   ---
   
-Here's an expanded description that includes **RandomForest** and **LightGBM** hyperparameters, along with an overview of the full training process for all five models.
-
----
-
 ### Hyperparameter Tuning (Prophet, XGBoost, Gradient Boosting, RandomForest, and LightGBM)
 
 For each model—**Prophet**, **XGBoost**, **Gradient Boosting**, **RandomForest**, and **LightGBM** —hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
