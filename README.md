@@ -1495,7 +1495,7 @@ Working with only 2 years of training data and 1 year for testing, ensuring mode
 
      
   - Solution implemented :
-We combined Prophet, XGBoost, and Gradient Boosting to take advantage of each model's strengths. Cross-validation was used for model optimization through Optuna. We also applied feature engineering to get the most out of the available data.
+We combined Prophet, XGBoost, Gradient Boosting, RandomForest and LightGBM to take advantage of each model's strengths. Cross-validation was used for model optimization through Optuna. We also applied feature engineering to get the most out of the available data.
 
   - Lessons learned :
 Combining different models and using feature engineering can improve prediction accuracy, even when working with limited data.
