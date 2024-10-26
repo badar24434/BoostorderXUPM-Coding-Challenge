@@ -1158,6 +1158,79 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
 
 For each model—**Prophet**, **XGBoost**, **Gradient Boosting**, **RandomForest**, and **LightGBM** —hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
 
+```python
+#Prophet
+def optimize_prophet(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'changepoint_prior_scale': trial.suggest_loguniform('changepoint_prior_scale', 0.001, 0.5),
+        'seasonality_prior_scale': trial.suggest_loguniform('seasonality_prior_scale', 0.01, 10),
+        'seasonality_mode': trial.suggest_categorical('seasonality_mode', ['additive', 'multiplicative'])
+    }
+
+    # Initialize model
+    model = Prophet(**params)
+
+#XGBoost
+def optimize_xgboost(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 10),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
+        'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+        'colsample_bytree': trial.suggest_uniform('colsample_bytree', 0.6, 1.0),
+    }
+
+    # Initialize model
+    model = XGBRegressor(**params, random_state=42)
+
+#Gradient Boosting
+def optimize_gradient_boosting(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 10),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
+        'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+        'min_samples_split': trial.suggest_int('min_samples_split', 2, 20),
+        'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 20),
+    }
+
+    # Initialize model
+    model = GradientBoostingRegressor(**params, random_state=42)
+
+#RandomForest
+def optimize_randomforest(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 20),
+        'min_samples_split': trial.suggest_int('min_samples_split', 2, 20),
+        'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 10),
+        'max_features': trial.suggest_categorical('max_features', ['sqrt', 'log2', None]),
+        'bootstrap': trial.suggest_categorical('bootstrap', [True, False])
+    }
+
+    # Initialize model
+    model = RandomForestRegressor(**params, random_state=42, n_jobs=-1)
+
+#LightGBM
+def optimize_lightgbm(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'num_leaves': trial.suggest_int('num_leaves', 20, 100),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 0.1),
+        'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+        'colsample_bytree': trial.suggest_uniform('colsample_bytree', 0.6, 1.0),
+        'min_child_samples': trial.suggest_int('min_child_samples', 5, 100),
+    }
+
+    # Initialize model
+    model = LGBMRegressor(**params, random_state=42)
+
+```
 1. **Prophet**:
    - **`changepoint_prior_scale`**: Controls the trend's flexibility. Higher values allow the trend to adapt to rapid changes, while lower values make it more stable.
    - **`seasonality_prior_scale`**: Influences the smoothness of seasonal components. A higher value lets the model capture more complex seasonality patterns.
