@@ -1267,7 +1267,7 @@ The `create_features` function generates additional features from the existing t
   
   #### Dataset 1 Results:
   
-  ![d36956d7-034b-4070-92d3-d6e1c0fdae74](https://github.com/user-attachments/assets/424a252b-25c8-4110-87cf-9b12a4bd8582)
+  ![download](https://github.com/user-attachments/assets/106156dd-6621-42c4-9399-227eeeb5adf6)
 
   ```
   Accuracy: 93.90%
@@ -1303,8 +1303,8 @@ The `create_features` function generates additional features from the existing t
   ```
   #### Dataset 2 Results:
   
-  ![da3962fe-c2c2-43cd-8aed-fa123fc4a96c](https://github.com/user-attachments/assets/e1245b28-6571-4f13-bb3d-ab6eeb89c8f7)
-  
+  ![download](https://github.com/user-attachments/assets/0d3d1c35-4c1e-4bb9-8267-89c203f35a9a)
+
   ```
   Accuracy: 96.79%
   MAPE: 0.0321
@@ -1348,7 +1348,7 @@ Despite these potential variations, the overall strong performance of the ensemb
 ## Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
-![392b577b-0637-4c5c-bbb8-25e98bb38ee6](https://github.com/user-attachments/assets/77505976-ceeb-441c-8981-58fd0140c65f)
+![download](https://github.com/user-attachments/assets/fe9b6692-e932-4af0-ac28-50f24ef371ec)
 
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
