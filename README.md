@@ -23,8 +23,6 @@ Our group participated in a coding challenge aimed at building a machine learnin
 
 Our group selected Google Colab as our main development platform to enhance collaboration and efficiency. This platform enabled us to share code and collaborate in real-time, greatly improving our teamwork. With integrated support for popular machine learning libraries such as TensorFlow, scikit-learn, and Pandas, Colab provided the necessary cloud-based computational resources to train and test our models without the limitations of local hardware. Throughout the project, we took advantage of its collaborative features to explore various machine learning techniques and feature engineering strategies, fostering discussions and troubleshooting that allowed us to iteratively refine the model while effectively working together, regardless of our physical locations.
 
-To enhance the robustness of our model, we utilized another additional dataset prepared by the organizer. This enabled us to evaluate the model's performance across various data inputs, ensuring its ability to generalize effectively and be relevant in different sales scenario. By incorporating these datasets, we aimed to validate our methodology and deliver a flexible solution that can be leveraged by other models.
-
 Ultimately, our goal as a team was to create a robust, reproducible model capable of accurately forecasting future sales trends. We documented the entire process, from feature selection to model evaluation, ensuring that our approach was transparent and easy to follow.
 
 ## Problem Statement
@@ -33,8 +31,6 @@ In the fast-paced retail environment, accurate sales forecasting is vital for ef
 Our group was tasked with developing a model to predict sales for the third year by analyzing patterns from the first two years. The model needed to consider critical factors such as seasonality, trends, and other relevant influences affecting sales.
 
 We were encouraged to apply various feature engineering techniques, experiment with different model architectures, and implement relevant evaluation metrics to ensure the model’s predictions were as accurate as possible. Our group worked collaboratively to optimize the solution, providing a reliable and well-documented approach to future sales forecasting.
-
-The challenge required our group to create a machine learning model capable of forecasting sales for the third year based on historical data from the first two years. This involved handling various patterns, including seasonal effects, holidays, and market shifts. We needed to develop a model that accurately captured these trends and provided reliable predictions for future sales.
 
 Our primary goal was to develop an accurate model that could forecast third-year sales based on the available data from the first two years. We aimed to incorporate relevant factors such as seasonality and trends to ensure reliable predictions. Instead of relying on specific evaluation metrics like R-squared, we chose to evaluate the model directly based on its output and predictive capability. We assessed the model’s effectiveness by examining how well it predicted sales compared to the actual results.
 
