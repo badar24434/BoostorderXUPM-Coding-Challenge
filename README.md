@@ -1603,11 +1603,9 @@ Integrating broader market trends, competitor pricing, or consumer confidence in
   - Cloud-Based Infrastructure:
 Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscaling capabilities ensures that as data grows, the computational resources can dynamically adjust to handle increased workloads without compromising performance. 
 
-Here’s the revised **Results** section with your updated metrics:
-
 ---
 
-Here's the revised results section based on the data:
+Here's the revised **Results** section based on the data:
 
 ## Results
 
