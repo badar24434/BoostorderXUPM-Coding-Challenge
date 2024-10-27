@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Problem Statement](#problem-statement)
 - [Quick Start](#quick-start)
-  - [Brief Slide](#brief-slide)
+- [Brief Slide](#brief-slide)
 - [Data Overview](#data-overview)
 - [Data Preprocessing](#data-preprocessing)
 - [Sales Analysis](#sales-analysis)
@@ -62,6 +62,11 @@ https://colab.research.google.com/drive/1AbrfKU8MhEEvgMZ2WV23kgfWh924yOJp?usp=sh
 This option allows you to run the project directly in your browser without any local installation.
 
 ---
+## Brief Slide
+Our canva slide provides a brief overview of our project documentation, including insights into the problem statement, data sources, model development, and final outcome.
+```python
+https://www.canva.com/design/DAGTjopesqs/0hvms4YbUAXc2omX9Nyg7w/edit?utm_content=DAGTjopesqs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+```
 
 ## Data Overview
 
