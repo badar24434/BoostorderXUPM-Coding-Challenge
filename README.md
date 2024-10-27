@@ -5,6 +5,7 @@
 - [Introduction](#introduction)
 - [Problem Statement](#problem-statement)
 - [Quick Start](#quick-start)
+  - [Brief Slide](#brief-slide)
 - [Data Overview](#data-overview)
 - [Data Preprocessing](#data-preprocessing)
 - [Sales Analysis](#sales-analysis)
