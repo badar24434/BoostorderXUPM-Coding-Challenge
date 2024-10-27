@@ -5,6 +5,7 @@
 - [Introduction](#introduction)
 - [Problem Statement](#problem-statement)
 - [Quick Start](#quick-start)
+- [Brief Slide](#brief-slide)
 - [Data Overview](#data-overview)
 - [Data Preprocessing](#data-preprocessing)
 - [Sales Analysis](#sales-analysis)
@@ -23,8 +24,6 @@ Our group participated in a coding challenge aimed at building a machine learnin
 
 Our group selected Google Colab as our main development platform to enhance collaboration and efficiency. This platform enabled us to share code and collaborate in real-time, greatly improving our teamwork. With integrated support for popular machine learning libraries such as TensorFlow, scikit-learn, and Pandas, Colab provided the necessary cloud-based computational resources to train and test our models without the limitations of local hardware. Throughout the project, we took advantage of its collaborative features to explore various machine learning techniques and feature engineering strategies, fostering discussions and troubleshooting that allowed us to iteratively refine the model while effectively working together, regardless of our physical locations.
 
-To enhance the robustness of our model, we utilized another additional dataset prepared by the organizer. This enabled us to evaluate the model's performance across various data inputs, ensuring its ability to generalize effectively and be relevant in different sales scenario. By incorporating these datasets, we aimed to validate our methodology and deliver a flexible solution that can be leveraged by other models.
-
 Ultimately, our goal as a team was to create a robust, reproducible model capable of accurately forecasting future sales trends. We documented the entire process, from feature selection to model evaluation, ensuring that our approach was transparent and easy to follow.
 
 ## Problem Statement
@@ -33,8 +32,6 @@ In the fast-paced retail environment, accurate sales forecasting is vital for ef
 Our group was tasked with developing a model to predict sales for the third year by analyzing patterns from the first two years. The model needed to consider critical factors such as seasonality, trends, and other relevant influences affecting sales.
 
 We were encouraged to apply various feature engineering techniques, experiment with different model architectures, and implement relevant evaluation metrics to ensure the model’s predictions were as accurate as possible. Our group worked collaboratively to optimize the solution, providing a reliable and well-documented approach to future sales forecasting.
-
-The challenge required our group to create a machine learning model capable of forecasting sales for the third year based on historical data from the first two years. This involved handling various patterns, including seasonal effects, holidays, and market shifts. We needed to develop a model that accurately captured these trends and provided reliable predictions for future sales.
 
 Our primary goal was to develop an accurate model that could forecast third-year sales based on the available data from the first two years. We aimed to incorporate relevant factors such as seasonality and trends to ensure reliable predictions. Instead of relying on specific evaluation metrics like R-squared, we chose to evaluate the model directly based on its output and predictive capability. We assessed the model’s effectiveness by examining how well it predicted sales compared to the actual results.
 
@@ -50,23 +47,27 @@ Our primary goal was to develop an accurate model that could forecast third-year
    pip install -r requirements.txt
    ```
 ## Option 2: Google Colab
-For easier access without any local setup, you can directly use our Google Colab notebook. Both links contain the same code, but each focuses on a different analysis description. 
-We created two separate notebooks because each dataset needs to be tested and explained individually, which wouldn't be feasible in a single notebook.
+For easier access without any local setup, you can directly use our Google Colab notebook. **Note that the Colab notebooks are only for the code execution; all full documentation is included in the README file**. We created two separate notebooks, each tailored for a specific dataset analysis, as it wouldn’t be feasible to handle both datasets within a single notebook due to distinct analysis requirements.
 
 ### Dataset 1:
 ```python
-https://colab.research.google.com/drive/1rM7ibFDdKO8h9RH2MRTDCuYQY8h63GQV?usp=sharing
+https://colab.research.google.com/drive/1xKHE7x_ObMryRnS4MMTd3MbThM4bnd6f?usp=sharing
 ```
 
 ### Dataset 2:
 ```python 
-https://colab.research.google.com/drive/1vKPU5wHg7K6WYvTdmhYQzGESn39OY8FA?usp=sharing
+https://colab.research.google.com/drive/1AbrfKU8MhEEvgMZ2WV23kgfWh924yOJp?usp=sharing
 ```
 
 This option allows you to run the project directly in your browser without any local installation.
 
 ---
-
+## Brief Slide
+Our canva slide provides a brief overview of our project documentation, including insights into the problem statement, data sources, model development, and final outcome.
+```python
+https://www.canva.com/design/DAGTjopesqs/0hvms4YbUAXc2omX9Nyg7w/edit?utm_content=DAGTjopesqs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+```
+---
 ## Data Overview
 
 ### Dataset 1 Summary
@@ -1158,6 +1159,79 @@ The `preprocess_data` function prepares the raw data for modeling by applying se
 
 For each model—**Prophet**, **XGBoost**, **Gradient Boosting**, **RandomForest**, and **LightGBM** —hyperparameter tuning is performed using **Optuna**, a hyperparameter optimization framework. Here's a breakdown of the key parameters being tuned:
 
+```python
+#Prophet
+def optimize_prophet(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'changepoint_prior_scale': trial.suggest_loguniform('changepoint_prior_scale', 0.001, 0.5),
+        'seasonality_prior_scale': trial.suggest_loguniform('seasonality_prior_scale', 0.01, 10),
+        'seasonality_mode': trial.suggest_categorical('seasonality_mode', ['additive', 'multiplicative'])
+    }
+
+    # Initialize model
+    model = Prophet(**params)
+
+#XGBoost
+def optimize_xgboost(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 10),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
+        'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+        'colsample_bytree': trial.suggest_uniform('colsample_bytree', 0.6, 1.0),
+    }
+
+    # Initialize model
+    model = XGBRegressor(**params, random_state=42)
+
+#Gradient Boosting
+def optimize_gradient_boosting(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 10),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 1.0),
+        'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+        'min_samples_split': trial.suggest_int('min_samples_split', 2, 20),
+        'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 20),
+    }
+
+    # Initialize model
+    model = GradientBoostingRegressor(**params, random_state=42)
+
+#RandomForest
+def optimize_randomforest(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 20),
+        'min_samples_split': trial.suggest_int('min_samples_split', 2, 20),
+        'min_samples_leaf': trial.suggest_int('min_samples_leaf', 1, 10),
+        'max_features': trial.suggest_categorical('max_features', ['sqrt', 'log2', None]),
+        'bootstrap': trial.suggest_categorical('bootstrap', [True, False])
+    }
+
+    # Initialize model
+    model = RandomForestRegressor(**params, random_state=42, n_jobs=-1)
+
+#LightGBM
+def optimize_lightgbm(self, trial):
+    # Define hyperparameter search space
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'num_leaves': trial.suggest_int('num_leaves', 20, 100),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-3, 0.1),
+        'subsample': trial.suggest_uniform('subsample', 0.6, 1.0),
+        'colsample_bytree': trial.suggest_uniform('colsample_bytree', 0.6, 1.0),
+        'min_child_samples': trial.suggest_int('min_child_samples', 5, 100),
+    }
+
+    # Initialize model
+    model = LGBMRegressor(**params, random_state=42)
+
+```
 1. **Prophet**:
    - **`changepoint_prior_scale`**: Controls the trend's flexibility. Higher values allow the trend to adapt to rapid changes, while lower values make it more stable.
    - **`seasonality_prior_scale`**: Influences the smoothness of seasonal components. A higher value lets the model capture more complex seasonality patterns.
@@ -1267,78 +1341,79 @@ The `create_features` function generates additional features from the existing t
   
   #### Dataset 1 Results:
   
-  ![d36956d7-034b-4070-92d3-d6e1c0fdae74](https://github.com/user-attachments/assets/424a252b-25c8-4110-87cf-9b12a4bd8582)
+  ![download](https://github.com/user-attachments/assets/35c6fcf5-2b2e-400f-a384-cb604dd8878a)
 
   ```
-  Accuracy: 89.32% 
-  MAPE: 0.1068
-  RMSE: 987629.18
+  Accuracy: 93.90%
+  MAPE: 0.0610
+  RMSE: 614523.62
   ```
   ```
     === Forecast Accuracy Analysis ===
   -------------------------------------------------------------------------------------
   Date                 Actual      Predicted           Diff     % Error
   -------------------------------------------------------------------------------------
-  2023-01     $ 10,066,118.78$  7,546,561.00$  2,519,557.78       25.0%
-  2023-02     $  3,553,592.61$  5,178,806.12$ -1,625,213.51      -45.7%
-  2023-03     $  5,195,484.25$  5,203,028.28$     -7,544.03       -0.1%
-  2023-04     $  3,383,719.12$  3,327,983.84$     55,735.28        1.6%
-  2023-05     $  5,810,563.66$  5,956,950.77$   -146,387.11       -2.5%
-  2023-06     $  5,354,211.65$  5,414,881.37$    -60,669.72       -1.1%
-  2023-07     $  3,933,952.55$  5,178,806.12$ -1,244,853.57      -31.6%
-  2023-08     $  6,987,626.75$  6,751,432.76$    236,193.99        3.4%
-  2023-09     $  5,898,829.16$  5,748,233.00$    150,596.16        2.6%
-  2023-10     $  5,348,591.11$  5,247,371.50$    101,219.61        1.9%
-  2023-11     $  6,337,921.89$  6,350,253.43$    -12,331.54       -0.2%
-  2023-12     $  8,365,375.34$  7,341,340.00$  1,024,035.34       12.2%
-  
+  2023-01     $ 10,066,118.78$ 10,751,220.00$   -685,101.22       -6.8%
+  2023-02     $  3,553,592.61$  3,524,142.25$     29,450.36        0.8%
+  2023-03     $  5,195,484.25$  5,350,905.06$   -155,420.81       -3.0%
+  2023-04     $  3,383,719.12$  3,547,677.11$   -163,957.99       -4.8%
+  2023-05     $  5,810,563.66$  5,956,954.21$   -146,390.55       -2.5%
+  2023-06     $  5,354,211.65$  5,350,905.06$      3,306.59        0.1%
+  2023-07     $  3,933,952.55$  4,716,342.50$   -782,389.95      -19.9%
+  2023-08     $  6,987,626.75$  6,025,576.28$    962,050.47       13.8%
+  2023-09     $  5,898,829.16$  5,748,236.56$    150,592.60        2.6%
+  2023-10     $  5,348,591.11$  5,350,905.06$     -2,313.95       -0.0%
+  2023-11     $  6,337,921.89$  6,352,837.24$    -14,915.35       -0.2%
+  2023-12     $  8,365,375.34$  6,807,049.22$  1,558,326.12       18.6%
+
   Accuracy Metrics:
   -------------------------------------------------------------------------------------
-  Mean Absolute Percentage Error (MAPE): 10.68%
-  Mean Absolute Error (MAE): $598694.80
-  Root Mean Square Error (RMSE): $987629.18
+  Mean Absolute Percentage Error (MAPE): 6.10%
+  Mean Absolute Error (MAE): $387851.33
+  Root Mean Square Error (RMSE): $614523.62
   
-  Most Accurate Prediction: 2023-03 (Error: -0.1%)
-  Least Accurate Prediction: 2023-02 (Error: -45.7%)
+  Most Accurate Prediction: 2023-10 (Error: -0.0%)
+  Least Accurate Prediction: 2023-07 (Error: -19.9%)
   ```
   #### Dataset 2 Results:
   
-  ![da3962fe-c2c2-43cd-8aed-fa123fc4a96c](https://github.com/user-attachments/assets/e1245b28-6571-4f13-bb3d-ab6eeb89c8f7)
-  
+  ![download](https://github.com/user-attachments/assets/36d285d5-12a1-4072-8541-46ffb5942e4a)
+
   ```
-  Accuracy: 95.93%
-  MAPE: 0.0407
-  RMSE: 291434.78
+  Accuracy: 96.79%
+  MAPE: 0.0321
+  RMSE: 233015.36
+
   ```
   ```
     === Forecast Accuracy Analysis ===
   -------------------------------------------------------------------------------------
   Date                 Actual      Predicted           Diff     % Error
   -------------------------------------------------------------------------------------
-  2023-01     $  3,272,823.60$  3,160,933.06$    111,890.54        3.4%
-  2023-02     $  4,411,867.04$  4,338,196.93$     73,670.11        1.7%
-  2023-03     $  4,991,619.02$  4,890,965.19$    100,653.83        2.0%
-  2023-04     $  3,449,348.64$  3,385,533.44$     63,815.20        1.9%
-  2023-05     $  4,431,958.73$  4,430,540.50$      1,418.23        0.0%
-  2023-06     $  4,524,782.30$  4,777,491.00$   -252,708.70       -5.6%
+  2023-01     $  3,272,823.60$  3,377,062.88$   -104,239.28       -3.2%
+  2023-02     $  4,411,867.04$  4,468,517.20$    -56,650.16       -1.3%
+  2023-03     $  4,991,619.02$  4,768,572.55$    223,046.47        4.5%
+  2023-04     $  3,449,348.64$  3,406,957.05$     42,391.59        1.2%
+  2023-05     $  4,431,958.73$  4,388,343.00$     43,615.73        1.0%
+  2023-06     $  4,524,782.30$  4,770,112.50$   -245,330.20       -5.4%
   2023-07     $  5,470,284.56$  4,855,007.81$    615,276.75       11.2%
   2023-08     $  4,880,602.40$  4,855,007.81$     25,594.59        0.5%
-  2023-09     $  4,656,024.36$  4,695,591.61$    -39,567.25       -0.8%
-  2023-10     $  5,285,113.99$  4,913,977.87$    371,136.12        7.0%
-  2023-11     $  5,050,258.57$  4,863,308.00$    186,950.57        3.7%
-  2023-12     $  5,549,126.04$  4,941,081.57$    608,044.47       11.0%
+  2023-09     $  4,656,024.36$  4,659,688.50$     -3,664.14       -0.1%
+  2023-10     $  5,285,113.99$  5,260,007.49$     25,106.50        0.5%
+  2023-11     $  5,050,258.57$  5,228,391.50$   -178,132.93       -3.5%
+  2023-12     $  5,549,126.04$  5,214,093.00$    335,033.04        6.0%
   
   Accuracy Metrics:
   -------------------------------------------------------------------------------------
-  Mean Absolute Percentage Error (MAPE): 4.07%
-  Mean Absolute Error (MAE): $204227.20
-  Root Mean Square Error (RMSE): $291434.78
+  Mean Absolute Percentage Error (MAPE): 3.21%
+  Mean Absolute Error (MAE): $158173.45
+  Root Mean Square Error (RMSE): $233015.36
   
-  Most Accurate Prediction: 2023-05 (Error: 0.0%)
+  Most Accurate Prediction: 2023-09 (Error: -0.1%)
   Least Accurate Prediction: 2023-07 (Error: 11.2%)
   ```
 
-It's important to note that the variance in the accuracy of the sales forecasting model (when running the code multiple times) is likely due to the stochastic nature of the optimization and training process, as discussed in the "Model Development" section. For example, when running the model on Dataset 1, the first run may produce an accuracy of 87%, while the second run could result in an accuracy of 89%. This is because factors such as the randomized hyperparameter optimization, random initialization of the base models, the train-test split, data preprocessing, and the ensemble method contribute to the fluctuations in the accuracy metrics observed across different runs.
+**It's important to note that the accuracy of the sales forecasting model can vary when the code is run multiple times. This variance is likely due to the stochastic nature of the optimization and training process. For example, when running the model on Dataset 1, the first run might produce an accuracy of 87%, while the second run could result in 89%. However, the accuracy is generally consistent and does not fluctuate significantly. Factors like randomized hyperparameter optimization, random initialization of base models, train-test splits, data preprocessing, and the ensemble method all contribute to these fluctuations in accuracy metrics across different runs.**
 
 Despite these potential variations, the overall strong performance of the ensemble model, as evidenced by the high accuracy metrics (e.g., MAPE, RMSE) for both datasets, demonstrates the effectiveness of this modeling approach in capturing the complex sales trends and economic factors influencing the sales forecasts. The consistent achievement of high accuracy across multiple runs, even with some variations, highlights the robustness and reliability of the developed sales forecasting solution.
 
@@ -1347,7 +1422,7 @@ Despite these potential variations, the overall strong performance of the ensemb
 ## Model Robustness:
 The model demonstrates strong performance on both datasets, with notably better results on Dataset 2. 
 
-![392b577b-0637-4c5c-bbb8-25e98bb38ee6](https://github.com/user-attachments/assets/77505976-ceeb-441c-8981-58fd0140c65f)
+![download](https://github.com/user-attachments/assets/b8e7bcb3-f4c0-49b9-a64d-22b56fb434f4)
 
 This improvement is particularly significant given the substantial difference in dataset sizes:
 
@@ -1361,16 +1436,16 @@ Dataset 2: Contains 417,318 rows, representing a much larger and potentially mor
 
 ### Accuracy Improvement:
   
-Despite the significant difference in data volume, the model's accuracy increased from 89.34% on Dataset 1 to 95.39% on Dataset 2, showing a substantial improvement of 6.05 percentage points.
+Despite the significant difference in data volume, the model's accuracy increased from 93.90% on Dataset 1 to 96.79% on Dataset 2, showing an improvement of 2.89 percentage points.
 ```
 Dataset 1:
 Accuracy Metrics:
-Most Accurate Prediction: 2023-03 (Error: -0.1%)
-Least Accurate Prediction: 2023-02 (Error: -45.7%)
+Most Accurate Prediction: 2023-10 (Error: -0.0%)
+Least Accurate Prediction: 2023-07 (Error: -19.9%)
 
 Dataset 2:
 Accuracy Metrics:
-Most Accurate Prediction: 2023-05 (Error: 0.0%)
+Most Accurate Prediction: 2023-09 (Error: -0.1%)
 Least Accurate Prediction: 2023-07 (Error: 11.2%)
 ```
 ### Error Reduction:
@@ -1378,19 +1453,19 @@ Least Accurate Prediction: 2023-07 (Error: 11.2%)
 Dataset 1:
 Error  Metrics:
 -------------------------------------------------------------------------------------
-Mean Absolute Percentage Error (MAPE): 10.68%
-Mean Absolute Error (MAE): $598694.80
-Root Mean Square Error (RMSE): $987629.18
+Mean Absolute Percentage Error (MAPE): 6.10%
+Mean Absolute Error (MAE): $387851.33
+Root Mean Square Error (RMSE): $614523.62
 
 Dataset 2:
 Error  Metrics:
 -------------------------------------------------------------------------------------
-Mean Absolute Percentage Error (MAPE): 4.07%
-Mean Absolute Error (MAE): $204227.20
-Root Mean Square Error (RMSE): $291434.78
+Mean Absolute Percentage Error (MAPE): 3.21%
+Mean Absolute Error (MAE): $158173.45
+Root Mean Square Error (RMSE): $233015.36
 ```
-MAPE decreased from 0.1068 to 0.0407, indicating a substantial reduction in percentage error.
-RMSE reduced from 987,629.18 to 291,434.78, suggesting better absolute error performance.
+MAPE decreased from 0.0610 to 0.0321, indicating a substantial reduction in percentage error.
+RMSE reduced from 614,523.62 to 233,015.36, suggesting better absolute error performance.
 
 ### Scalability and Data Utilization:
   
@@ -1529,41 +1604,41 @@ Integrating broader market trends, competitor pricing, or consumer confidence in
   - Cloud-Based Infrastructure:
 Deploying the model on cloud platforms (e.g., AWS, Google Cloud) with autoscaling capabilities ensures that as data grows, the computational resources can dynamically adjust to handle increased workloads without compromising performance. 
 
-Here’s the revised **Results** section with your updated metrics:
-
 ---
+
+Here's the revised **Results** section based on the data:
 
 ## Results
 
 - **Accuracy Across Datasets**:
-  - **Dataset 1**: Achieved an accuracy with a Mean Absolute Percentage Error (MAPE) of 10.68%.
-  - **Dataset 2**: Significantly improved accuracy with a lower MAPE of 4.07%, indicating enhanced performance on the larger dataset.
+  - **Dataset 1**: Achieved a high accuracy with a Mean Absolute Percentage Error (MAPE) of 6.10%, indicating a reasonable performance across monthly predictions.
+  - **Dataset 2**: Displayed an improved accuracy with a lower MAPE of 3.21%, demonstrating enhanced performance and generalization on this dataset.
 
-The accuracy increased when applied to the larger Dataset 2, showing the model's improved performance and generalization with additional data.
+The increased accuracy on Dataset 2 shows the model's improved predictive capability when handling a slightly smaller but more reliable dataset.
 
 - **Error Metrics**:
   - **Dataset 1**:
-    - **Mean Absolute Error (MAE)**: $598,694.80
-    - **Root Mean Square Error (RMSE)**: $987,629.18
+    - **Mean Absolute Error (MAE)**: $387,851.33
+    - **Root Mean Square Error (RMSE)**: $614,523.62
   - **Dataset 2**:
-    - **MAE**: $204,227.20 (a substantial reduction)
-    - **RMSE**: $291,434.78 (showing much better performance)
+    - **MAE**: $158,173.45 (a substantial reduction)
+    - **RMSE**: $233,015.36 (showing improved precision)
 
-The MAPE reduction from 10.68% in Dataset 1 to 4.07% in Dataset 2 demonstrates a notable decrease in prediction errors with the larger dataset.
+The MAPE decrease from 6.10% in Dataset 1 to 3.21% in Dataset 2 highlights a significant reduction in prediction errors, suggesting more reliable predictions in Dataset 2.
 
 - **Forecast Accuracy**:
   - **Most Accurate Predictions**:
-    - **Dataset 1**: March 2023 (Error: -0.1%)
-    - **Dataset 2**: May 2023 (Error: 0.0%)
+    - **Dataset 1**: October 2023 (Error: -0.0%)
+    - **Dataset 2**: September 2023 (Error: -0.1%)
   - **Least Accurate Predictions**:
-    - **Dataset 1**: February 2023 (Error: -45.7%)
+    - **Dataset 1**: July 2023 (Error: -19.9%)
     - **Dataset 2**: July 2023 (Error: 11.2%)
 
 - **Scalability and Data Utilization**:
   - **Data Volume**:
-    - **Dataset 1**: 174,648 rows
+    - **Dataset 1**: 175,514 rows
     - **Dataset 2**: 417,318 rows
-
+      
 The model scales effectively and demonstrates better learning capacity with Dataset 2, which is four times larger than Dataset 1. This result underscores the model's ability to learn from and generalize better with larger datasets.
 
 ## Conclusion
