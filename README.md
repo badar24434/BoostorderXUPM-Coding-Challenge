@@ -1331,14 +1331,59 @@ The `create_features` function generates additional features from the existing t
   ---
   
 ## Model Evaluation:
-  The primary metrics used for evaluation are:
-  
-  **Mean Absolute Percentage Error (MAPE)**: Measures prediction accuracy as a percentage
-  
-  **Root Mean Square Error (RMSE)**: Provides an absolute measure of the prediction error
-  
-  The model's performance is evaluated on the test set (2023 data) for both datasets:
-  
+The following metrics were used to evaluate model performance:
+
+**1. Accuracy Score**
+   - Represents the overall predictive accuracy of the model
+   - Formula: (1 - MAPE) × 100%
+
+**2. Mean Absolute Percentage Error (MAPE)**
+   - Measures prediction accuracy as a percentage
+   - Shows the average absolute percentage difference between predicted and actual values
+   - Formula: (1/n) × Σ|(Actual - Predicted)/Actual| × 100%
+
+**3. Mean Absolute Error (MAE)**
+   - Measures the average absolute difference between predicted and actual values
+   - Provides error in the same unit as the target variable
+   - Formula: (1/n) × Σ|Actual - Predicted|
+
+**4. Root Mean Square Error (RMSE)**
+   - Provides an absolute measure of the prediction error
+   - Penalizes larger errors more heavily due to squaring
+   - Expressed in the same unit as the target variable
+   - Formula: √[(1/n) × Σ(Actual - Predicted)²]
+
+The model's performance is evaluated on the test set (2023 data) for both datasets.
+
+```python
+from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error
+import numpy as np
+
+def run_pipeline(self):
+    # ... previous steps ...
+
+    # Generate predictions from all models
+    predictions = self.generate_predictions()
+    
+    # Create ensemble predictions
+    final_predictions = self.ensemble_predictions(predictions)
+
+    # Calculate and display performance metrics
+    mape = mean_absolute_percentage_error(self.test['y'], final_predictions)
+    rmse = np.sqrt(mean_squared_error(self.test['y'], final_predictions))
+
+    print(f"\nFinal Model Performance:")
+    print(f"Accuracy: {100 - mape * 100:.2f}%")
+    print(f"MAPE: {mape:.4f}")
+    print(f"RMSE: {rmse:.2f}")
+```
+1. **Mean Absolute Percentage Error (MAPE)**: MAPE is calculated using the `mean_absolute_percentage_error` function from `sklearn`. This metric expresses prediction error as a percentage, giving a clear view of how far off the predictions are on average. It is defined as the average of the absolute percentage errors across all predictions, providing a normalized measure of model accuracy. Lower MAPE values indicate better performance.
+
+2. **Root Mean Squared Error (RMSE)**: RMSE is obtained by taking the square root of the `mean_squared_error` between the actual and predicted values. It measures the model's average prediction error in the same units as the target variable, with a greater emphasis on larger errors due to its squared component. This metric is beneficial for understanding overall prediction accuracy, particularly when large errors are undesirable.
+
+3. **Accuracy (Derived from MAPE)**: Accuracy is derived by subtracting the MAPE percentage from 100. This gives an interpretable measure of model performance by indicating the average percentage correctness of predictions. 
+
+
   #### Dataset 1 Results:
   
   ![download](https://github.com/user-attachments/assets/35c6fcf5-2b2e-400f-a384-cb604dd8878a)
