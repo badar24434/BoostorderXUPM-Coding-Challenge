@@ -1,0 +1,11 @@
+These are all the files for our BoostorderXUPM Coding Challenge submission:
+
+1. BOOSTX_MODEL_DATASET_1.ipynb - First model implementation and analysis
+2. BOOSTX_MODEL_DATASET_2.ipynb - Second model implementation and analysis
+3. dataset/ - Contains first and second dataset provided
+4. requirements.txt - List of required Python packages
+5. README.md - Detailed documentation and approach
+
+For better viewing experience of the documentation:
+- GitHub Repository: https://github.com/badar24434/BoostorderXUPM-Coding-Challenge.git
+- Brief Slide: https://www.canva.com/design/DAGTjopesqs/0hvms4YbUAXc2omX9Nyg7w/edit?utm_content=DAGTjopesqs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
